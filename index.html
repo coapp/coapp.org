@@ -4,7 +4,16 @@ title: CoApp
 ---
 
 {% for post in site.posts limit:10 %}
-<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<div class="post">
+	<h2><a href=".{{post.url}}" rel="bookmark" title="{{post.title}}">{{post.title}}</a></h2>
+	<small>{{post.date | date: "%B %d, %Y"}} ... CoApp Project</small>
+
+	<div class="entry">
 {{ post.content }}
-<em>Posted on {{ post.date | date_to_long_string }}.</em>
+	</div>
+	<p class="postmetadata">
+		<a href="{{post.id}}/#comments" title="Comment on {{page.title}}">
+			View Comments</a>
+	</p>
+</div>
 {% endfor %}

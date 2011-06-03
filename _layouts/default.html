@@ -1,12 +1,122 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{{ page.title }}</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="/syntax.css" />
+    <!-- link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/Tigraine?format=xml" /-->
+    <!-- link rel="alternate" type="text/xml" title="RSS .92" href="http://feeds.feedburner.com/Tigraine?format=xml" / -->
+    <!-- link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://feeds.feedburner.com/Tigraine?format=xml" / -->
+    <!-- link rel="openid.server" href="http://www.myopenid.com/server" / -->
+    <!-- link rel="openid.delegate" href="http://tigraine.myopenid.com/" / -->
+    <!-- meta name="msapplication-task" content="name=Daniel on Twitter;action-uri=http://twitter.com/Tigraine" / -->
+    <!-- meta name="msapplication-task" content="name=Daniel on Facebook;action-uri=http://www.facebook.com/Tigraine" / -->
+    <!-- meta name="msapplication-starturl" content="./" / -->
+    <!-- meta name="application-name" content="Daniel Hoelbling's	Blog" /-->
+    <!-- meta name="msapplication-tooltip" content="Daniel Hoelbling's Blog" / -->
+    <link rel='index' title='CoApp' href='http://www.coapp.org' />
+    <script type="text/javascript">
+        // window.google_analytics_uacct = "UA-3272216-1";
+    </script>
 </head>
- 
 <body>
-<h1>{{ page.title }}</h1>
- 
-{{ content }}
+    <div id="container">
+        <div id="blog_name">
+            <a href="/">CoApp</a></div>
+        <div id="blog_slogan">
+            Common Opensource Application Publishing Platform</div>
+        <div id="menu_view">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li class="page_item"><a href="/articles/" title="Articles">
+                    Articles</a></li>
+                <li class="page_item"><a href="/about-me/" title="About me">
+                    About me</a></li>
+            </ul>
+        </div>
+        <h1 id="header">
+        </h1>
+        <div id="wrapper">
+            <div id="content">
+                {{content}}
+                <br />
+                <br />
+            </div>
+        </div>
+        <div id="sidebar">
+            <br />
+            <ul id="sidebar_main_menu">
+                <li id="text-3" class="widget widget_text">
+                    <div class="textwidget">
+                        <p>
+                            <a href="http://feeds2.feedburner.com/Tigraine" rel="alternate" type="application/rss+xml">
+                                <img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align: middle;
+                                    border: 0" /></a>&nbsp;<a href="http://feeds2.feedburner.com/Tigraine" rel="alternate"
+                                        type="application/rss+xml">Subscribe in a reader</a></p>
+                    </div>
+                </li>
+                <li id="categories-1" class="widget widget_categories">
+                    <h2 class="widgettitle">
+                        Categories</h2>
+                    <ul>
+                        <li class="cat-item"><a href="/programmierung.html"
+                            title="View all posts filed under Programming">Coding</a>
+                            <ul class='children'>
+                                <li class="cat-item"><a href="/net.html"
+					title="View all posts filed under .NET">.NET</a> </li>
+                                <li class="cat-item"><a href="/git.html"
+                                    title="View all posts filed under Git">Git</a> </li>
+                                <li class="cat-item">Projects
+                                    <ul class='children'>
+                                        <li class="cat-item"><a href="/dotless.html"
+                                            title="View all posts filed under dotless">dotless</a> </li>
+                                        <li class="cat-item"><a href="/elmsconnector.html"
+                                            title="View all posts filed under elmsConnector">elmsConnector</a> </li>
+                                        <li class="cat-item"><a href="/imagineclub-website.html"
+                                            title="View all posts filed under imagineClub Website">imagineClub Website</a>
+                                        </li>
+                                        <li class="cat-item"><a href="/pandora.html"
+                                            title="Posts about the Pandora Project (http://bitbucket.org/Tigraine/pandora-container/)">Pandora</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li id="text-444566711" class="widget widget_text">
+                </li>
+                <li id="text-444566712" class="widget widget_text">
+                </li>
+                <li id="linkcat-134" class="widget widget_links">
+                    <h2 class="widgettitle">
+                        Daniel</h2>
+                    <ul class='xoxo blogroll'>
+                    </ul>
+                </li>
+                <li id="text-213266941" class="widget widget_text">
+                </li>
+                <li id="text-315869281" class="widget widget_text">
+                </li>
+            </ul>
+        </div>
+        <hr id="clear" />
+    </div>
+    <div id="footer">
+        <div id="footer_text">
+            <br />
+            &copy; Copyright 2012 CoApp Project<br />
+            This blog is powered by <a href="http://github.com/mojombo/jekyll/wiki">Jekyll</a>
+        </div>
+        <br />
+    </div>
+    <script type="text/javascript">
+        /* var disqus_shortname = 'tigraine';
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.src = 'http://disqus.com/forums/tigraine/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        } ()); */
+    </script>
 </body>
 </html>
