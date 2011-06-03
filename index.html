@@ -1,1 +1,10 @@
-This is the placeholder for the CoApp Pages on Github. 
+---
+layout: default
+title: CoApp
+---
+
+{% for post in site.posts limit:10 %}
+<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+{{ post.content }}
+<em>Posted on {{ post.date | date_to_long_string }}.</em>
+{% endfor %}
