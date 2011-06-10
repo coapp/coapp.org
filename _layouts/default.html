@@ -1,129 +1,284 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head profile="http://gmpg.org/xfn/11">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
-    <link type="text/css" rel="stylesheet" href="/syntax.css" />
-    <!-- link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/Tigraine?format=xml" /-->
-    <!-- link rel="alternate" type="text/xml" title="RSS .92" href="http://feeds.feedburner.com/Tigraine?format=xml" / -->
-    <!-- link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://feeds.feedburner.com/Tigraine?format=xml" / -->
-    <!-- link rel="openid.server" href="http://www.myopenid.com/server" / -->
-    <!-- link rel="openid.delegate" href="http://tigraine.myopenid.com/" / -->
-    <!-- meta name="msapplication-task" content="name=Daniel on Twitter;action-uri=http://twitter.com/Tigraine" / -->
-    <!-- meta name="msapplication-task" content="name=Daniel on Facebook;action-uri=http://www.facebook.com/Tigraine" / -->
-    <!-- meta name="msapplication-starturl" content="./" / -->
-    <!-- meta name="application-name" content="Daniel Hoelbling's	Blog" /-->
-    <!-- meta name="msapplication-tooltip" content="Daniel Hoelbling's Blog" / -->
-    <link rel='index' title='CoApp' href='http://www.coapp.org' />
-    <script type="text/javascript">
-        // window.google_analytics_uacct = "UA-3272216-1";
-    </script>
+--- 
+title: CoApp 
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" >
+  <link type="text/css" rel="stylesheet" href="/syntax.css" >
+  <title>{{ page.title }}</title>
+  <script type="text/javascript" src="jquery-1.6.1.js">
+  </script>
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#SearchLink").mouseover(function () {
+            $("#SearchField").animate({ right: parseInt($("#SearchField").css('right'), 10) == $("#SearchLink").outerWidth() ? -$("#SearchContainer").outerWidth() : $("#SearchLink").outerWidth() });
+        });
+        $("#SearchContainer").mouseleave(function () {
+            $("#SearchField").animate({ right: -$("#SearchContainer").outerWidth()});
+        });
+    });
+   
+  </script>
 </head>
 <body>
-    <div id="container">
-        <div id="blog_name">
-            <a href="/">CoApp</a></div>
-        <div id="blog_slogan">
-            Common Opensource Application Publishing Platform</div>
-        <div id="menu_view">
-            <ul>
-            <li class="current"><a href="/">Home</a> </li>
-        <li><a href="/information">Info</a></li>
-        <li><a href="/packages">Packages</a></li>
-        <li><a href="http://wiki.coapp.org">Documentation</a></li>
-        <li><a href="/contribute">Contribute</a></li>
-        <li><a href="/development">Development</a></li>
-        <li><a href="/about">About Us</a></li>
-            <!--
-                <li><a href="">Home</a></li>
-                <li class="page_item"><a href="/articles/" title="Articles">Articles</a></li>
-                <li class="page_item"><a href="/about-me/" title="About me">About me</a></li>
-                -->
-            </ul>
-        </div>
-        <h1 id="header">
-        </h1>
-        <div id="wrapper">
-            <div id="content">
-                {{content}}
-                <br />
-                <br />
+  <div id="BgLayer1">
+    <div id="BgLayer2">
+      <div id="BgLayer3">
+        <div id="Wrapper">
+          <div id="Outer" class="PageWidth">
+            <div id="HeaderArea">
+              <div id="Logo">
+                <a onclick="return false" href="#">
+				  <img style="border-width: 0px; position: absolute; left: 0px; top: -10px;" alt="Logo" src="images/logo3.png" ></a><h1>&nbsp;Common Opensource Application Publishing Platform</h1>
+              </div>
+              
+              <div id="NavAux">
+                            <div id="Search"><div id="SearchContainer">
+                    <div id="SearchLink"><img src="images/search.icon.png" alt="Search icon" ></div>
+                    <div id="SearchField" style="right: -300px; "><div id="SearchBar"><form action="" class="search-form" method="get"><fieldset><input type="text" value="" name="q" id="q"><button type="submit">Search</button></fieldset></form></div></div>
+                </div></div>
+                </div>
+              <div class="clear">
+              </div>
             </div>
-        </div>
-        <div id="sidebar">
-            <br />
-            <ul id="sidebar_main_menu">
-                <li id="text-3" class="widget widget_text">
-                    <div class="textwidget">
-                        <p>
-                            <a href="http://feeds2.feedburner.com/Tigraine" rel="alternate" type="application/rss+xml">
-                                <img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align: middle;
-                                    border: 0" /></a>&nbsp;<a href="http://feeds2.feedburner.com/Tigraine" rel="alternate"
-                                        type="application/rss+xml">Subscribe in a reader</a></p>
+            <div id="MenuH" class="MenuH01">
+              <span><span class="menu" tabindex="0" >
+                  <span class="mi root mi0 first sel"><span  class="txt" style="cursor: pointer;">Home</span></span>
+                  <span class="mi root mi1"><span  class="txt" style="cursor: pointer;">Information</span></span>
+                  <span class="mi root mi2"><span  class="txt" style="cursor: pointer;">Packages</span></span>
+                  <span class="mi root mi3"><span  class="txt" style="cursor: pointer;">Development</span></span>
+                  <span class="mi root mi4 last"><span  class="txt" style="cursor: pointer;">About Us</span></span>
+              </span></span>
+            </div>
+            <div id="ContentArea">
+              <hr>
+
+              <div id="SideBar" class="MenuVWidth MenuV01">
+                            <!--
+                <div id="MenuV" class="MenuV01">
+                  <div class="mi root mi0 first sel">
+                      <a class="txt" style="cursor: pointer;">One</a>
+                  </div>
+                  <div class="mi root mi1">
+                    <a class="txt" style="cursor: pointer;">Packages</a>
+                  </div>
+                  <div class="mi root mi2">
+                    <span class="txt" style="cursor: pointer;">Typography</span>
+                  </div>
+                  <div class="mi root mi3">
+                    <span class="txt" style="cursor: pointer;">Zones</span>
+                  </div>
+                  <div class="mi root mi4 last">
+                    <span class="txt" style="cursor: pointer;">Zone Containers</span>
+                  </div>
+                </div>
+                -->
+                <div id="LeftZone" class="pane w100">
+                
+                  <div class="C02 container">
+                    <div class="TL">
+                      <div class="TR">
+                        <div class="TM">
+                          <div class="c_head">
+                            <span class="c_title">
+                              <span class="CTitle">Special Box</span></span>
+                            <div class="clear">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </li>
-                <li id="categories-1" class="widget widget_categories">
-                    <h2 class="widgettitle">
-                        Categories</h2>
-                    <ul>
-                        <li class="cat-item"><a href="/programmierung.html"
-                            title="View all posts filed under Programming">Coding</a>
-                            <ul class='children'>
-                                <li class="cat-item"><a href="/net.html"
-					title="View all posts filed under .NET">.NET</a> </li>
-                                <li class="cat-item"><a href="/git.html"
-                                    title="View all posts filed under Git">Git</a> </li>
-                                <li class="cat-item">Projects
-                                    <ul class='children'>
-                                        <li class="cat-item"><a href="/dotless.html"
-                                            title="View all posts filed under dotless">dotless</a> </li>
-                                        <li class="cat-item"><a href="/elmsconnector.html"
-                                            title="View all posts filed under elmsConnector">elmsConnector</a> </li>
-                                        <li class="cat-item"><a href="/imagineclub-website.html"
-                                            title="View all posts filed under imagineClub Website">imagineClub Website</a>
-                                        </li>
-                                        <li class="cat-item"><a href="/pandora.html"
-                                            title="Posts about the Pandora Project (http://bitbucket.org/Tigraine/pandora-container/)">Pandora</a> </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                    <div class="ML">
+                      <div class="MR">
+                        <div class="MM">
+                          <div class="containercontent">
+                            <p>We can put important links that you should see right here..</p>
+                            <!-- <input type="text" value="Name" style="width: 170px;" ><br ><input type="text" value="Email" style="width: 170px;" ><br ><br ><input type="submit" value="Send" onclick="return false" >-->
+                            <p>Hot Link</p>
+                            <p>Hot Link</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="BL">
+                      <div class="BR">
+                        <div class="BM">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="MainContentArea">
+                <div class="zonegroup">
+                  <div id="BannerZone" class="pane w100">
+                    <img src="images/banner.home.png" alt="Header Banner" class="img" ></div>
+                </div>
+                <div class="zonegroup">
+                  <div id="MainContentZone" class="EmptyPane pane w100">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L1_Zone60" class="pane w66">
+                    <div class="C00_CleanWPadding container">
+                      <div class="containercontent">
+                      {{content}}<br />
+                        <div>
+                          </div>
+                        <div>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="L1_Zone30" class="pane C01 w30" >
+                    <h4><u>Important Headlines</u></h4>
+                    <p>this is some sample text that goes herethis is some sample text that goes herethis is some sample text that goes herethis is some sample text that goes herethis is some sample text that goes herethis is some sample text that goes here</p>
+                      <div class="rightButton">
+	                      <br>
+		                    <a href="#" class="btn" onclick="return false">Read more</a>
+		                    <br><br><br>
+                      </div>
+                    
+                    <p>Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede...</p>
+<div class="rightButton">
+	                      <br>
+		                    <a href="#" class="btn" onclick="return false">Read more</a>
+		                    <br><br><br>
+                      </div>
+
+<div class="C02 container">
+                    
+                    <div class="ML">
+                      <div class="MR">
+                        <div class="MM">
+                          <div class="containercontent">
+                            <ul id="sidebar_main_menu">
+                            <li id="categories-1" class="widget widget_categories">
+            <h2 class="widgettitle">News Articles</h2></li>
+
+          <li id="text-3" class="widget widget_text">
+            <div class="textwidget">
+              <p><a href="http://feeds2.feedburner.com/xxxxxx" rel="alternate" type="application/rss+xml"><img src=
+              "http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style=
+              "vertical-align: middle; border: 0" ></a>&nbsp;<a href="http://feeds2.feedburner.com/xxxxxxx" rel="alternate" type=
+              "application/rss+xml">Subscribe in a reader</a></p>
+            </div>
+          </li>
+
+			<li id="categories-1" class="widget widget_categories">
+            <h2 class="widgettitle">Categories</h2></li>
+
+
+              <li class="cat-item">
+                <a href="/somecategory.html" title="View all posts filed under somecategory">Coding</a>
+
+                <ul class='children'>
+                  <li class="cat-item"><a href="/net.html" title="View all posts filed under .NET">.NET</a></li>
+
+                  <li class="cat-item"><a href="/git.html" title="View all posts filed under Git">Git</a></li>
+
+                  <li class="cat-item">Projects
+
+                    <ul class='children'>
+                      <li class="cat-item"><a href="/project1.html" title="View all posts filed under dotless">project1</a></li>
+
+                      <li class="cat-item"><a href="/project1.html" title=
+                      "View all posts filed under elmsConnector">project1</a></li>
+
+                      <li class="cat-item"><a href="/project1.html" title=
+                      "View all posts filed under ">project1</a></li>
+
+                      <li class="cat-item"><a href="/project1.html" title=
+                      "Posts about the project1">project1</a></li>
                     </ul>
-                </li>
-                <li id="text-444566711" class="widget widget_text">
-                </li>
-                <li id="text-444566712" class="widget widget_text">
-                </li>
-                <li id="linkcat-134" class="widget widget_links">
-                    <h2 class="widgettitle">
-                        Daniel</h2>
-                    <ul class='xoxo blogroll'>
-                    </ul>
-                </li>
-                <li id="text-213266941" class="widget widget_text">
-                </li>
-                <li id="text-315869281" class="widget widget_text">
-                </li>
+                  </li>
+                </ul>
+              </li>
             </ul>
+          </li>                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="BL">
+                      <div class="BR">
+                        <div class="BM">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+		
+                <div class="zonegroup">
+                  <div id="L2_Zone70" class="EmptyPane pane w70">
+                  </div>
+                  <div id="L2_Zone30" class="EmptyPane pane w30">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L3_Zone50_1" class="EmptyPane pane w50">
+                  </div>
+                  <div id="L3_Zone50_2" class="EmptyPane pane w50">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L4_Zone100" class="EmptyPane pane w100">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L5_Zone40" class="EmptyPane pane w40">
+                  </div>
+                  <div id="L5_Zone60" class="EmptyPane pane w60">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L6_Zone30" class="EmptyPane pane w30">
+                  </div>
+                  <div id="L6_Zone70" class="EmptyPane pane w70">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L7_Zone30_1" class="EmptyPane pane w30">
+                  </div>
+                  <div id="L7_Zone40_2" class="EmptyPane pane w40">
+                  </div>
+                  <div id="L7_Zone30_3" class="EmptyPane pane w30">
+                  </div>
+                </div>
+                <div class="zonegroup">
+                  <div id="L8_Zone100" class="EmptyPane pane w100">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="FooterContentArea">
+              <div class="zonegroup">
+                <div id="L9_Zone25_1" class="EmptyPane pane w25">
+                </div>
+                <div id="L9_Zone25_2" class="EmptyPane pane w25">
+                </div>
+                <div id="L9_Zone25_3" class="EmptyPane pane w25">
+                </div>
+                <div id="L9_Zone25_4" class="EmptyPane pane w25">
+                </div>
+              </div>
+            </div>
+            <!-- <div id="Breadcrumb">
+              <span><a class="Breadcrumb_Link" onclick="return false" href="#">Page</a>&gt;<a onclick="return false" class="Breadcrumb_Link" href="#">CurrentPage</a></span>
+            </div> -->
+            <div id="Footer">
+              <span id="Copyright">
+                <span class="Copyright">Copyright &#169; 2011 CoApp Contributors</span></span>
+              <span id="Privacy"><a onclick="return false" href="#" class="Privacy">Read about privacy</a></span>
+              <span id="Terms"><a onclick="return false" href="#" class="Terms">Read our terms</a></span>
+            </div>
+          </div>
         </div>
-        <hr id="clear" />
+      </div>
     </div>
-    <div id="footer">
-        <div id="footer_text">
-            <br />
-            &copy; Copyright 2012 CoApp Project<br />
-            This blog is powered by <a href="http://github.com/mojombo/jekyll/wiki">Jekyll</a>
-        </div>
-        <br />
-    </div>
-    <script type="text/javascript">
-        /* var disqus_shortname = 'tigraine';
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.src = 'http://disqus.com/forums/tigraine/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        } ()); */
-    </script>
+  </div>
 </body>
 </html>
