@@ -1,6 +1,8 @@
 module Jekyll
 
   class IncludeSetTag < Liquid::Tag
+      safe true
+      
     def initialize(tag_name, files, tokens)
       super
       @files = files.strip
