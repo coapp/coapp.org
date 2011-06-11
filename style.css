@@ -1,4 +1,4 @@
-﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+﻿scihtml, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
 	border: 0;
 	outline: 0;
 	font-weight: inherit;
@@ -9,9 +9,7 @@
 	margin: 0;
 	padding: 0;
 }
-:focus {
-	outline: 10;
-}
+
 body {
 	line-height: 1;
 	background: #FFF;
@@ -19,25 +17,32 @@ body {
 	font-size: 13px;
 	color: #666666;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 table {
 	border-collapse: separate;
 	border-spacing: 0;
 }
+
 caption, th, td {
 	font-weight: 400;
 }
+
 table, td, th {
 	vertical-align: top;
 }
+
 blockquote:before, blockquote:after, q:before, q:after {
 	content: "";
 }
+
 blockquote, q {
 	quotes: "" "";
 }
+
 .Color2 {
 	color: #f1f1f1;
 }
@@ -84,7 +89,7 @@ input[type=submit], button[type=submit], .btn {
 .MenuH01 .mi .txt {
 	display: inline-block;
 	font-family: inherit;
-	font-size: 1em;
+	font-size: 1.4em;
 	text-decoration: none;
 	color: #666;
 	padding: 11px;
@@ -125,9 +130,13 @@ h1 {
 	line-height: 1.5em;
 	color: #2E5C8C;
 	font-family: "Segoe UI", Verdana, sans-serif;
-	padding-left: 120px;
+	padding-left: 140px;
 	margin-top: 20px;
 	font-weight: bold;
+}
+
+h1 a {
+	color: #2E5C8C;
 }
 h2 {
 	color: #333;
@@ -288,7 +297,6 @@ body, #body, #Body, #form, #Form {
 	padding: 0 15px;
 }
 #HeaderArea {
-	padding-bottom: 20px;
 }
 #NavAux {
 	float: right;
@@ -359,24 +367,7 @@ body, #body, #Body, #form, #Form {
 	cursor: pointer;
 	z-index: 1;
 }
-#Breadcrumb {
-	color: #ddd;
-	padding-left: 5px;
-}
-#Breadcrumb a, #Breadcrumb a.Breadcrumb_Link, #Breadcrumb a.Breadcrumb_Link:active, #Breadcrumb a.Breadcrumb_Link:visited, #Breadcrumb a.Breadcrumb_Link:link, #Breadcrumb a.Breadcrumb_Link:hover, #Breadcrumb a.Breadcrumb_Current, #Breadcrumb .Breadcrumb_Current {
-	font-size: .85em;
-	line-height: 30px;
-	text-decoration: none;
-	padding: 0 5px;
-}
-#Language .Language {
-	border: 1px transparent solid;
-	display: inline-block;
-	margin: 0 0 0 5px;
-}
-#Language .selected {
-	border: 1px #999 solid;
-}
+
 #Logo {
 	float: left;
 	padding: 10px 10px 0;
@@ -440,128 +431,7 @@ body, #body, #Body, #form, #Form {
 .Settings {
 	text-align: left !important;
 }
-.ControlPanel, .PagingTable {
-	border: none !important;
-	border-bottom: 1px dotted #666 !important;
-}
-.ControlPanel table {
-	line-height: 100%;
-	margin: 0 auto !important;
-}
-.ControlPanel input, .ControlPanel select, .ControlPanel textarea {
-	background: #fff !important;
-	border: 1px #ccc solid !important;
-	color: #000 !important;
-	font-family: "Segoe UI", Arial, Verdana, sans-serif !important;
-	margin: 0;
-	padding: 2px;
-}
-.ControlPanel .SubHead, .ControlPanel .Normal, .ControlPanel .normal {
-	font-family: "Segoe UI", Arial, Verdana, sans-serif !important;
-	font-size: 11px;
-	color: #888 !important;
-	text-align: center !important;
-}
-.ControlPanel a {
-	font-family: "Segoe UI", Arial, Verdana, sans-serif !important;
-	font-size: 11px;
-	color: #39C !important;
-	text-decoration: none !important;
-}
-.RadComboBox .rcbInputCell .rcbInput {
-	background: none transparent !important;
-	border: 0 none !important;
-}
-/*
-.dnnRibbonGroup .rgIconDisabled input {
-	border: medium none !important;
-}
-.dnnRibbonGroup .footer {
-	background-color: #F4F4F4 !important;
-	color: #999 !important;
-	font-family: "Segoe UI", Arial, Verdana, sans-serif !important;
-	font-size: 10px;
-	font-weight: 700 !important;
-	text-transform: uppercase !important;
-}
 
-.dnnRibbonBar .CommandButton, .dnnRibbonBar .CommandButton:link, .dnnRibbonBar .CommandButton:hover, .dnnRibbonBar .CommandButton:visited {
-	background: none #DDD !important;
-	text-transform: uppercase !important;
-}
-.dnnRibbonBar .CommandButtonDisabled, .dnnRibbonBar .CommandButtonDisabled:link, .dnnRibbonBar .CommandButtonDisabled:hover, .dnnRibbonBar .CommandButtonDisabled:active, .dnnRibbonBar .CommandButtonDisabled:visited {
-	background: none #EEE !important;
-	color: #999 !important;
-}
-.dnnRibbonBar .CommandButton, .dnnRibbonBar .CommandButtonDisabled {
-	cursor: default;
-	font-family: "Segoe UI", Arial, Verdana, sans-serif !important;
-	font-size: 10px;
-	font-weight: 700 !important;
-	height: auto;
-	line-height: 100%;
-}
-*/
-.ModuleTitle_SubMenu {
-	border: 1px #999 dotted !important;
-	width: auto !important;
-	z-index: 999999;
-}
-.ModuleTitle_MenuItem {
-	height: auto !important;
-	border: 0;
-	white-space: nowrap !important;
-}
-.ModuleTitle_MenuItem .txt {
-	color: #888 !important;
-	font-family: Arial,sans-serif !important;
-	font-size: 11px;
-}
-.ModuleTitle_MenuItemSel {
-	height: auto !important;
-	border: 0;
-	white-space: nowrap !important;
-	background-color: #F5F5F5 !important;
-}
-.ModuleTitle_MenuItemSel .txt {
-	color: #333 !important;
-	font-family: Arial,sans-serif !important;
-	font-size: 11px;
-}
-.ModuleTitle_MenuContainer {
-	color: #333 !important;
-}
-.ModuleTitle_MenuItem td, .ModuleTitle_MenuItemSel td {
-	border-bottom: 1px #CCC dotted !important;
-	text-align: left;
-	vertical-align: middle;
-	padding: 3px 5px;
-}
-.ModuleTitle_MenuBar {
-	cursor: pointer !important;
-}
-.ModuleTitle_MenuIcon {
-	background: #F5F5F5 !important;
-	border: none !important;
-	padding: 0;
-}
-.FileManager_Explorer {
-	background-color: #fff !important;
-	border: 1px solid #E5E5E5 !important;
-	height: 100%;
-	margin: 5px;
-	padding: 5px;
-}
-.FileManager_Header {
-	background-color: #E5E5E5 !important;
-	border-bottom: 1px solid #D0D0D0 !important;
-	color: #585858 !important;
-	font-family: inherit !important;
-	font-size: inherit !important;
-	font-weight: 700 !important;
-	height: auto !important;
-	padding: 4px;
-}
 .Normal, .normal, strong, s b, .NormalBold, .NormalRed {
 	font-family: inherit;
 	font-size: 100%;
@@ -605,14 +475,14 @@ a.CommandButton:hover {
 	padding-left: 4px;
 }
 .search-form fieldset{
-background:transparent;
-border:none;
-margin:0;
-padding:0;
+	background:transparent;
+	border:none;
+	margin:0;
+	padding:0;
 }
 .search-form button[type=submit]{
-cursor:pointer;
-margin:0;
+	cursor:pointer;
+	margin:0;
 }
 td.NormalTextBox, span.NormalTextBox {
 	background: transparent;
@@ -781,9 +651,9 @@ a img, #Logo img, .paneOutline {
 	background-color: #82ce35;
 }
 .PageWidth, .w95 {
-	width: 95%;
+	width: 99%;
 }
-#User a, #Login a, #Logo a, #Copyright .Copyright, #Privacy a, #Terms a, .MenuH01 .submenu .mi .txt, .MenuV01 .submenu .mi .txt, del, #Breadcrumb .Breadcrumb_Current, #Logo a, #Copyright .Copyright, #Privacy a, #Terms a {
+#User a, #Login a, #Logo a, #Copyright .Copyright, #Privacy a, #Terms a, .MenuH01 .submenu .mi .txt, .MenuV01 .submenu .mi .txt, del, #Logo a, #Copyright .Copyright, #Privacy a, #Terms a {
 	color: #666;
 }
 .MenuH01 .submenu, .MenuV01 .submenu {
@@ -831,14 +701,7 @@ thead th, tr.even td {
 	text-decoration: none;
 	color: #666;
 }
-/*
-.dnnRibbonBarHeader table, .ControlPanel a:hover {
-	background: #f5f5f5 !important;
-}
-.dnnRibbonBar table, .xEditingArea body, .FCKLinkGalleryContainer, .FCKImageGalleryContainer {
-	background: #fff !important;
-}
-*/
+
 .ControlPanel .IconTop input, div.language-object span.Language img {
 	border: none !important;
 }
@@ -915,4 +778,13 @@ ul, ol {
 li, dd {
   margin-left: 7px;
   list-style-type: none;
+}
+
+#BigTitle {
+	font-size:3.0em; 
+	color: #2E5C8C;
+}
+
+Logo a, a:link, a:visited, a:active {
+	text-decoration: none;
 }

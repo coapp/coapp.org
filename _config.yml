@@ -7,5 +7,5 @@ permalink: /:title
 paginate: 10
 category_dir: topics
 category_title_prefix: 
-exclude: ["lib", "public", "Capfile", "config", "log", "Rakefile", "tmp"]
+exclude: ["lib", "public", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore"]
 destination: public
