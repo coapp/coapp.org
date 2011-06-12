@@ -6,3 +6,4 @@ $(document).ready(function () {
             $("#SearchField").animate({ right: -$("#SearchContainer").outerWidth()});
         });
     });
+    
