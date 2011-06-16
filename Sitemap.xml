@@ -1,3 +1,6 @@
+---
+layout: nil
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -27,17 +30,9 @@
   <url>
     <loc>http://www.coapp.org/pandora.html</loc>
   </url>
-	
+	{% for post in site.posts %}
   <url> 
-    <loc>http://www.coapp.org/More-Stuff/</loc> 
+    <loc>http://www.coapp.org{{post.id}}/</loc> 
   </url>
-	
-  <url> 
-    <loc>http://www.coapp.org/Still-testing/</loc> 
-  </url>
-	
-  <url> 
-    <loc>http://www.coapp.org/A-New-fulltime-member-for-CoApp/</loc> 
-  </url>
-	
+	{% endfor %}
 </urlset>
