@@ -11,6 +11,16 @@ A fork happens when developers take a copy of source code from one software pack
 
 Linux distributions do this sort of thing all the time, in order to build packages for their specific version of Linux.  We’re essentially following in the same footsteps, but following the procedure that I’m setting out here, so that we can eventually produce packages of software for CoApp.
 
+``` c#
+// *** Example Three ***
+// Listening to multiple events
+var taskThree = CoTask.Factory.StartNew(() => {
+    for (var q = 10; q > 0; q--) {
+        // simulate a longer running operation
+        Thread.Sleep(200);
+ ```
+
+
 {% highlight c# %}
 // *** Example Three ***
 // Listening to multiple events
