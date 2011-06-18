@@ -1,0 +1,9 @@
+---
+layout: default
+title: Packages
+leftboxes: [ LeftSideNavigation.inc ]
+subnavigation:
+    "libraries.html": Libraries
+    "apps.html": Applications and stuff
+---
+{{content}}

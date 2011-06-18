@@ -3,8 +3,9 @@ server: false
 lsi: false
 markdown: rdiscount
 pygments: true
-permalink: /:title
+permalink: /posts/:year/:month/:day/:title
 paginate: 10
+category_index: true
 category_dir: topics
 category_title_prefix: 
 exclude: ["lib", "public", "Capfile", "config", "log", "Rakefile", "tmp", ".gitignore", ".git"]

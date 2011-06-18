@@ -19,9 +19,6 @@ module Jekyll
           return "Includes directory '#{includes_dir}' cannot be a symlink"
         end
 
-        #if filename !~ /^[a-zA-Z0-9_\/\.-]+$/ || filename =~ /\.\// || filename =~ /\/\./
-        #  return "Include file '#{filename}' contains invalid characters or sequences"
-        #end
         source = ""
         partial = ""
 

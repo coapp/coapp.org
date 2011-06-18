@@ -1,0 +1,10 @@
+---
+layout: default
+title: Information
+leftboxes: [ LeftSideNavigation.inc ]
+subnavigation:
+    "What-Is-CoApp.html": What is CoApp
+    "What-Is-The-Point.html" : What's the point of CoApp 
+    "CoApp-Vision.html" : CoApp Vision
+---
+{{content}}

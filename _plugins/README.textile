@@ -1,0 +1,16 @@
+h1. Jekyll Plugins
+
+I've created a bunch of plugins based on those included in "jekyll_ext":https://github.com/rfelix/jekyll_ext. I was sort of tired of having to install @jekyll_ext@, and since Jekyll has had a plugin system since around version 0.6 or so, I decided to migrate the plugins I use to Jekyll proper.
+
+Here's a quick explanation of each extension:
+* *archive*: allows you to automatically generate archive pages for dates like 2010/, 2010/01/, and 2010/01/12 using files in <em>_layouts</em> to specify what each page will look like. <em>e.g. Posts for "January 2010":http://josediazgonzalez.com/2010/01</em>
+* *tag*: allows you to automatically generate tag pages for each tag using files in <em>_layouts</em> to specify what each page will look like. <em>e.g. "CakePHP":http://josediazgonzalez.com/tags/cakephp</em>. Also creates a listing of all tags. <em>e.g. "Tags":http://josediazgonzalez.com/tags</em>. You also have access to related tags
+* *category*: allows you to automatically generate category pages for each tag using files in <em>_layouts</em> to specify what each page will look like. <em>e.g. "CakePHP":http://josediazgonzalez.com/categories/cakephp</em>. Also creates a listing of all category. <em>e.g. "Categories":http://josediazgonzalez.com/categories</em>.
+* *iterator*: allows you to iterate over all tags/categories and then iterate over the posts in those tags/categories. You can use this to automatically generate a tag cloud and a category page listing. <em>e.g. "Tag Cloud on Sidebar":http://josediazgonzalez.com/categories/cakephp</em>
+* *helpers*: A bunch of random Liquid Filters I created for use on my blog
+* *blockquote*: Allows the usage of blockquotes with attribution within your application by doing @{% blockquote John Hancock %} Content {% endblockquote %}@. Also adds support for pullquotes: @{% pullquote John Hancock %} Content {% endpullquote %}@.
+* *post_type*: Allows the creation of a series of posts based on a type. Useful if you want to create a portfolio or gallery from an @_gallery@ or @_portfolio@ directory. Inflections may be funny at the moment. Contributions welcome.
+
+All plugins reside locally, in the _plugins folder, and in theory would be safe to run on Github. They may not be the best of Ruby code, since I am still but a Ruby apprentice, but they work fine for me :)
+
+Any undocumented plugins are not of my own creation. Please refer to their docblocks for more information.

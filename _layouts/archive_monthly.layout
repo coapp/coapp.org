@@ -1,0 +1,19 @@
+---
+layout: default
+body: full-width page
+---
+<div id="content">
+	<div class="post">
+		<h2 class="post-title">{{ page.month | date_to_month }} {{ page.year }}</h2>
+		<p class="lead">Posts from {{ page.month | date_to_month }}, {{ page.year }}</p>
+		<ul>
+			{% for d in (1..31) reversed %}
+				{% if page.collated_posts[page.year][page.month][d] %}
+					{% for p in page.collated_posts[page.year][page.month][d] reversed %}
+					<li><a href='{{ p.url }}'>{{ p.title }}</a></li>
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+</div><!-- end: #content-->

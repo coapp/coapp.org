@@ -1,0 +1,9 @@
+---
+layout: default
+title: About
+leftboxes: [ LeftSideNavigation.inc ]
+subnavigation:
+    "Developers.html": The Developers
+    "Sponsors.html": CoApp Sponsors
+---
+{{content}}

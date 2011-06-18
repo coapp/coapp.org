@@ -1,0 +1,10 @@
+---
+layout: default
+title: Development
+leftboxes: [ LeftSideNavigation.inc , "DevelopmentHotLinks.inc" ]
+rightboxes: [ "CommitFeed.inc" ]
+
+subnavigation:
+    "GettingStarted.html": Getting Started with CoApp
+---
+{{content}}

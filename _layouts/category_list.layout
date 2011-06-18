@@ -1,0 +1,7 @@
+---
+layout: full
+title: Categories
+---
+{% for category in page.categories %}
+	<li><a href="/categories/{{ category | replace:' ', '-' | downcase  }}">{{ category }}</a></li>
+{% endfor %}

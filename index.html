@@ -1,20 +1,33 @@
 ---
 layout: default
-title: CoApp
-leftboxes: ["MainLeft.markdown", "BlogFeed.markdown" ]
-rightboxes: ["Headlines.markdown", "CoAppTweets.markdown", "other.markdown"]
+title: Home
+leftboxes: ["MainLeft.inc", "BlogFeed.inc" ]
+rightboxes: ["Headlines.inc", "CoAppTweets.inc", "other.inc"]
 ---
 {% for post in site.posts limit:10 %}
 <div class="post">
 	<h2><a href=".{{post.url}}" rel="bookmark" title="{{post.title}}">{{post.title}}</a></h2>
-	<small>{{post.date | date: "%B %d, %Y"}} ... {{post.author}}</small>
+	<small><i>{{post.date | date: "%B %d, %Y"}}</i> by <b>{{post.author}}</b></small>
 
 	<div class="entry">
 {{ post.content }}
 	</div>
 	<p class="postmetadata">
-		<a href="{{post.id}}/#comments" title="Comment on {{page.title}}">
-			View Comments</a>
+        <i><a style="align:right;" href="{{post.id}}/#disqus_thread" data-disqus-identifier="{{post.id}}">Read Comments...</a></i>
 	</p>
+    <hr>
 </div>
 {% endfor %}
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'coapp'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>

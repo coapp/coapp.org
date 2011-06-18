@@ -3,6 +3,7 @@ layout: post
 author: Garrett Serack
 title: "A New fulltime member for CoApp"
 guid: http://www.coapp.org/2011/06/02/the-first-post-ever/
+tags: news people
 categories:
 - news
 ---

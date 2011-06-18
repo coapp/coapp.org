@@ -1,0 +1,44 @@
+<div class="highlight"><pre><span class="n">x86</span> <span class="p">{</span>
+    <span class="nl">compiler:</span> <span class="n">vc10</span><span class="o">-</span><span class="n">x86</span><span class="p">;</span>
+      
+    <span class="nl">targets:</span> <span class="p">{</span>
+        <span class="c1">// main library</span>
+        <span class="s">&quot;Release\jpeg.lib&quot;</span><span class="p">,</span>
+         
+        <span class="c1">// extra utilities</span>
+        <span class="s">&quot;cjpeg\Release\cjpeg.exe&quot;</span><span class="p">,</span>
+        <span class="s">&quot;djpeg\Release\djpeg.exe&quot;</span><span class="p">,</span>
+        <span class="s">&quot;jpegtran\Release\jpegtran.exe&quot;</span><span class="p">,</span>
+        <span class="s">&quot;rdjpgcom\Release</span><span class="se">\r</span><span class="s">djpgcom.exe&quot;</span><span class="p">,</span>
+        <span class="s">&quot;wrjpgcom\Release\wrjpgcom.exe&quot;</span><span class="p">,</span>
+    <span class="p">};</span>
+      
+    <span class="n">build</span><span class="o">-</span><span class="n">command</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;</span>
+        <span class="n">copy</span> <span class="n">jconfig</span><span class="p">.</span><span class="n">vc</span> <span class="n">jconfig</span><span class="p">.</span><span class="n">h</span>       
+        <span class="n">copy</span> <span class="n">makejsln</span><span class="p">.</span><span class="n">v10</span> <span class="n">makejsln</span><span class="p">.</span><span class="n">sln</span>
+        <span class="n">copy</span> <span class="n">makeasln</span><span class="p">.</span><span class="n">v10</span> <span class="n">makeasln</span><span class="p">.</span><span class="n">sln</span>
+        <span class="n">copy</span> <span class="n">makejvcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">jpeg</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">copy</span> <span class="n">makecvcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">cjpeg</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">copy</span> <span class="n">makedvcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">djpeg</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">copy</span> <span class="n">maketvcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">jpegtran</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">copy</span> <span class="n">makewvcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">wrjpgcom</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">copy</span> <span class="n">makervcx</span><span class="p">.</span><span class="n">v10</span> <span class="n">rdjpgcom</span><span class="p">.</span><span class="n">vcxproj</span>
+        <span class="n">msbuild</span> <span class="o">/</span><span class="n">p</span><span class="o">:</span><span class="n">Platform</span><span class="o">=</span><span class="n">Win32</span> <span class="o">/</span><span class="n">p</span><span class="o">:</span><span class="n">Configuration</span><span class="o">=</span><span class="n">Release</span> <span class="n">makejsln</span><span class="p">.</span><span class="n">sln</span>
+        <span class="n">msbuild</span> <span class="o">/</span><span class="n">p</span><span class="o">:</span><span class="n">Platform</span><span class="o">=</span><span class="n">Win32</span> <span class="o">/</span><span class="n">p</span><span class="o">:</span><span class="n">Configuration</span><span class="o">=</span><span class="n">Release</span> <span class="n">makeasln</span><span class="p">.</span><span class="n">sln</span>
+    <span class="s">&quot;;</span>
+      
+    <span class="n">clean</span><span class="o">-</span><span class="n">command</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;</span>
+        <span class="n">attrib</span> <span class="o">-</span><span class="n">S</span> <span class="o">-</span><span class="n">H</span> <span class="o">-</span><span class="n">R</span> <span class="o">*</span>
+        <span class="n">del</span> <span class="o">/</span><span class="n">Q</span> <span class="o">*</span><span class="p">.</span><span class="n">sdf</span> <span class="o">*</span><span class="p">.</span><span class="n">suo</span> <span class="o">*</span><span class="p">.</span><span class="n">sln</span> <span class="o">*</span><span class="p">.</span><span class="n">vcxproj</span> <span class="o">*</span><span class="p">.</span><span class="n">user</span> <span class="n">jconfig</span><span class="p">.</span><span class="n">h</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">Release</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+         
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">cjpeg</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">djpeg</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">ipch</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">jpegtran</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">rdjpgcom</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+        <span class="n">rmdir</span> <span class="o">/</span><span class="n">S</span> <span class="o">/</span><span class="n">Q</span> <span class="n">wrjpgcom</span> <span class="mi">2</span><span class="o">&gt;</span><span class="n">NUL</span>
+    <span class="s">&quot;;</span>
+<span class="p">};</span>
+</pre>
+</div>
