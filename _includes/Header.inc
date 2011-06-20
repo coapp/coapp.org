@@ -5,22 +5,7 @@
         <span id="BigTitle">CoApp</span> <br>The Common Opensource 
         Application Publishing Platform </a></h1>
     </div>
-    <div id="NavAux">
-        <div id="Search">
-            <div id="SearchContainer">
-                <div id="SearchLink">
-                    <img alt="Search icon" src="/images/search.icon.png"></div>
-                <div id="SearchField" style="right: -300px;">
-                    <div id="SearchBar">
-                        <form action="" class="search-form" method="get">
-                            <fieldset>
-                            <input id="q" name="q" type="text" value=""><button type="submit">Search
-                            </button></fieldset></form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="clear">
     </div>
 </div>
