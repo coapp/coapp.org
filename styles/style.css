@@ -22,18 +22,7 @@ ol, ul {
 	list-style: none;
 }
 
-table {
-	border-collapse: separate;
-	border-spacing: 0;
-}
 
-caption, th, td {
-	font-weight: 400;
-}
-
-table, td, th {
-	vertical-align: top;
-}
 
 blockquote:before, blockquote:after, q:before, q:after {
 	content: "";
@@ -225,23 +214,7 @@ dd {
 	clear: both;
 	width: 150px;
 }
-table, .Table {
-	border-collapse: collapse;
-}
-.Table caption, .Table th {
-	border-bottom: 1px #ccc solid;
-}
-.Table caption, .Table th, .Table td {
-	padding: 5px;
-}
-.Table tfoot td {
-	border-top: 1px #ccc solid;
-	color: #666;
-	font-style: italic;
-}
-caption {
-	background: #f9f9f9;
-}
+
 hr {
 	background: #ccc;
 	border: none;
@@ -834,4 +807,71 @@ li, dd {
 
 .tweet .tweet_list .tweet_avatar img, .query .tweet_list .tweet_avatar img {
 	vertical-align: middle; 
+}
+
+
+
+
+
+.pretty-table, table
+{
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+  border: 1px solid #333;
+  font-family: "Segoe UI", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  color: #000;
+  background: #bcd0e4 url("/images/widget-table-bg.jpg") top left repeat-x;
+}
+
+.pretty-table caption, caption
+{
+  caption-side: bottom;
+  font-size: 0.9em;
+  font-style: italic;
+  text-align: right;
+  padding: 0.5em 0;
+}
+
+.pretty-table th, .pretty-table td, th, td
+{
+  border: 1px dotted #666;
+  padding: 0.5em;
+  text-align: left;
+  color: #632a39;
+}
+
+.pretty-table th[scope=col], th[scope=col]
+{
+  color: #000;
+  background-color: #8fadcc;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+}
+
+.pretty-table th+th[scope=col], th+th[scope=col]
+{
+  color: #fff;
+  background-color: #7d98b3;
+  border-right: 1px dotted #666;
+}
+
+.pretty-table th[scope=row], th[scope=row]
+{
+  background-color: #b8cfe5;
+  border-right: 2px solid #333;
+}
+
+.pretty-table tr.alt th, .pretty-table tr.alt td, tr.alt th, tr.alt td
+{
+  color: #2a4763;
+}
+
+.pretty-table tr:hover th[scope=row], .pretty-table tr:hover td, tr:hover th[scope=row], tr:hover td
+{
+  background-color: #632a2a;
+  color: #fff;
 }

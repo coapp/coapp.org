@@ -177,7 +177,7 @@ x86 {
 ##### Once you have the .buildinfo file complete, you can run the pTk tool from the command line (make sure you're in the root of the project). 
 
 **You should be able to run a build: **
-{% highlight batch %}
+{% highlight bat %}
 C:\forks\libjpeg>ptk clean
  
 CoApp Project pTk Version 1.0.2.906 for x64
@@ -194,7 +194,7 @@ C:\forks\libjpeg>
 
 ** ... and a clean :  **
 
-{% highlight batch %}
+{% highlight bat %}
 C:\forks\libjpeg>ptk clean
  
 CoApp Project pTk Version 1.0.2.906 for x64
@@ -211,7 +211,7 @@ C:\forks\libjpeg>
 
 ... and a verify (where it builds, verifies the build targets, cleans, and verifies everything is clean): 
 
-{% highlight c# %}
+{% highlight bat %}
 C:\forks\libjpeg>ptk verify
 CoApp Project pTk Version 1.0.2.906 for x64
 Copyright (c) Garrett Serack, CoApp Contributors 2010-2011. All rights reserved
