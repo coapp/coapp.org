@@ -1,3 +1,9 @@
+							<div class="zonegroup">
+								<div id="L2_Zone70" class="EmptyPane pane w70">
+								</div>
+								<div id="L2_Zone30" class="EmptyPane pane w30">
+								</div>
+							</div>
 <div class="zonegroup">
     <div id="L3_Zone50_1" class="EmptyPane pane w50">
     </div>

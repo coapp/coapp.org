@@ -6,5 +6,7 @@ rightboxes: [ "CommitFeed.inc" ]
 
 subnavigation:
     "GettingStarted.html": Getting Started with CoApp
+    "Setting-up-for-development.html": Setting Up for Development
+    "ShallowForking.html": Shallow Forking
 ---
 {{content}}
