@@ -872,6 +872,11 @@ li, dd {
 
 .pretty-table tr:hover th[scope=row], .pretty-table tr:hover td, tr:hover th[scope=row], tr:hover td
 {
-  background-color: #632a2a;
+  background-color: #2a2a66;
   color: #fff;
+}
+
+.smaller {
+	font-size: 0.7em;
+	font-style: italic;
 }

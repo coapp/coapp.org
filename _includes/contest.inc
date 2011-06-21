@@ -18,10 +18,10 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
-            <a href="https://github.com/coapp-packages/libpng">Forked libpng (*)</a><br>
-            <a href="https://github.com/coapp-packages/libssh">Forked libssh (*)</a><br>
-            <a href="https://github.com/coapp-packages/openssl">Forked openssl (*)</a><br>
-            <a href="https://github.com/coapp-packages/sqlite">Forked SQLite (*)</a><br>
+            <a href="https://github.com/coapp-packages/libpng">Forked libpng</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/libssh">Forked libssh</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/openssl">Forked openssl</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/sqlite">Forked SQLite</a> <span class="smaller">(in review)</span><br>
         </td>
     <tr>
     <tr>
@@ -30,10 +30,10 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
-            <a href="https://github.com/coapp-packages/libpng">Forked SDL (*)</a><br>
-            <a href="https://github.com/coapp-packages/libssh">Forked SDK_gfx(*)</a><br>
+            <a href="https://github.com/coapp-packages/libpng">Forked SDL </a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/libssh">Forked SDK_gfx</a> <span class="smaller">(in review)</span><br>
         </td>
     <tr>
 </table>
 
-Items marked (*) have not yet been evaluated for points, this should happen fairly soon...
+Items marked (in review) have not yet been evaluated for points, this should happen fairly soon...

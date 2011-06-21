@@ -29,22 +29,25 @@ There are three ways to get your name in the drawing:
 
     Individual does the shallow-fork work according to the [CoApp forking Process](/Development/ShallowForking.html).<br>
     Pushes the completed forked-code to a repository on Github<br>
-    Notifies the Lead Developer(s) of the available fork <br>
-    \- Lead Developer(s) review the submission for completeness<br>
-    \- Lead Developer(s) grant between 1 and 5 points based on forked project significance and degree of difficulty<br>
+    Notify @fearthecowboy with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a> of the available fork <br>
+    \- @fearthecowboy reviews the submission for completeness<br>
+    \- @fearthecowboy grants between 1 and 5 points based on forked project significance and degree of difficulty<br>
     
     For each point that Github ID gets one entry in the drawing.<br>
     
     
-2.  **File a reproducable bug on a CoApp Project tool**
+2.  **File and/or fix reproducable bug on a CoApp Project tool**
 
     Individual files a bug against a CoApp project <br>
     The bug is evaluated by the Project Team to ensure that it is valid, based on the following criteria:<br>
     \- Reproducible<br>
-    \- Original (i.e., not a duplicate of another bug)<br>
+    \- Original (i.e., not a duplicate of another bug, or found previously by the test suite )<br>
     \- An actual defect or missing expected V1 feature  (i.e., not marked “as designed”, or “V2 feature”)<br>
+    \- Not a pedantic or bug of triviality<br>
     
     Each accepted bug is worth one entry in the drawing<br>
+
+    As well, fixing an accepted bug is also worth one entry in the drawing. (So, yes you can get a<br>
 
 3.  **Fill in a documentation gap off the list**
 
@@ -60,6 +63,7 @@ There are three ways to get your name in the drawing:
     Each accepted peice of documentation is worth between 1 and 3 entries in the drawing.
     
 
+**All entries are the discretion of @fearthecowboy.**
 
 ## When does the contest end?
 --------------
