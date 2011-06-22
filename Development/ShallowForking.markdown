@@ -89,7 +89,8 @@ The build configuration syntax:
 name  {
     /* optional -- defaults to vc10-x86 */
     compiler: compiler-tag ;
-            // currently supported values are vc10-x86 and vc10-x64 
+            // currently supported values are vc10-x86 and vc10-x64
+            // and mingw-x86
             //... we'll add more compilers in the future.
  
     /* optional -- only used if this project has dependencies on others
@@ -99,6 +100,7 @@ name  {
             // the 'blg-cfg=' part can be omitted to depend on the default
             // path is to the root path of the dependent project that 
             // contains a COPKG\.buildinfo file.
+            // DOES NOT currently pull in the dependent project from Git
  
     targets: { ... } ;
             // a comma seperated list of the binary files that are output 
