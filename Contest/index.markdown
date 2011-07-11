@@ -86,7 +86,7 @@ you don't have an IRC client handy you can login using the [Webchat](http://webc
 
 2. **Mailing List** - The CoApp Mailing list is currently hosted on [Launchpad](https://launchpad.net/~coapp-developers)
 
-3. If you are desperate, you can also drop @fearthecowboy a message with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a>on Github.
+3. If you are desperate, you can also drop @fearthecowboy a message with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a> on Github.
 
 
 ## List of Prizes
