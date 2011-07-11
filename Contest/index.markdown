@@ -42,12 +42,12 @@ There are three ways to get your name in the drawing:
     The bug is evaluated by the Project Team to ensure that it is valid, based on the following criteria:<br>
     \- Reproducible<br>
     \- Original (i.e., not a duplicate of another bug, or found previously by the test suite )<br>
-    \- An actual defect or missing expected V1 feature  (i.e., not marked �as designed�, or �V2 feature�)<br>
+    \- An actual defect or missing expected V1 feature  (i.e., not marked "as designed", or "V2 feature")<br>
     \- Not a pedantic or bug of triviality<br>
     
     Each accepted bug is worth one entry in the drawing<br>
 
-    As well, fixing an accepted bug is also worth one entry in the drawing.    
+    As well, fixing an accepted bug is also worth one entry in the drawing. (Yes, you can fix your own bug.)    
 
 3.  **Fill in a documentation gap off the list**
 
