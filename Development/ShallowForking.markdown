@@ -121,7 +121,7 @@ name  {
 }
 {% endhighlight %}
 
-The above libjpeg example continued note that there isn't any **uses** option: 
+The above libjpeg example continued; note that there isn't any **uses** option: 
 
 {% highlight c# %}
 x86 {
