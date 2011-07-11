@@ -46,4 +46,4 @@ Since shallow-forking is intended to continually merge in changes from upstream,
  
 
 ###If you run into trouble, and need help
-Check on IRC #coapp on freenode.net (try the [webclient](http://webchat.freenode.net/) if you don't have IRC installed) if I'm there, I'm more than willing you help you thru the steps (and fix stuff that needs fixing), or failing that on the (mailing list)[https://launchpad.net/~coapp-developers].
+Check on IRC #coapp on freenode.net (try the [webclient](http://webchat.freenode.net/) if you don't have IRC installed) if I'm there, I'm more than willing you help you thru the steps (and fix stuff that needs fixing), or failing that on the [mailing list](https://launchpad.net/~coapp-developers).
