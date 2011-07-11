@@ -1,6 +1,6 @@
 <h4>Contest Scoreboard</h4>
 
-<i>This shows the currently recognized points assigned for activities (shallow-forks, bugs filed, documentation artifacts) for the "Stick a fork in Windows" Contest.<br><br>
+<i>This shows the currently recognized points assigned for activities (shallow-forks, bugs filed, documentation artifacts) for the "Stick a fork in CoApp" Contest.<br><br>
 If something isn't showing up here, nudge @fearthecowboy with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+You+missed+my+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a></i>
 <br></br>
 
