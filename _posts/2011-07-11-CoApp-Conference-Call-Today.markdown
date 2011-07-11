@@ -15,7 +15,7 @@ The conference call is using Microsoft Lync, you download the necessary bits **[
 **Details**
 
 &nbsp;&nbsp;&nbsp;Monday, July 11th, 2011 <br> 
-&nbsp;&nbsp;&nbsp;14:00PM PDT (that's 21:00 GMT)<br> 
+&nbsp;&nbsp;&nbsp;14:00 PDT (that's 21:00 GMT)<br> 
 
 You can listen in and attend by clicking **[here](https://join.microsoft.com/meet/garretts/HZ96LF57)**
 
