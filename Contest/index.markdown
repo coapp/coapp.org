@@ -1,10 +1,10 @@
 ---
 layout: two-column
-title: Contest
+title: Stick-A-Fork-In-CoApp
 rightboxes: [ contest.inc ]
 noleftmenu: true
 ---
-## Your chance to "Stick a fork in Windows"
+## Your chance to "Stick a fork in CoApp"
 ---------------
 
 We're reaching a stage in the CoApp project where we can really use
@@ -15,7 +15,7 @@ In order to spur the creation of the shallow-forks, the Outercurve Foundation is
 
  
 
-## The "Stick a fork in Windows" Contest Rules
+## The "Stick a fork in CoApp" Contest Rules
 ---------------
 
 Our goal, is to shallow-fork 200 projects by the end of Summer. 
@@ -73,8 +73,20 @@ Submissions will continue until the first of the following conditions is met:
 
 1. **Seven days after the 200th shallow-fork submission**
 
-2. **August 31st, 2011**
+2. **September 21st, 2011**
 
+## What if I need help?
+--------------
+
+You can get help (either with the tools, the process or pretty much anything related to this) in 
+a couple places:
+
+1. **IRC** - The best place to start is in the #CoApp channel on IRC on irc.freenode.net ... If 
+you don't have an IRC client handy you can login using the [Webchat](http://webchat.freenode.net) client in the browser.
+
+2. **Mailing List** - The CoApp Mailing list is currently hosted on [Launchpad](https://launchpad.net/~coapp-developers)
+
+3. If you are desperate, you can also drop @fearthecowboy a message with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a>on github.
 
 
 ## List of Prizes

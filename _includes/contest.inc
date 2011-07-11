@@ -23,17 +23,48 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
             <a href="https://github.com/coapp-packages/openssl">Forked openssl</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/sqlite">Forked SQLite</a> <span class="smaller">(in review)</span><br>
         </td>
-    <tr>
+    </tr>
     <tr>
         <td scope="row">ferzkopp</td>
         <td>Forks: 0<br>
         Bugs: 0<br>
         Docs: 0</td>
         <td>
-            <a href="https://github.com/coapp-packages/libpng">Forked SDL </a> <span class="smaller">(in review)</span><br>
-            <a href="https://github.com/coapp-packages/libssh">Forked SDK_gfx</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/sdl">Forked SDL </a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/sdl_gfx">Forked SDK_gfx</a> <span class="smaller">(in review)</span><br>
         </td>
+    </tr>
+    
     <tr>
+        <td scope="row">ericschultz</td>
+        <td>Forks: 0<br>
+        Bugs: 0<br>
+        Docs: 0</td>
+        <td>
+            <a href="https://github.com/coapp-packages/libiconv">Forked libiconv</a> <span class="smaller">(in review)</span><br>
+        </td>
+    </tr>
+    <tr>
+        <td scope="row">riverar</td>
+        <td>Forks: 0<br>
+        Bugs: 0<br>
+        Docs: 0</td>
+        <td>
+            <a href="https://github.com/coapp-packages/libjpeg">Forked libjpeg</a> <span class="smaller">(in review)</span><br>
+        </td>
+    </tr>
+    <tr>
+        <td scope="row">fearthecowboy</td>
+        <td>Forks: 0<br>
+        Bugs: 0<br>
+        Docs: 0</td>
+        <td>
+            <a href="https://github.com/coapp-packages/zlib">Forked zlib</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/grep">Forked grep</a> <span class="smaller">(in review)</span><br>
+        </td>
+    </tr>
+    
+    
 </table>
 
 Items marked (in review) have not yet been evaluated for points, this should happen fairly soon...

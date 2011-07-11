@@ -16,14 +16,17 @@ subtitle: Shallow Forking
 
 ### 1. Get Setup for Development
 
-- tools
-- github
-- coapp-packages
+1. Visual Studio 2010 (the [express](http://www.microsoft.com/express/Downloads/) version will do), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe).
+
+2. [An account on github](https://github.com/signup/free), so you can check stuff in (you can use [msysgit](http://code.google.com/p/msysgit/) or [tortoisegit](http://code.google.com/p/tortoisegit/) , or any other git client for Windows even the [Mercurial](http://mercurial.selenic.com/downloads/) plugin [hg-git](http://hg-git.github.com/), which lets you use git repositories as if they were mercurial repositories. *(Note: I tried the hg-git plugin, and had to use the version [here](https://github.com/sampsyo/hg-git) to get it to work)*
+
+3. A current build of the CoApp tools. You can [compile them yourself](http://fearthecowboy.com/2011/04/26/weve-moved-coapp-code-hosting-to-github/), or just download my [latest snapshot build](http://cdn.coapp.org/files/coapp-tools-snapshot.zip). Make it easy on yourself, put them in a folder that's in the %PATH%.
+
 
 ### 2. Select an open source project to fork.
 
 Find an open source C/C++ library or application that you'd like to fork.  
-You can select one off the list of things that we know we really need, or 
+You can select one off the list of things that [we know we really need](https://github.com/coapp/coapp.org/wiki/Shallow-Fork-Wishlist), or 
 something else that of particular interest to you, and for which you'd like 
 to see a CoApp package created.  If the project that you want to build has things that it depends on, you may need to go ahead and provide the shallow-fork for that as well we do not want to rely on binary builds that someone else has provided, that would be kinda silly.
 
@@ -38,8 +41,9 @@ into Github in a project in the coapp-packages organization.
 
 ### 4. Clone the source code into your working directory.
 
+{% highlight bat %}
 git clone *url*
-
+{% endhighlight %}
 ### 5. Create the COPKG folder in the project root.
 
 Create a folder in the root of the project called **COPKG**.

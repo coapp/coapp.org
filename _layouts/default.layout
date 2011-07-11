@@ -3,6 +3,7 @@
 #  "pageurl" : page title
 topnavigation:
     "/": Home
+    "/Contest/index.html": Stick-A-Fork-In-CoApp
     "/Information.html": Information
     "/Packages.html": Packages
     "/Development.html": Development
