@@ -52,7 +52,7 @@ Create a folder in the root of the project called **COPKG**.
 
 Create a text file in the folder called **.buildinfo** this is the file that you will be putting the build steps into. 
 
-The format of the .buildinfo file can be thought of something akin to a .css file.  Simple values need not be quoted (but it's ok to do so).  It supports comments ( double-slash and /* */), C# style string literals (may be preceded by an @ symbol to make a string multi-line).  
+The format of the .buildinfo file can be thought of something akin to a .css file.  Simple values need not be quoted (but it's ok to do so).  It supports comments ( double-slash and /\* \*/), C# style string literals (may be preceded by an @ symbol to make a string multi-line).  
 
 Inside the **.buildinfo** file,  insert the following: 
 {% highlight c# %}#product-info  {
@@ -121,7 +121,7 @@ name  {
 }
 {% endhighlight %}
 
-The above libjpeg example continued note that there isn't any **uses** option: 
+The above libjpeg example continued; note that there isn't any **uses** option: 
 
 {% highlight c# %}
 x86 {
