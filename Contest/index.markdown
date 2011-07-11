@@ -42,12 +42,12 @@ There are three ways to get your name in the drawing:
     The bug is evaluated by the Project Team to ensure that it is valid, based on the following criteria:<br>
     \- Reproducible<br>
     \- Original (i.e., not a duplicate of another bug, or found previously by the test suite )<br>
-    \- An actual defect or missing expected V1 feature  (i.e., not marked “as designed”, or “V2 feature”)<br>
+    \- An actual defect or missing expected V1 feature  (i.e., not marked ï¿½as designedï¿½, or ï¿½V2 featureï¿½)<br>
     \- Not a pedantic or bug of triviality<br>
     
     Each accepted bug is worth one entry in the drawing<br>
 
-    As well, fixing an accepted bug is also worth one entry in the drawing. (So, yes you can get a<br>
+    As well, fixing an accepted bug is also worth one entry in the drawing.    
 
 3.  **Fill in a documentation gap off the list**
 
@@ -86,7 +86,7 @@ you don't have an IRC client handy you can login using the [Webchat](http://webc
 
 2. **Mailing List** - The CoApp Mailing list is currently hosted on [Launchpad](https://launchpad.net/~coapp-developers)
 
-3. If you are desperate, you can also drop @fearthecowboy a message with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a>on github.
+3. If you are desperate, you can also drop @fearthecowboy a message with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a>on Github.
 
 
 ## List of Prizes
