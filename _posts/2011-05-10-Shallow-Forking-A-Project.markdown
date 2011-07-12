@@ -2,7 +2,7 @@
 layout: post
 author: Garrett Serack
 title: Shallow Forking a Project
-tags: Developer Coding Shallow-Forking
+tags: developer coding shallow-forking
 categories:
 - Information
 ---

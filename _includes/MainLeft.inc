@@ -17,8 +17,7 @@
                 <div class="MM">
                     <div class="containercontent">
                         <p>You might be looking for...</p>
-                        <!-- <input type="text" value="Name" style="width: 170px;" ><br ><input type="text" value="Email" style="width: 170px;" ><br ><br ><input type="submit" value="Send" onclick="return false" >-->
-                        <p><a href="/Information/What-Is-CoApp.html">What Is CoApp?</p>
+                        <p><a href="/Information/What-Is-CoApp.html">What Is CoApp?</a></p>
                     </div>
                 </div>
             </div>
