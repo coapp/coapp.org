@@ -182,8 +182,10 @@ pre {
 	margin: 1.5em 0;
 }
 pre, code, tt {
-	font: 1em andale mono,lucida console,monospace;
-	line-height: 1.5;
+	font-family: inconsolata, consolas, andale mono,lucida console,monospace;
+	
+	font-size: 1.1em;
+	font-style:bold;
 }
 ul, ol {
 	padding-left: 2.5em;
