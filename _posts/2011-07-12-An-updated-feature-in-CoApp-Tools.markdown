@@ -11,7 +11,7 @@ I’ve added a feature to the command line parsing stuff that makes it simpler t
 
 Using <code>--list-bugtracker</code> on the command line will  display the tracker for every loaded assembly that has a bugtracker attribute:
 
-![Alt text](/images/blog/bugtracker.png "show bugtracker example")
+<p class="ScrollImage"><img src="/images/blog/bugtracker.png" title="list bugtrackers example" alt="show bugtracker example" /></p>
 
 This works by adding a new attribute to the AssemblyInfo.cs file for any project in CoApp :
 
