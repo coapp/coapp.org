@@ -53,11 +53,13 @@ topnavigation:
                     
 					<div id="ContentArea">
 						<hr>
+                    {% if !(page.noleftmenu == true) %}
 						<div id="SideBar" class="MenuVWidth MenuV01">
                            {% includeset leftboxes %} 
 						</div>
+				    {% endif %}
 						
-						<div id="MainContentArea">
+						<div id="{% if !(page.noleftmenu == true) %}MainContentArea{% endif %}">
 							<div class="zonegroup">
                                 {% if page.title == 'Home' %}
 								<div id="BannerZone" class="pane w100">
@@ -71,7 +73,7 @@ topnavigation:
 							</div>
 							<div class="zonegroup">
 								<div id="L1_Zone60" class="pane w66">
-									<div class="C00_CleanWPadding container">
+									<div class="container">
 										<div class="containercontent">
 											{{content}}<br>
 										</div>
@@ -79,12 +81,6 @@ topnavigation:
 								</div>
 								<div id="L1_Zone30" class="pane C01 w30">
                                     {% includeset rightboxes %} 
-								</div>
-							</div>
-							<div class="zonegroup">
-								<div id="L2_Zone70" class="EmptyPane pane w70">
-								</div>
-								<div id="L2_Zone30" class="EmptyPane pane w30">
 								</div>
 							</div>
                              {% include AdditionalZones.inc %} 

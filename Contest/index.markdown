@@ -1,5 +1,5 @@
 ---
-layout: two-column
+layout: default
 title: Stick-A-Fork-In-CoApp
 rightboxes: [ contest.inc ]
 noleftmenu: true
