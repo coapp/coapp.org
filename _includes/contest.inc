@@ -51,6 +51,8 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Docs: 0</td>
         <td>
             <a href="https://github.com/coapp-packages/pthreads-win32">Forked pthreads</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/coin-cbc">Forked coin-cbc</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/freeglut">Forked freeglut</a> <span class="smaller">(in review)</span><br>
         </td>
     </tr>
     <tr>
