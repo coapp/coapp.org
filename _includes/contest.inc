@@ -45,6 +45,15 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         </td>
     </tr>
     <tr>
+        <td scope="row">PetterS</td>
+        <td>Forks: 0<br>
+        Bugs: 0<br>
+        Docs: 0</td>
+        <td>
+            <a href="https://github.com/coapp-packages/pthreads-win32">Forked pthreads</a> <span class="smaller">(in review)</span><br>
+        </td>
+    </tr>
+    <tr>
         <td scope="row">riverar</td>
         <td>Forks: 0<br>
         Bugs: 0<br>
