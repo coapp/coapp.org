@@ -18,6 +18,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/libpng">Forked libpng</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/libssh">Forked libssh</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/openssl">Forked openssl</a> <span class="smaller">(in review)</span><br>
@@ -31,6 +32,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/apr">Forked apr</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/expat">Forked expat</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/pcre">Forked prce5</a> <span class="smaller">(in review)</span><br>
@@ -42,6 +44,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/sdl">Forked SDL </a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/sdl_gfx">Forked SDK_gfx</a> <span class="smaller">(in review)</span><br>
         </td>
@@ -52,6 +55,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/libiconv">Forked libiconv</a> <span class="smaller">(in review)</span><br>
         </td>
     </tr>
@@ -61,10 +65,12 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 1<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/pthreads-win32">Forked pthreads</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/coin-cbc">Forked coin-cbc</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/freeglut">Forked freeglut</a> <span class="smaller">(in review)</span><br>
-            <br>Bugs:
+            <br>
+            Bugs:<br>
             <a href="https://github.com/coapp/ptk/issues/3">pkt</a> <span class="smaller">(1)</span><br>
             
         </td>
@@ -75,7 +81,8 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 2<br>
         Docs: 0</td>
         <td>
-            <br>Bugs:
+            <br>
+            Bugs:<br>
             <a href="https://github.com/coapp/ptk/issues/1">pkt</a> <span class="smaller">(1)</span><br>
             <a href="https://github.com/coapp/ptk/issues/2">pkt</a> <span class="smaller">(1)</span><br>
         </td>
@@ -86,6 +93,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>
             <a href="https://github.com/coapp-packages/libjpeg">Forked libjpeg</a> <span class="smaller">(in review)</span><br>
         </td>
     </tr>
@@ -95,6 +103,7 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         Bugs: 0<br>
         Docs: 0</td>
         <td>
+            Forks:<br>        
             <a href="https://github.com/coapp-packages/zlib">Forked zlib</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/grep">Forked grep</a> <span class="smaller">(in review)</span><br>
         </td>
