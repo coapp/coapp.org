@@ -25,6 +25,18 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
         </td>
     </tr>
     <tr>
+        <td scope="row">Raggles</td>
+        <td>
+        Forks: 0<br>
+        Bugs: 0<br>
+        Docs: 0</td>
+        <td>
+            <a href="https://github.com/coapp-packages/apr">Forked apr</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/expat">Forked expat</a> <span class="smaller">(in review)</span><br>
+            <a href="https://github.com/coapp-packages/pcre">Forked prce5</a> <span class="smaller">(in review)</span><br>
+        </td>
+    </tr>
+    <tr>
         <td scope="row">ferzkopp</td>
         <td>Forks: 0<br>
         Bugs: 0<br>
@@ -34,7 +46,6 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
             <a href="https://github.com/coapp-packages/sdl_gfx">Forked SDK_gfx</a> <span class="smaller">(in review)</span><br>
         </td>
     </tr>
-    
     <tr>
         <td scope="row">ericschultz</td>
         <td>Forks: 0<br>
@@ -47,14 +58,28 @@ If something isn't showing up here, nudge @fearthecowboy with a <a href="http://
     <tr>
         <td scope="row">PetterS</td>
         <td>Forks: 0<br>
-        Bugs: 0<br>
+        Bugs: 1<br>
         Docs: 0</td>
         <td>
             <a href="https://github.com/coapp-packages/pthreads-win32">Forked pthreads</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/coin-cbc">Forked coin-cbc</a> <span class="smaller">(in review)</span><br>
             <a href="https://github.com/coapp-packages/freeglut">Forked freeglut</a> <span class="smaller">(in review)</span><br>
+            <br>Bugs:
+            <a href="https://github.com/coapp/ptk/issues/3">pkt</a> <span class="smaller">(1)</span><br>
+            
         </td>
     </tr>
+    <tr>
+        <td scope="row">hanrahat</td>
+        <td>Forks: 0<br>
+        Bugs: 2<br>
+        Docs: 0</td>
+        <td>
+            <br>Bugs:
+            <a href="https://github.com/coapp/ptk/issues/1">pkt</a> <span class="smaller">(1)</span><br>
+            <a href="https://github.com/coapp/ptk/issues/2">pkt</a> <span class="smaller">(1)</span><br>
+        </td>
+    </tr>    
     <tr>
         <td scope="row">riverar</td>
         <td>Forks: 0<br>
