@@ -10,7 +10,9 @@ The last couple of conference calls we’ve had have been so successful, that I 
 
 The general agenda will be to give an update on our current status, address technical issues and design direction and to answer questions anyone may have across anything regarding CoApp.
 
-G
+<br><a href="/confcall.ics">Click here for .ics calendar file</a>
+<br>
+-Garrett
 <hr>
 ### Meeting Details:
 <table  width="100%">
@@ -25,5 +27,6 @@ G
 <br>Conference ID: 640823217
 <br>
 <a href="http://r.office.microsoft.com/r/rlidOC10?clid=1033&amp;p1=4&amp;p2=1041&amp;pc=oc&amp;ver=4&amp;subver=0&amp;bld=7185&amp;bldver=0">First online meeting?</a>
+
 </td>
 </table>
