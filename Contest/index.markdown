@@ -104,6 +104,11 @@ The prizes available are:
 >> Microsoft Arc Mice<br>
 >> T-Shirts<br>
 
+Pictures of the prizes stacking up:
+<p class="ScrollImage"><img src="/images/blog/Prizes1.jpg" title="Contest Prizes" alt="Contest Prizes" /></p>
+<p class="ScrollImage"><img src="/images/blog/Prizes2.jpg" title="Contest Prizes" alt="Contest Prizes" /></p>
+
+
 ## What information are we collecting?
 ---------------
 

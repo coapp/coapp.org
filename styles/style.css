@@ -182,8 +182,10 @@ pre {
 	margin: 1.5em 0;
 }
 pre, code, tt {
-	font: 1em andale mono,lucida console,monospace;
-	line-height: 1.5;
+	font-family: inconsolata, consolas, andale mono,lucida console,monospace;
+	
+	font-size: 1.1em;
+	font-style:bold;
 }
 ul, ol {
 	padding-left: 2.5em;
@@ -214,6 +216,16 @@ dd {
 	clear: both;
 	width: 150px;
 }
+
+.ScrollImage  { 
+	background:none repeat scroll 0 0;
+	padding:0.4em;
+	margin-bottom:0.6em;
+	overflow:auto;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	}
 
 hr {
 	background: #ccc;
