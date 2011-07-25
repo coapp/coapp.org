@@ -47,4 +47,4 @@ A few links regarding Microsoft's Security Development Lifecycle:<br>
 [SDL With Agile Development](http://www.microsoft.com/security/sdl/discover/sdlagile.aspx)<br>
 [Microsoft Security Development Lifecycle Guide v5.1](http://www.microsoft.com/downloads/info.aspx?na=41&srcfamilyid=e5ff2f9d-7e72-485a-9ec0-5d6d076a8807&srcdisplaylang=en&u=http%3a%2f%2fdownload.microsoft.com%2fdownload%2f2%2f1%2f4%2f21496F7B-3977-4F20-8621-F24F43212406%2fMicrosoft%20SDL_Version%205.1.docx)<br>
     
-- garrett
+ garrett
