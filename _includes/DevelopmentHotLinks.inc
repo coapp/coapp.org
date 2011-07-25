@@ -17,7 +17,6 @@
                 <div class="MM">
                     <div class="containercontent">
                         <a href="http://github.com/coapp">CoApp Project on Github</a><br>
-                        <a href="https://github.com/coapp/coapp.github.com/wiki">Development Wiki</a><br>
                         <hr>
                         
                     </div>
