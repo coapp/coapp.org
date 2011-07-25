@@ -16,10 +16,10 @@ On Friday, we had a conference call to discuss a critical problem in the CoApp p
 >> to compromise the features thatrely on them...
 
 Having looked at a [few ways to overcome this limitation](https://github.com/coapp/coapp.org/wiki/Coapp-engine---engine-as-a-service-redesign), we've pretty much settled on the idea
-that we will split up some of the CoApp components into finer-grained peices, and create a service that can perform
-the requisite high-privilige operations that are needed to for CoApp to manage packages correctly.
+that we will split up some of the CoApp components into finer-grained pieces, and create a service that can perform
+the requisite high-privilege operations that are needed to for CoApp to manage packages correctly.
 
-This involves taking the CoApp Toolkit library, and splitting into two peices--the components that we need for the higher-priviliged service
+This involves taking the CoApp Toolkit library, and splitting into two pieces--the components that we need for the higher-privileged service
 (becoming the Toolkit Core) and components that have more general purpose (the Toolkit Client). The same goes for the the Engine library itself,
 being split into the Engine Core, and the Engine Client. It's likely that most of the functionality will still reside in the
 Engine core, and the Engine Client is there to facilitate the use of the Core.
@@ -28,7 +28,7 @@ A lightweight Win32 Service EXE is created to host the Engine Core itself.
 
 <p class="ScrollImage"><img src="/images/blog/service.png" title="service components" alt="service components" /></p>
 
-The communication between the client and service peices of CoApp will use a simple bidirectional interface over named pipes, which will 
+The communication between the client and service pieces of CoApp will use a simple bidirectional interface over named pipes, which will 
 make it pretty trivial to automate the CoApp engine from pretty much any language on Windows.
 
 In some ways, this is actually a mixed blessing. Migrating part of CoApp itself into a Win32 service was a longer-range goal I've had, as it provides a few things:
