@@ -3,7 +3,7 @@ layout: default
 title: Packages
 leftboxes: [ LeftSideNavigation.inc ]
 subnavigation:
-    "wishlist.markdown": Package Wishlist
-    "activedevelopment.markdown": Packages Under Development
+    "wishlist.html": Package Wishlist
+    "activedevelopment.html": Packages Under Development
 ---
 {{content}}
