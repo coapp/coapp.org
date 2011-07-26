@@ -7,6 +7,6 @@ layout: information
 subtitle: What is CoApp
 ---
 The Common Opensource Application Publishing Platform, or CoApp for short, is an open-source package 
-management system for Windows.  The goal of the CoApp project is to create a community of developers dedicated to creating set of tools and processes that enable other open source developers to create and maintain their open source products with Windows as a primary build target.  
+management system for Windows.  The goal of the CoApp project is to create a community of developers dedicated to creating a set of tools and processes that enable other open source developers to create and maintain their open source products with Windows as a primary build target.  
 
 For a neutral third party perspective on what CoApp aspires to be, see [CoApp: An open-source package-management system for Windows](http://www.zdnet.com/blog/microsoft/coapp-an-open-source-package-management-system-for-windows/5762)
