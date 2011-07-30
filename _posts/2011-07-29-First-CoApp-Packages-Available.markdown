@@ -8,7 +8,7 @@ categories:
 ---
 After what seems like an eternity and a half to get to this point, I am proud to announce that the first CoApp packages are finally here!
 
-I've started by packaging up the CoApp installer itself as a CoApp package, and you can [download that](http://coapp.org/installer) , but it's not *really* necessary, as CoApp will install itself when you install any CoApp package. 
+I've started by packaging up the CoApp installer itself as a CoApp package, and you can [download that](http://coapp.org/install) , but it's not *really* necessary, as CoApp will install itself when you install any CoApp package. 
 
 The next package that's ready is the first beta of the CoApp developer tools, this release contains the following tools:
 
@@ -22,4 +22,4 @@ The next package that's ready is the first beta of the CoApp developer tools, th
 
 These tools can be found in the [coapp.devtools package](http://coapp.org/devtools).
 
-And finally, because I'm such a big Node.js fan, a CoApp package for [node.js 0.5.2](http://coapp.org/node-0.5.2.0-x86.msi)
+And finally, because I'm such a big Node.js fan, a CoApp package for [node.js 0.5.2](http://coapp.org/cdn/node-0.5.2.0-x86.msi)
