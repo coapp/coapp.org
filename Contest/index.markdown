@@ -27,7 +27,7 @@ There are three ways to get your name in the drawing:
 
 1.  **Create a shallow fork of a C/C++ open source project**
 
-    Individual does the shallow-fork work according to the [CoApp forking Process](/Development/ShallowForking.html).<br>
+    Individual does the shallow-fork work according to the [CoApp forking Process](/posts/2011/05/10/Shallow-Forking-A-Project/).<br>
     Pushes the completed forked-code to a repository on Github<br>
     Notify @fearthecowboy with a <a href="http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+...">tweet</a> or <a href="https://github.com/inbox/new/fearthecowboy">message</a> of the available fork <br>
     \- @fearthecowboy reviews the submission for completeness<br>
