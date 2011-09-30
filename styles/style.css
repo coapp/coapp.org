@@ -193,7 +193,7 @@ ul, ol {
 }
 ul, ul li {
 	list-style-type: none;
-	margin-left: -20px;
+	margin-left: 0px;
 }
 ol, ol li {
 	list-style-type: decimal;
