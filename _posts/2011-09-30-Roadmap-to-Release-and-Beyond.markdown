@@ -28,6 +28,8 @@ I'll prefix this with the statement that things are always fluid, and this isn't
 #### [+8 weeks] "CoApp 1.0" Release Candidate
 
 - · Continual-auto-update of CoApp service working
+- · New Metadata for (NSFW flag, Stability Threshold, and Product Categorization)
+- · Package Dependendencies based on Product Categorization Metdata (so you can say "I need any version of Python 2.6 or higher")
 - · "Software Update" application (knock-off of Windows Update)
 - · Autopackage refinements: Automatic dependency resolution.
 - · mkSpec/mkProject updated and fully functional
