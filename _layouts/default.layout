@@ -62,8 +62,8 @@ topnavigation:
 						<div id="{% if !(page.noleftmenu == true) %}MainContentArea{% endif %}">
 							<div class="zonegroup">
                                 {% if page.title == 'Home' %}
-								<div id="BannerZone" class="pane w100">
-									<img alt="Header Banner" class="img" src="/images/banner.home.png"></div>
+								<!-- <div id="BannerZone" class="pane w100">
+									<img alt="Header Banner" class="img" src="/images/banner.home.png"></div> -->
                                 {% endif %}
                                 
 							</div>
