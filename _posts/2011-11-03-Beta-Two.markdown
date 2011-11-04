@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Garrett Serack <a href="http://twitter.com/#!/fearthecowboy">@fearthecowboy</a>
-title: Announcement Tomorrow at the Weekly Meeting!
+title: Announcement tomorrow at the Weekly Meeting!
 tags: news 
 categories:
 - planning
@@ -23,6 +23,8 @@ Or dial in (see below!) for just the audio.
 ## Oh, by the way, I'm gonna give away some prizes tomorrow!
 
 
+<B>UPDATE--You can also call in via skype: [skype:garrett.serack?call&token=TOKEN](skype:garrett.serack?call&token=TOKEN)</b>
+
 -Garrett
 
 ### Meeting Details:
@@ -38,6 +40,9 @@ Or dial in (see below!) for just the audio.
 <br>Conference ID: 640823217
 <br>
 <a href="http://r.office.microsoft.com/r/rlidOC10?clid=1033&amp;p1=4&amp;p2=1041&amp;pc=oc&amp;ver=4&amp;subver=0&amp;bld=7185&amp;bldver=0">First online meeting?</a>
-
+<br>
+or
+<br>
+via skype: [skype:garrett.serack?call&token=TOKEN](skype:garrett.serack?call&token=TOKEN)
 </td>
 </table>
