@@ -43,6 +43,6 @@ Or dial in (see below!) for just the audio.
 <br>
 or
 <br>
-via skype: <a href="skype:garrett.serack?call&token=TOKEN">skype:garrett.serack?call&token=TOKEN</a>
+<a href="skype:garrett.serack?call&token=TOKEN">New! Via Skype</a>
 </td>
 </table>
