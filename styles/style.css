@@ -277,7 +277,6 @@ body, #body, #Body, #form, #Form {
 }
 #Outer {
 	background: #fff;
-	display: table;
 	margin: 0 auto;
 	padding: 0 15px;
 }
