@@ -1,7 +1,7 @@
 ---
 layout: 'article'
 title: 'Common command line features' 
-version: '1.1'
+version: '1.2'
 ---
 
 CoApp tools generally provide consistent options and patterns between the different tools.
