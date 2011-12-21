@@ -5,7 +5,6 @@ This is the soruce code to the new CoApp website, which is statically generated 
 Everything you need to rebuild and test the content is including in the repository, so you should be able to just check this out 
 and run:
 
-
 ```
     server.cmd
 ```
