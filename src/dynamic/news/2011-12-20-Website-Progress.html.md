@@ -53,12 +53,12 @@ I'd **love** your feedback, and even more, I'd love any help you can provide.
 
 You can clone the repository:
 ``` bat
-git clone git  @github.com:coapp/new_coapp.org.git
+git clone git  @github.com:coapp/coapp.org.git
 ```
 
 You can run the embedded mini-server by running the command:
 ``` bat
-cd new_coapp.org
+cd coapp.org
 server.cmd
 ```
 > don't worry about any error message right now
