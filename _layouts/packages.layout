@@ -1,9 +1,0 @@
----
-layout: default
-title: Packages
-leftboxes: [ LeftSideNavigation.inc ]
-subnavigation:
-    "wishlist.html": Package Wishlist
-    "activedevelopment.html": Packages Under Development
----
-{{content}}
