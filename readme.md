@@ -9,6 +9,7 @@ and run:
     server.cmd
 ```
 
+
 And it will start the website test server that will regenerate the static content every time you save a file (anywhere in ./src)
 
 The website itself will be generated into the ./out directory as a completely static website.
