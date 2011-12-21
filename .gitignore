@@ -1,8 +1,1 @@
-public/
-*~
-*.swp
-_site/
-_layouts/_vti_cnf/
-_vti_cnf/
-_vti_pvt/
-desktop.ini
+out/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<% 
+    var cms = require("coappcms"); 
+    var util = require('util'); 
+    cms.setRoot(document.docpad.config.srcPath); 
+%>
+<html lange="en">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<title><%= document.title %></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Icons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	<!-- Shims: IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/styles/style.css" rel="stylesheet"/>
+	<link href="/styles/prettify.css" rel="stylesheet"/>
+    <link href="/styles/mediaelementplayer.min.css" rel="stylesheet"  />
+	
+</head>
+<body >
+	<!-- Scripts -->
+	<script src="/scripts/jquery-1.6.4.min.js"></script>
+	<script src="/scripts/prettify.js"></script>
+	
+	<script src="/scripts/script.js"></script>
+    <script src="/scripts/jquery.tweet.js"></script>
+    <script src="/scripts/mediaelement-and-player.js"></script>
+  
+	<!-- Markup -->
+	<div class="topbar">
+		<div class="fill">
+			<div class="container-fluid">
+				<h3><a href="/index.html"><image style="margin:0; padding:0; position:absolute; top:2px; left:-2px;" src="/images/logo-small_32x32.png"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CoApp</a></h3>
+				<ul>
+					<% documents.enumerable().orderBy('order').where(function(each){ return each.url.indexOf('/pages') == 0;}).each(function(each) { %>  
+                        <li typeof="sioc:Page" about="<%= each.url %>" class="<%= document.url == each.url ? 'active' : '' %>">
+                            <a href="<%= each.url %>" property="dc:title"><%= each.title %></a>
+                        </li>
+                    <% }); %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+        <div class="sidebar">
+            <%  if( document.leftsideboxes  ) { %>
+                <% document.leftsideboxes.forEach( function(each) {  %>
+                    <%- cms.include(each, document.templateData) %>
+                <% }); %>
+            <% } %>
+        </div> 
+		<section id="content" class="content">
+        <div class="spanonethird rightsidebox" > <!-- float:right; display: inline; veritical-align:top; -->
+            <%  if( document.rightsideboxes  ) { %>
+                <% document.rightsideboxes.forEach( function(each) {  %>
+                    <%- cms.include(each, document.templateData) %>
+                <% }); %>
+            <% } %>
+        </div> 
+            <div class="spantwothirds">
+			<%- content %>
+            </div>
+		</section>
+    </div>   
+    
+    <footer class="footer">
+        <div class="container-fluid">
+        <p>&copy; CoApp Contributors, 2011. </p>
+        <p style="float:right;">
+            This website was generated on <%= site.date.toShortDateString() %> and has <%= site.totalDocuments %> documents
+        </p>
+        </div>
+    </footer>
+</body>
+</html>

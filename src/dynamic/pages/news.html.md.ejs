@@ -1,0 +1,41 @@
+---
+layout: 'default'
+title: 'News'
+order: 1
+xleftsideboxes: ['/includes/blog.inc' ]
+rightsideboxes: ['/includes/headlines.inc' ,'/includes/coapp-tweets.inc' ]
+---
+<%  cms=require('coappcms'); %>
+
+# Recent News
+<div>
+<ul>
+<% documents.enumerable().orderBy('date').reverse().where(function(each){return each.url.indexOf('/news') == 0;}).take(10).each(function(each) {  %> 
+
+<a href="<%= each.url %>" property="dc:title"><h2><%= each.title %></h2></a>
+
+    <%= each.date.toShortDateString() %> by <b><%= each.author %></b><%- each.twitter ? ' <a href="http://twitter.com/#!/'+each.twitter+'">@'+each.twitter+'</a>' :'' %> <br>
+    <span class="label warning">Tags</span><span><%= each.tags %></span> <hr>
+    <div id="post" class="post"> <%- cms.markdown(each.contentSrc) %> </div>
+    <p class="postmetadata">
+        <a href="<%-each.url %>#disqus_thread"  data-disqus-identifier="<%- each.url %>" title="Comment on <%= each.title %>">View Comments</a>
+    </p> 
+    <hr>
+    <% }); %>
+    
+</ul>
+</div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'coapp'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+

@@ -1,0 +1,23 @@
+---
+layout: 'default'
+title: 'Media'
+order: 1
+--- 
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+	<h1>Getting Started</h1>
+	<p>A work in progress...</p>
+</div>
+
+
+<h2>Example Blog Posts</h2>
+<ul>
+	<% for (var ndx=0; ndx< documents.length; ndx++) { var doc = documents[ndx]; var docurl = doc.url; %>
+		<% if (docurl.indexOf('/posts') == 0) { %>
+		<li typeof="sioc:Page" about="<%= doc.url %>" class="<%= document.url == doc.url ? 'active' : '' %>">
+			<a href="<%= doc.url %>" property="dc:title"><%= doc.title %></a>
+		</li>
+		<% } %>
+	<% } %>
+</ul>

@@ -1,0 +1,38 @@
+---
+layout: 'default'
+xleftsideboxes: ['/includes/test.inc' ]
+---
+<% // this makes sure that all posts include the correct sideboxes:
+    // document.leftsideboxes = ['/includes/test.inc']; 
+%>
+
+<h1><%= document.title %></h1>
+<p><%= document.date.toShortDateString() %> by <b><%= document.author %></b><%- document.twitter ? ' <a href="http://twitter.com/#!/'+document.twitter+'">@'+document.twitter+'</a>' :'' %><br>
+<span class="label warning">Tags</span><span><%= document.tags %></span></p>
+<div id="post" class="post">
+	<%- content %>
+</div>
+
+<!-- Disqus Comment System -->
+<div id="disqus_thread"><div id="dsq-content"></div></div>
+<ul id="dsq-comments"></ul>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'coapp'; // required: replace example with your forum shortname
+
+    // The following are highly recommended additional parameters. Remove the slashes in front to use.
+    
+    var disqus_identifier = '<%= document.url %>';
+    var disqus_url = 'http://www.coapp.org<%= document.url %>';
+    var disqus_title = "<%= document.title %>";
+    var disqus_developer = 0; 
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
