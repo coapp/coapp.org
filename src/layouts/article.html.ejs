@@ -56,7 +56,7 @@ $(document).ready(function() { setTimeout(resizeVideos, 2000); });
     // The following are highly recommended additional parameters. Remove the slashes in front to use.
     
     var disqus_identifier = "<%- document.url +"/" + document.version %>";
-    var disqus_url = 'http://www.coapp.org<%= document.url %>#<%- document.version %>';
+    var disqus_url = 'http://www.coapp.org<%= document.url %>?version=<%- document.version %>';
     var disqus_title = "<%= document.title %>/<%- document.version %>";
     var disqus_developer = 0; 
     
