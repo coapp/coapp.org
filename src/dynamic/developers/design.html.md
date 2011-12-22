@@ -1,8 +1,7 @@
 ---
-layout: 'default'
+layout: 'article'
 title: 'CoApp Architecture'
-order: 1
-rightsideboxes: ['headlines.inc' , 'coapp-tweets.inc' ]
+version: 0.0
 ---
 
 ## CoApp's Design
