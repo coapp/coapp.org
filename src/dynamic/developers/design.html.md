@@ -2,7 +2,7 @@
 layout: 'default'
 title: 'CoApp Architecture'
 order: 1
-rightsideboxes: ['/includes/headlines.inc' , '/includes/coapp-tweets.inc' ]
+rightsideboxes: ['headlines.inc' , 'coapp-tweets.inc' ]
 ---
 
 ## CoApp's Design
