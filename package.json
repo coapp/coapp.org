@@ -8,8 +8,8 @@
         "srcPath": "src",
         "publicPath" : "static",
 		"enabledPlugins": {
-			"admin": true,
-			"rest": true,
+			"false": true,
+			"false": true,
 			"authenticate": false,
 			"autoupdate": false,
 			"buildr": false,
