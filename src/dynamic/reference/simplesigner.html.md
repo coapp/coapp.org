@@ -3,6 +3,9 @@ layout: 'article'
 title: 'XXXX' 
 version: '0.0'
 ---
+<div class="alert-message warning">
+    <p>This is a placeholder document -- actual content coming soon</p>
+</div>
 
 ## XXXX - The XXXX
 
