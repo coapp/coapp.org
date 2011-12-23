@@ -5,10 +5,19 @@ version: '0.0'
 <% 
     // this makes sure that all pages include the correct sideboxes:
     document.rightsideboxes= ['headlines.inc' ,'coapp-commits.inc' ];
+    document.nosocial =  true;
 %>
 
-<h1><%= document.title %></h1>
-<h4>Version:<%= document.version %></h4>
+<span style="display:inline-block;">
+    <h1><%= document.title %></h1>
+    <h4>Version:<%= document.version %></h4>
+</span>
+<span style="display:inline-block; float:right;">
+    <br><br>
+    <span style="margin-top:8px; height;100%; display:inline-block; "><g:plusone href="http://coapp.org<%= document.url %>"></g:plusone></span>
+    <div class="fb-like" style="top:-5px;" data-href="http://coapp.org<%= document.url %>" data-layout="button_count" data-show-faces="true" data-colorscheme="dark" data-font="tahoma"></div>
+</span>  
+
 <div id="post" class="post">
 	<%- content %>
 </div>
@@ -18,31 +27,6 @@ $('video').mediaelementplayer({
     enableAutosize: true,
     features: ['playpause','progress','current','duration','volume','fullscreen']
 });
-
-/*
-function resizeVideos() {
-    // I really suck at making this work.
-    var w = Math.min( $('#post').width(), 1280 );
-    var h = w /16 * 9;
-    
-    $(".hiddenVideo").each(function(i) { $(this).css({ height: h, width: w }).css('visibility','visible');  } );
-    $(".mejs-container").each(function(i) { $(this).css({ height: h, width: w });});
-    $(".mejs-poster").each(function(i) { $(this).css({ height: h, width: w });});
-    $(".mejs-layer").each(function(i) { $(this).css({ height: h, width: w });});
-
-    $("video").each(function(i) { 
-        //$(this)[0].player.setPlayerSize(w,h);
-        $(this).css({ height: h, width:w });
-        //$(this)[0].player.setControlsSize();
-        $(this)[0].player.hideControls();
-        
-    });
-    
-}
-
-$(window).resize(resizeVideos);
-$(document).ready(function() { setTimeout(resizeVideos, 2000); });
-*/
 </script>
 
 <!-- Disqus Comment System -->

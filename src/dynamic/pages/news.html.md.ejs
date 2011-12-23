@@ -2,20 +2,29 @@
 layout: 'default'
 title: 'News'
 order: 1
-xleftsideboxes: ['blog.inc' ]
 rightsideboxes: ['headlines.inc' ,'coapp-tweets.inc' ]
 ---
-<%  cms=require('coappcms'); %>
+<% 
+    cms=require('coappcms'); 
+    document.nosocial = true;
+%>
 
 # Recent News
 <div>
 <ul>
 <% documents.enumerable().orderBy('date').reverse().where(function(each){return each.url.indexOf('/news') == 0;}).take(10).each(function(each) {  %> 
 
-<a href="<%= each.url %>" property="dc:title"><h2><%= each.title %></h2></a>
-
+<span style="display:inline-block;">
+    <a href="<%= each.url %>" property="dc:title"><h2><%= each.title %></h2></a>
     <%= each.date.toShortDateString() %> by <b><%= each.author %></b><%- each.twitter ? ' <a href="http://twitter.com/#!/'+each.twitter+'">@'+each.twitter+'</a>' :'' %> <br>
-    <span class="label warning">Tags</span><span><%= each.tags %></span> <hr>
+    <span class="label warning">Tags</span><span style="display:inline-block;"> <%= each.tags %></span> 
+</span>
+<span style="display:inline-block; float:right;">
+    <br><br>
+    <span style="margin-top:8px; height;100%; display:inline-block; "><g:plusone href="http://coapp.org<%= each.url %>"></g:plusone></span>
+    <div class="fb-like" style="top:-5px;" data-href="http://coapp.org<%= each.url %>" data-layout="button_count" data-show-faces="true" data-colorscheme="dark" data-font="tahoma"></div>
+</span>  
+<hr>
     <div id="post" class="post"> <%- cms.markdown(each.contentSrc) %> </div>
     <p class="postmetadata">
         <a href="<%-each.url %>#disqus_thread"  data-disqus-identifier="<%- each.url %>" title="Comment on <%= each.title %>">View Comments</a>

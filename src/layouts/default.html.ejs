@@ -12,8 +12,20 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width">
 	<title><%= document.title %></title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="description" content="%<= document.summary || '' %>">
+	<meta name="author" content="<%= document.author || 'CoApp Project'%>">
+
+    <meta property="og:title" content="CoApp - <%= document.title %>"/>
+    <% if(document.url == "/index.html")  { %>
+        <meta property="og:type" content="website"/>
+    <% } else { %>
+        <meta property="og:type" content="article"/>
+    <% } %>
+    <meta property="og:image" content="http://coapp.org/images/logo-small.png"/>
+    <meta property="og:url" content="http://coapp.org<%= document.url == "/index.html" ? "" : document.url %>"/>
+    <meta property="og:site_name" content="CoApp"/>
+    <meta property="og:admins" content="CoApp - fearthecowboy"/>
+    
 
 	<!-- Icons -->
 	<link rel="shortcut icon" href="images/favicon.ico">
@@ -36,11 +48,35 @@
 	<!-- Scripts -->
 	<script src="/scripts/jquery-1.6.4.min.js"></script>
 	<script src="/scripts/prettify.js"></script>
-	
-	<script src="/scripts/script.js"></script>
     <script src="/scripts/jquery.tweet.js"></script>
     <script src="/scripts/mediaelement-and-player.js"></script>
-  
+    <div id="fb-root"></div>
+      <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+      
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-15630590-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
 	<!-- Markup -->
 	<div class="topbar">
 		<div class="fill">
@@ -53,6 +89,13 @@
                         </li>
                     <% }); %>
 				</ul>
+                
+                <% if( document.nosocial == undefined || document.nosocial != true) { %>
+                <span style="display:inline-block; float:right;">
+                    <span style="margin-top:8px; height;100%; display:inline-block; "><g:plusone href="http://coapp.org<%= document.url == "/index.html" ? "" : document.url %>"></g:plusone></span>
+                    <div class="fb-like" style="top:-5px;" data-href="http://coapp.org<%= document.url == "/index.html" ? "" : document.url %>" data-layout="button_count" data-show-faces="true" data-colorscheme="dark" data-font="tahoma"></div>
+                </span>                
+                <% } %>
 			</div>
 		</div>
 	</div>

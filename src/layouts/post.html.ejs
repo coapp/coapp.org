@@ -1,14 +1,22 @@
 ---
 layout: 'default'
-xleftsideboxes: ['test.inc' ]
 ---
 <% // this makes sure that all posts include the correct sideboxes:
     // document.leftsideboxes = ['test.inc']; 
+    document.nosocial = true;
 %>
 
-<h1><%= document.title %></h1>
-<p><%= document.date.toShortDateString() %> by <b><%= document.author %></b><%- document.twitter ? ' <a href="http://twitter.com/#!/'+document.twitter+'">@'+document.twitter+'</a>' :'' %><br>
-<span class="label warning">Tags</span><span><%= document.tags %></span></p>
+<span style="display:inline-block;">
+    <h1><%= document.title %></h1>
+    <p><%= document.date.toShortDateString() %> by <b><%= document.author %></b><%- document.twitter ? ' <a href="http://twitter.com/#!/'+document.twitter+'">@'+document.twitter+'</a>' :'' %><br>
+    <span class="label warning">Tags</span><span style="display:inline-block;"><%= document.tags %></span></p>
+</span>
+<span style="display:inline-block; float:right;">
+    <br><br>
+    <span style="margin-top:8px; height;100%; display:inline-block; "><g:plusone href="http://coapp.org<%= document.url %>"></g:plusone></span>
+    <div class="fb-like" style="top:-5px;" data-href="http://coapp.org<%= document.url %>" data-layout="button_count" data-show-faces="true" data-colorscheme="dark" data-font="tahoma"></div>
+</span>  
+<hr>
 <div id="post" class="post">
 	<%- content %>
 </div>
