@@ -18,13 +18,13 @@ The msysgit client is a monolithic install of the command line git, a git GUI an
 Installing git is fairly straightforward--run the installer--there are two options you should change:
 
 Make sure you add git to the path (option #2 or #3, your preference):
-@[Choose the second or third option](/images/tutorials/git-1.png)
+@[Choose the second or third option](git-1.png)
 
 Select "Checkout-as-is, commit-as-is"
-@[Choose the second or third option](/images/tutorials/git-2.png)
+@[Choose the second or third option](git-2.png)
 
 Video Walkthrough:
-%[720,405,/images/tutorials/git-video.jpg,http://coapp.blob.core.windows.net/resources/git.mp4,http://coapp.blob.core.windows.net/resources/git.webm]
+%[720,405,git-video.jpg,http://coapp.org/videos/git.mp4,http://coapp.org/videos/git.webm]
 
 <hr>
 
@@ -51,7 +51,7 @@ powershell
 </div>
 
 Video Walkthrough:
-%[720,405,/images/tutorials/putty-video.jpg,http://coapp.blob.core.windows.net/resources/putty.mp4,http://coapp.blob.core.windows.net/resources/putty.webm]
+%[720,405,/images/tutorials/putty-video.jpg,http://coapp.org/videos/putty.mp4,http://coapp.org/videos/putty.webm]
 
 
 <hr>
@@ -66,7 +66,7 @@ After you've created an account, you'll need to setup a public/private keypair s
 ### Generating a public/private key pair for github
 
 Video Walkthrough:
-%[720,405,/images/tutorials/keypair-video.jpg,http://coapp.blob.core.windows.net/resources/keypair.mp4,http://coapp.blob.core.windows.net/resources/keypair.webm]
+%[720,405,/images/tutorials/keypair-video.jpg,http://coapp.org/videos/keypair.mp4,http://coapp.org/videos/keypair.webm]
 
 <br>
 <div class="alert-message error">
