@@ -45,6 +45,7 @@
 	
 </head>
 <body >
+    <div class="wrapper">
 	<!-- Scripts -->
 	<script src="/scripts/jquery-1.6.4.min.js"></script>
 	<script src="/scripts/prettify.js"></script>
@@ -121,11 +122,13 @@
 			<%- content %>
             </div>
 		</section>
-    </div>   
-    
+    </div>  
+    <br>    
+    <div class="push" ></div>
+    </div>
     <footer class="footer">
         <div class="container-fluid">
-        <p>&copy; CoApp Contributors, 2011. </p>
+        <p  style="float:left;">&copy; CoApp Contributors, 2011. </p>
         <p style="float:right;">
             This website was generated on <%= site.date.toShortDateString() %> and has <%= site.totalDocuments %> documents
         </p>
