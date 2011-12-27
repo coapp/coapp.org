@@ -20,8 +20,7 @@ pTk doesn't **change** the existing build process, it merely wraps it so that an
 
 #### Functionality
 
-pTk 
-
+By default, pTk searches the `copkg` folder of the current directory to find the .buildinfo file, which it then loads performs the command given on the command line (build, verify, clean, status, etc).
 
 #### Command Line Help
 
@@ -96,16 +95,247 @@ Since the location of the mingw tools may be difficult to locate programatically
 By default it searches for directories matching `c:\M*` (and program files) for the mingw tools, and works out the location of the tools within.
 
 ### Action [build](!build) 
+Runs the automation steps to build the given configuration.  
+
+Defaults to building all the configurations
 
 ### Action [clean](!clean) 
+Runs the automation steps to clean all temporary and generated files from the source folder.
+
+This should restore everything back to the same state that the source was checked out from git in.
+
 ### Action [status](!status) 
+Checks to see if the current state is identical to the state the code was checked out from git.
+
 ### Action [verify](!verify) 
+Runs clean, build, verify on the given configuration.  
+
+Defaults to running thru all the configurations
+
 ### Action [trace](!trace) 
+Runs build on the configuration, tracing the build with CoApp trace. 
+
+Defaults to running thru all the configurations
+
 ### Action [list](!list) 
+Lists the build configurations in the .buildinfo file
 
 ### Parameter [buildconfiguration](configuration)
+You may pass the desired configuration on the command line (or multiple configurations). 
+
+Accepts wildcards.
+
+If this is not passed, it assumes `*` -- all configurations.
 
 ### .buildinfo file format
 
-pTk .buildinfo files are based on the [common property sheet format][reference:propertysheet]
+pTk .buildinfo files are based on the [common property sheet format][reference:propertysheet].
 
+The .buildinfo file consists of a `#product-info` rule, which contains the costmetic information about a given project, along with one or more build configuration rules, each which details how to build and clean a given build configuration.
+
+
+##### product-info Rule
+``` c#
+// .buildinfo file example
+«#product-info«#productinfo»  {
+    «product-name«#productname»: "";
+    «version«#version»: "";
+    «original-source-location«#originalsourcelocation»: "";
+    «original-source-website«#originalsourcewebsite»: "";
+    «license«#license»: "";
+    «packager«#packager»: "";
+}
+
+name {
+    «platform«#platform»: compiler-tag ;/* optional -- defaults to x86 */
+    «compiler«#compiler»: compiler-tag; /* optional -- defaults to vc10 */
+    «sdk«#sdk»: sdk-tag;                /* optional -- defaults to sdk7.1 */
+ 
+    «uses«#uses»: cfg="..\path" ;
+            /* optional -- only used if this project has dependencies on others-may be specified mutiple times */
+               
+           
+    «targets«#targets»: { ... } ;
+            // a comma seperated list of the binary files that are output 
+            // that are of significance
+ 
+    «build-command«#buildcommand»: "";
+            // either a single command line, or a batch script 
+            // that has the commands to build the targets listed above.
+ 
+    «clean-command«#cleancommand»: "";
+            // either a single command line, or a batch script 
+            // that has the commands to remove all temporary files 
+            // created during a build.
+}
+```
+
+
+#### .buildinfo [#product-info](!productinfo)
+The `#product-info` rule contains cosmetic information that may be used later to assist in packaging up the binaries of the project, and is present to assist maintainers on understanding where the source code originally came from.
+
+##### .buildinfo [#product-info/product-name](!productname)
+The `product-name` property reflects the name of the project being compiled.
+
+Example:
+
+``` c#
+    product-name: "libjpeg"; // the name of the project is "libjpeg"
+```   
+##### .buildinfo [#product-info/version](!version)
+The `version` is the original project version of the source code.
+
+Example:
+
+``` c#
+    version: "8c"; // the version of the project is "8c" 
+```   
+
+##### .buildinfo [#product-info/original-source-location](!originalsourcelocation)
+The `original-source-location` is the repository or tarball location of the source code 
+
+Example:
+
+``` c#
+    original-source-location: "http://ijg.org/files/jpegsr8c.zip"; // the source was downloaded from there
+```   
+##### .buildinfo [#product-info/original-source-website](!originalsourcewebsite)
+The `original-source-website` is the human-readable website where the developer can go for more information
+
+Example:
+
+``` c#
+    original-source-website: "http://ijg.org"; // the jpeg website
+```   
+
+##### .buildinfo [#product-info/license](!license)
+The `license` refers to the license the source code is licensed under
+
+Example:
+
+``` c#
+    license: "Custom license, see README"; // not a gpl/bsd/etc...
+```   
+
+##### .buildinfo [#product-info/packager](!packager)
+The `packager` refers to the individual who is currently maintaining this source code
+
+Example:
+
+``` c#
+    packager: "Rafael Rivera <rafael@withinwindows.com>"; // blame him!
+```   
+
+
+#### .buildinfo [build configuration](!configuration)
+A "**build bonfiguration**" is analogous to a build configuration with Visual Studio You can create builds for x86, x64, as well as for different flavors (static library vs. dynamic library) etc. 
+> It's not necessary to explicitly create multiple build configuration for x86 and x64 if project compiles well under both without different commands (save for the selection of which platform).   
+
+You **do** want multiple configurations when the steps change between platforms (or you know that different files get processed in some libraries, there are separate files for x86 vs. x64), or if you have different expected outputs i.e. some libraries allow you to generate a static and a dynamic version of the same library).  Generally speaking, err on the side of caution and don't create multiple build configurations excessively for projects that behave themselves, we'll autogenerate the alternate configurations when we get around to creating new Visual Studio projects. 
+ 
+Build configuration names should be composed of alphanumeric characters (plus dashes and underscores). It is recommended that they are kept simple and follow some kind of standard. 
+> TODO : Perhaps we should set this standard down somewhere?
+
+##### .buildinfo [configuration/platform](!platform)
+
+The `platform` refers to target platform that this configuration is building for.
+Permitted values:
+>    `x86` -- for Windows 32 bit, x86 builds
+>    `x64` -- for Windows 64 bit, x64 builds (ie, amd64, EMT64, etc)
+
+##### .buildinfo [configuration/compiler](!compiler)
+The `compiler` refers to the c/c++ compiler configuration to use to compile files with.
+
+Permitted values:
+>    `vc10`- Visual Studio 2010 
+>    `vc9` - Visual Studio 2008
+>    `vc8` - Visual Studio 2005
+>    `vc7.1` - Visual Studio 2003
+>    `vc7` - Visual Studio 2002 
+>    `vc6` - Visual Studio 98 (VC6)
+>    `sdk7.1` - Windows SDK 7.1 C++ compiler
+>    `sdk7` - Windows SDK 7.0 c++ compiler (untested)
+>    `sdk6` - Windows SDK 6.0 c++ compiler (untested)
+>    `mingw` - mingw compiler  
+
+##### .buildinfo [configuration/sdk](!sdk)
+The `sdk` refers to the SDK to build with.
+
+Permitted Values:
+>   `sdk7.1` - Windows SDK 7.1 
+>   `sdk7` - Windows SDK 7.0
+>   `sdk6` - Windows SDK 6.0
+>   `feb2003` - Platform SDK Feb2003 -- last known version that works with VC6
+>   `wdk7600` - Windows driver kit build 7600 (Windows 7 version)
+
+##### .buildinfo [configuration/uses](!uses)
+This is for specifying that another build must precede this one. The `uses` property has a key and a value.
+
+The Key (`cfg`) is the name of the build configuration in the target project's .buildinfo file
+The Value (`"..\foo"`) is the relative directory for the project to build. You can specify the current directory if the build configuration is in the current project. (ie, `uses: common=".\"`)
+
+**Note: DOES NOT currently pull in the dependent project from Git**
+ 
+##### .buildinfo [configuration/targets](!targets)
+The `targets` property lists the relative paths to the generated files that indicate that a successful build has completed.
+
+Example:
+``` c# 
+targets: {
+        // main library
+        "Release\jpeg.lib",
+         
+        // extra utilities
+        "cjpeg\Release\cjpeg.exe",
+        "djpeg\Release\djpeg.exe",
+        "jpegtran\Release\jpegtran.exe",
+        "rdjpgcom\Release\rdjpgcom.exe",
+        "wrjpgcom\Release\wrjpgcom.exe",
+    };
+```
+
+##### .buildinfo [configuration/build-command](!buildcommand)
+The `build-command` is the command or script that needs to be executed to build the targets
+
+Any command or commands can be specified as necessary. (if it's a batch script, make sure you use the at-symbol @"" string literal)
+
+Example:
+
+``` c#
+    build-command:@"
+        copy jconfig.vc jconfig.h       
+        copy makejsln.v10 makejsln.sln
+        copy makeasln.v10 makeasln.sln
+        copy makejvcx.v10 jpeg.vcxproj
+        copy makecvcx.v10 cjpeg.vcxproj
+        copy makedvcx.v10 djpeg.vcxproj
+        copy maketvcx.v10 jpegtran.vcxproj
+        copy makewvcx.v10 wrjpgcom.vcxproj
+        copy makervcx.v10 rdjpgcom.vcxproj
+        msbuild /p:Platform=Win32 /p:Configuration=Release makejsln.sln
+        msbuild /p:Platform=Win32 /p:Configuration=Release makeasln.sln
+    ";
+```
+
+
+##### .buildinfo [configuration/clean-command](!cleancommand)
+The `clean-command` is the command or script that needs to be executed to clean any files out to restore the working directory to the pristine state.
+
+Any command or commands can be specified as necessary. (if it's a batch script, make sure you use the at-symbol @"" string literal)
+
+Example:
+
+``` c#
+    clean-command:@"
+                attrib -S -H -R *
+        del /Q *.sdf *.suo *.sln *.vcxproj *.user jconfig.h 2>NUL
+        rmdir /S /Q Release 2>NUL
+         
+        rmdir /S /Q cjpeg 2>NUL
+        rmdir /S /Q djpeg 2>NUL
+        rmdir /S /Q ipch 2>NUL
+        rmdir /S /Q jpegtran 2>NUL
+        rmdir /S /Q rdjpgcom 2>NUL
+        rmdir /S /Q wrjpgcom 2>NUL
+    ";
+```
