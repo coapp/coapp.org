@@ -2,7 +2,7 @@
 layout: 'article'
 title: 'CoApp Common Property Sheet' 
 version: '1.0'
-docid: 'reference:ptk'
+docid: 'reference:propertysheet'
 ---
 ### Purpose
 

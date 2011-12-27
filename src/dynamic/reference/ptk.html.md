@@ -18,6 +18,10 @@ Additionally, it allows developers to specify the development environment (ie, n
 
 pTk doesn't **change** the existing build process, it merely wraps it so that any given project can always be built with the same command as any other, regardless if it has a batch file, makefile, visual studio project or whatever crazy machinations it takes to build something.
 
+#### Functionality
+
+pTk 
+
 
 #### Command Line Help
 
@@ -72,16 +76,36 @@ pTK [options] action [buildconfiguration...]
 ```
 
 ### Option [rescan-tools](!rescantools) 
+Forces pTk to rescan for all the location of all tools and sdks on the system.
+
+
 ### Option [showtools](!showtools) 
+Dumps the location where of the tools and SDKs is found on the system.
+
 ### Option [load](!load) 
+Loads a specific .buildinfo file from the given path.
+
 ### Option [mingw-install](!mingw) 
+Since the location of the mingw tools may be difficult to locate programatically, you may pass the root folder of its location as `--mingw-install=<path>`.
+
+By default it searches for directories matching `c:\M*` (and program files) for the mingw tools, and works out the location of the tools within.
+
 ### Option [msys-install](!msys) 
+Since the location of the mingw tools may be difficult to locate programatically, you may pass the root folder of its location as `--msys-install=<path>`.
+
+By default it searches for directories matching `c:\M*` (and program files) for the mingw tools, and works out the location of the tools within.
 
 ### Action [build](!build) 
+
 ### Action [clean](!clean) 
 ### Action [status](!status) 
 ### Action [verify](!verify) 
 ### Action [trace](!trace) 
 ### Action [list](!list) 
 
-### Parameter [buildconfiguration](configuration»)
+### Parameter [buildconfiguration](configuration)
+
+### .buildinfo file format
+
+pTk .buildinfo files are based on the [common property sheet format][reference:propertysheet]
+
