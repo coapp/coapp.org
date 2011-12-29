@@ -43,7 +43,7 @@ It will run for a bit (it takes time to do the initial checkout):
 
 When it's done you will see something like:
 
-![Checking out the source code with git](/images/tutorials/source-code-1.png)
+@[Checking out the source code with git](/images/tutorials/source-code-1.png)
 
 #### Devtools
 
@@ -61,7 +61,7 @@ c:\project\> git clone --recursive  git@github.com:coapp/devtools.git
 
 And it should look something like:
 
-![Checking out the source code with git](/images/tutorials/source-code-2.png)
+@[Checking out the source code with git](/images/tutorials/source-code-2.png)
 
 
 You now have the code, and are [ready to build some code!][developer:buildtoolkit]
