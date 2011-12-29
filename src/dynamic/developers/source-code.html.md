@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'Checking Out the Source Code' 
 version: '1.0'
+docid: 'developer:sourcecode'
 ---
 ### Requirements
 You'll need the following in order to correctly set up your development environment for working on CoApp:
@@ -18,7 +19,7 @@ The majority of CoApp is placed in two source repositories:
    
    **Devtools** - The [CoApp Developer Tools](http://github.com/coapp/devtools) -- this contains the source code for the all developer tools (including autopackage, simplesigner, etc). This includes the tools that are used by developers and publishers to build shallow forks, create packages, and sign binaries (plus more!).
 
-There is a `binaries` submodule (see [git submodules](http://book.git-scm.com/5_submodules.html)) in both of these as well for the shared binary files between the projects (so you *could* just check out the Devtools project and build it without actually having to check out the engine, even though there are dependencies between them.)
+There are three [submodules](http://book.git-scm.com/5_submodules.html) found in the `ext` folder ( `binaries`, `tools` and `libraries`) in both of these projects that contain the shared binary files between the projects (so you *could* just check out the Devtools project and build it without actually having to check out the engine, even though there are dependencies between them.)
 
 ### Checking out the source code from github
 
@@ -63,4 +64,4 @@ And it should look something like:
 ![Checking out the source code with git](/images/tutorials/source-code-1.png)
 
 
-You now have the code, and are ready to hack!
+You now have the code, and are [ready to build some code!][developer:buildtoolkit]

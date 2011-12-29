@@ -147,6 +147,9 @@ The .buildinfo file consists of a `#product-info` rule, which contains the costm
 }
 
 name {
+    «default«#default»: true or false; // default is true by default :)
+    «set«#set»: true or false; // for setting environment variables
+    
     «platform«#platform»: compiler-tag ;/* optional -- defaults to x86 */
     «compiler«#compiler»: compiler-tag; /* optional -- defaults to vc10 */
     «sdk«#sdk»: sdk-tag;                /* optional -- defaults to sdk7.1 */
@@ -236,9 +239,23 @@ You **do** want multiple configurations when the steps change between platforms 
 Build configuration names should be composed of alphanumeric characters (plus dashes and underscores). It is recommended that they are kept simple and follow some kind of standard. 
 > TODO : Perhaps we should set this standard down somewhere?
 
-##### .buildinfo [configuration/platform](!platform)
+##### .buildinfo [configuration/default](!default)
+The `default` property can be used to turn off a build configuration from building by default (good for turning off shared or dependent tasks).
 
-The `platform` refers to target platform that this configuration is building for.
+Permitted Values:
+>    `true` -- by default, it will build (the default)
+>    `false` -- will not build unless explicitly used (or used from a 'uses' statement)
+
+##### .buildinfo [configuration/set](!set)
+The `set` property is used to set an environment variable for a given build. Persists thru to the child builds as well.
+
+Example:
+``` c#
+   set: cfg="Debug";  // now cfg is set to Debug 
+```
+
+##### .buildinfo [configuration/platform](!platform)
+The `platform` property refers to target platform that this configuration is building for.
 Permitted values:
 >    `x86` -- for Windows 32 bit, x86 builds
 >    `x64` -- for Windows 64 bit, x64 builds (ie, amd64, EMT64, etc)
@@ -273,6 +290,8 @@ This is for specifying that another build must precede this one. The `uses` prop
 
 The Key (`cfg`) is the name of the build configuration in the target project's .buildinfo file
 The Value (`"..\foo"`) is the relative directory for the project to build. You can specify the current directory if the build configuration is in the current project. (ie, `uses: common=".\"`)
+
+If only the value is specified (ie, `uses: x86;`) it will look up the buildconfiguration in the use the .buildinfo file.
 
 **Note: DOES NOT currently pull in the dependent project from Git**
  
@@ -339,3 +358,7 @@ Example:
         rmdir /S /Q wrjpgcom 2>NUL
     ";
 ```
+
+
+#### Macro Values 
+Use of `${macro}` style macros will look up the value in the current environment. These values can be set using the [set](#set) property.
