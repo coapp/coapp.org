@@ -25,7 +25,9 @@
     <meta property="og:url" content="http://coapp.org<%= document.url == "/index.html" ? "" : document.url %>"/>
     <meta property="og:site_name" content="CoApp"/>
     <meta property="og:admins" content="CoApp - fearthecowboy"/>
-    
+
+    <meta name="docid" content="<%= document.docid %>" />
+    <meta name="srclocation" content="https://github.com/coapp/coapp.org/blob/master/src/dynamic/<%= document.relativePath %>" />
 
 	<!-- Icons -->
 	<link rel="shortcut icon" href="images/favicon.ico">
@@ -129,7 +131,9 @@
     </div>
     <footer class="footer">
         <div class="container-fluid">
-        <p  style="float:left;">&copy; CoApp Contributors, 2011. </p>
+        <p  style="float:left;">&copy; CoApp Contributors, 2011. 
+        <br><sub>The source for this page can be found <a href="https://github.com/coapp/coapp.org/blob/master/src/dynamic/<%= document.relativePath %>">in the github repository.</a></sub>
+        </p>
         <p style="float:right;">
             This website was generated on <%= site.date.toShortDateString() %> and has <%= site.totalDocuments %> documents
         </p>
