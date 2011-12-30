@@ -957,28 +957,7 @@ Where:
 `mp4url` - the full url to the mp4 video **WARNING** do not put the video file in github, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
 `webmurl` - the full url to the webm video **WARNING** do not put the video file in github, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
 
-Encoding videos in both formats and generating the poster image can be done by installing [VLC](http://www.videolan.org/) and using the transcode script file in [this archive](/sitefiles/transcode.zip) (unzip the transcode.cmd from the file, and stick it in your path somewhere).
-
-The script file usage:
-
-``` bat
-Dual VLC Transcoder - makes H.264 [.mp4] and WebM [.webm] videos
-----------------------------------------------------------------
-
-Usage:
-------
-
-transcode.cmd \path\to\sourcevideofile.avi \path\to\destination_name
-
-     sourcevideofile can be nearly any video type--avi,wmv,mkv..etc.
-
-     Don't specify the output extension, .mp4 and .webm will be appended.
-
-```
-
-and an example:
-
-
+For information on transcoding video files to .mp4 and .webm, check out [this tutorial][developer:encoding-video]
 
 * * *
 
