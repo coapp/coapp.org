@@ -2,7 +2,10 @@
 jQuery(function() {
 
     jQuery.getPackageFeed({
-        url: '/packages.xml',
+        url: '/proxy/packages.xml',
+        failure: function(feed) {
+        
+        },
         success: function(feed) {
             jQuery('#result').append('<h2>'
             + '<a href="'
