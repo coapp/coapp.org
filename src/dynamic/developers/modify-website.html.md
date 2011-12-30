@@ -118,7 +118,7 @@ docid: 'developer:modifywebsite'
 ---
 ```
 
-<table class="zebra-striped" style="width:0;">
+<table class="zebra-striped" >
     <thead><tr><th>Header Variable</th><th>Pages Used</th><th>Purpose</th></tr></thead><tbody>
     <tr><td>layout</td><td>All Pages</td><td>Determines what template (or chain of templates, as a layout template can refer to another) is used for the page.</td></tr>
     <tr><td>title</td><td>All Pages</td><td>The title is used by the master layout page to set the HMTL title, as well as for metadata in the headers for things like facebook integration.</td></tr>
@@ -151,7 +151,7 @@ The content in a table must be HTML too--markdown doesn't process inside of tabl
 
 Use the following template for laying out tables:
 ``` html
-<table class="zebra-striped" style="width:0;">
+<table class="zebra-striped" >
     <thead><tr>
         <th>Column1 Header</th>
         <th>Column2 Header</th>
@@ -173,7 +173,7 @@ Use the following template for laying out tables:
 ```
 
 Which will render a table that looks like:
-<table class="zebra-striped" style="width:0;">
+<table class="zebra-striped" >
     <thead><tr>
         <th>Column1 Header</th>
         <th>Column2 Header</th>
@@ -196,7 +196,7 @@ Which will render a table that looks like:
 #### Labels
 
 Bootstrap provides excellent label support:
-<table class="zebra-striped" style="width:0;">
+<table class="zebra-striped" >
     <thead>
         <tr>
         <th style="width: 50%;">Label</th>

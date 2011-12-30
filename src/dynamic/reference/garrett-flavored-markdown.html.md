@@ -456,7 +456,7 @@ The following is a list of the more common languages that are supported.
 </div>
 
 <div class="less_content">
-    <table class="condensed-table zebra-striped" style="width:0;">
+    <table class="condensed-table zebra-striped" >
       <thead><tr><th>Language</th><th style="width:250px;">highlight code</th><th>Language</th><th>highlight code</th></tr></thead>
       <tbody>
         <tr><td>Bash</td><td>bash</td><td>Batchfile</td><td>bat</td></tr>
@@ -482,7 +482,7 @@ The following is a list of the more common languages that are supported.
 </div>
 
 <div class="more_content">
-    <table class="condensed-table zebra-striped" style="width:0;">
+    <table class="condensed-table zebra-striped" >
       <thead><tr><th>Language</th><th style="width:250px;">highlight code</th><th>Language</th><th>highlight code</th></tr></thead>
       <tbody>
         <tr><td>ABAP</td><td>abap</td><td>ActionScript</td><td>as</td></tr>
