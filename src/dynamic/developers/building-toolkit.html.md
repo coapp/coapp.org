@@ -28,11 +28,11 @@ pTk will then build the entire project.
 You can just open one of the `.SLN` files in Visual Studio.
 
 
-> `coapp.sln` -- contains the projects without the tricky-to-build prerequisites (native dlls and bootstrappers) -- *only Visual C# Express 2010 or better* is required.
+> `coapp.sln` -- contains the projects without the tricky-to-build prerequisites (native DLLs and bootstrappers) -- *only Visual C# Express 2010 or better* is required.
 
 or 
 
-> `coapp-with-prerequisites.sln` -- contains the projects **with** the tricky-to-build prerequisites (native dlls and bootstrappers) -- *Visual Professional 2010 or better* is required.
+> `coapp-with-prerequisites.sln` -- contains the projects **with** the tricky-to-build prerequisites (native DLLs and bootstrappers) -- *Visual Professional 2010 or better* is required.
 
 It is not recommended that you use this project, the prerequisite DLLs must be digitally signed to work correctly (which is why the signed copies are shipped in the ext/binaries submodule)
 
