@@ -17,7 +17,7 @@ If you only have Visual Studio express, you can't build C++ and C# projects in t
 ``` bat
 cd coapp 
 
-tools\ext\ptk build release 
+ext\tools\ptk build release 
 ```
 
 pTk will then build the entire project.
