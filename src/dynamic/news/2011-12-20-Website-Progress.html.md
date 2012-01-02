@@ -14,7 +14,7 @@ Over the last couple of days I've tweaked the layout of the website, and I think
 ## CMS Engine
 The site is a statically-generated website that is based off of DocPad, but over the course of the last few days, I've significantly enhanced it with:
 
-- switched to github-flavored-markdown for the markdown processor 
+- switched to GitHub-Flavored-Markdown for the Markdown processor 
 
 - added the missing triple-backtick (```) syntax-highlighting format for color syntax highlighting  of source code blocks (uses an online pygments webservice)  -- this means no javascript in the browser to do syntax highlighting :)
 
@@ -35,7 +35,7 @@ The site is a statically-generated website that is based off of DocPad, but over
 ## Stuff to look at!
 Please check out the developer articles I've started:
 
-> [Getting setup with git and github](/developers/git.html)
+> [Getting setup with Git and GitHub](/developers/git.html)
 > [Setting up the development environment](/developers/development-environment.html)
 > [Check out the source code](/developers/source-code.html)
 
@@ -49,7 +49,7 @@ I'd **love** your feedback, and even more, I'd love any help you can provide.
 
 ## Playing with the CMS:
 
-### The only tools you need to play with the CMS engine is a git and a text editor. **(Not notepad!)**
+### The only tools you need to play with the CMS engine is a Git and a text editor. **(Not notepad!)**
 
 You can clone the repository:
 ``` bat
@@ -69,7 +69,7 @@ From there, you should be able to see the website in a browser: http://localhost
 
 Modify files in the `./src/` directory and below, and the server will automatically regenerate the site (and beep when it's done)... Lather, rinse, repeat.
 
-If you've been putting off getting involved, now is a good time! Come check out the content (yeah, there's lots of 404s yet!)  Feel free to fix them, put in placeholder pages, fix stuff, and send me a pull request on github!
+If you've been putting off getting involved, now is a good time! Come check out the content (yeah, there's lots of 404s yet!)  Feel free to fix them, put in placeholder pages, fix stuff, and send me a pull request on GitHub!
 
 Turn lousy docs into good ones!
 
