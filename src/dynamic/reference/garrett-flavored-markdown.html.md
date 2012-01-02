@@ -15,7 +15,7 @@ $(document).ready(function() {
 </script>
 
 <div class="alert-message block-message success">
-    <p>The Markdown reference on this page is composed of content from <a href="http://daringfireball.net/projects/markdown/syntax">the original markdown site</a> as well as the <a href="http://github.github.com/github-flavored-markdown/">github site</a>. <br> You will find github-flavored-markdown and garrett-flavored-markdown variants highlighted within the document.</p>
+    <p>The Markdown reference on this page is composed of content from <a href="http://daringfireball.net/projects/markdown/syntax">the original Markdown site</a> as well as the <a href="http://github.github.com/github-flavored-markdown/">GitHub site</a>. <br> You will find GitHub-Flavored-Markdown and Garrett-Flavored-Markdown variants highlighted within the document.</p>
 </div>
 
 
@@ -44,7 +44,7 @@ Markdown: Syntax
     *   [Automatic Links](#autolink)
 
 
-**Note:** This document is itself written using Markdown; you can [see the source for it by looking at the source in github][src].
+**Note:** This document is itself written using Markdown; you can [see the source for it by looking at the source in GitHub][src].
 
   [src]: https://github.com/coapp/coapp.org/blob/master/src/dynamic/developers/modify-website.html.md
 
@@ -954,8 +954,8 @@ Where:
 `width` - the desired width of the video (actually, not used anymore, the video container scales to the size of it's parent layout)
 `height` - the desired height of the video (actually, not used anymore, the video container scales to the size of it's parent layout)
 `posterimageurl` - the image url for the poster (when it's not playing) -- this can just be the filename, and will look up in the `/static/` folder automatically.
-`mp4url` - the full url to the mp4 video **WARNING** do not put the video file in github, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
-`webmurl` - the full url to the webm video **WARNING** do not put the video file in github, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
+`mp4url` - the full url to the mp4 video **WARNING** do not put the video file in GitHub, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
+`webmurl` - the full url to the webm video **WARNING** do not put the video file in GitHub, we need to upload them to our Azure CDN to make sure that bandwith and size are managed correctly (contact Garrett :).
 
 For information on transcoding video files to .mp4 and .webm, check out [this tutorial][developer:encoding-video]
 

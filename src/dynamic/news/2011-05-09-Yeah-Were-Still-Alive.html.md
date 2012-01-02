@@ -13,7 +13,7 @@ tags: ['news']
 
 <h2>A new code repository</h2>
 
-<p>As I <a href="http://fearthecowboy.com/2011/04/26/weve-moved-coapp-code-hosting-to-github/">mentioned on my blog last week</a>, we also moved our code repository over to github:</p>
+<p>As I <a href="http://fearthecowboy.com/2011/04/26/weve-moved-coapp-code-hosting-to-github/">mentioned on my blog last week</a>, we also moved our code repository over to GitHub:</p>
 
 <ul>
 
@@ -21,9 +21,9 @@ tags: ['news']
 
 <ul>
 
-<li><em>While I liked a lot of the things about Launchpad, the website is feeling slower and slower some days, and Bazaar, while offering the features that I like, isn&rsquo;t getting the attention (and developer resources) that git is.&nbsp; Combined with the fantastic innovation happening at Github, it&rsquo;s undeniably the go-to place for open source development these days.<br /></em></li>
+<li><em>While I liked a lot of the things about Launchpad, the website is feeling slower and slower some days, and Bazaar, while offering the features that I like, isn&rsquo;t getting the attention (and developer resources) that Git is.&nbsp; Combined with the fantastic innovation happening at Github, it&rsquo;s undeniably the go-to place for open source development these days.<br /></em></li>
 
-<li><em>And, having done some recent tests with git on Windows, it&rsquo;s clear that it&rsquo;s stable and feature rich enough for all my purposes.</em></li>
+<li><em>And, having done some recent tests with Git on Windows, it&rsquo;s clear that it&rsquo;s stable and feature rich enough for all my purposes.</em></li>
 
 </ul>
 
