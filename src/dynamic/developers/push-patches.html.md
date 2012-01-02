@@ -1,6 +1,6 @@
 ---
 layout: 'article'
-title: 'Pushing patches back to the CoApp website'
+title: 'Pushing patches back to CoApp website'
 version: '1.0'
 docid: "developer:pushpatches"
 ---
