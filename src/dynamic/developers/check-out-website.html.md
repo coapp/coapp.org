@@ -70,9 +70,9 @@ If the CoApp website in the repository you forked from gets updated, you can add
 
 ``` bat
 c:\project\>cd coapp.org
-c:\project\>git remote add upstream git@github.com:username/coapp.org.git
-c:\project\>git fetch upstream
-c:\project\>git merge upstream/master
+c:\project\coapp.org\>git remote add upstream git@github.com:username/coapp.org.git
+c:\project\coapp.org\>git fetch upstream
+c:\project\coapp.org\>git merge upstream/master
 ```
 
 The overall workflow of fetching and merging upstream changes as well as pushing your commits to the fork is described in the [Fork A Repo](help.github.com/fork-a-repo/) guide. So, refer to this guide for details if needed.
@@ -92,7 +92,7 @@ You can run the DocPad in generate mode by just running the `generate.cmd` scrip
 ``` bat
 c:\project\> cd coapp.org
 
-c:\project\> generate.cmd 
+c:\project\coapp.org\> generate.cmd 
 ```
 
 You should see:
@@ -105,7 +105,7 @@ You can run the DocPad by just running the `server.cmd` found in the project fol
 ``` bat
 c:\project\> cd coapp.org
 
-c:\project\> server.cmd 
+c:\project\coapp.org\> server.cmd 
 ```
 You should see:
 
