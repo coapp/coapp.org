@@ -6,14 +6,14 @@ title: CoApp Design Change Meeting Today
 tags: ['meeting', 'news' ]
 ---
 <b>
-Sorry for the short notice, but I’m going to have a conference call this morning to talk about a problem that we’ve run into and how we’re going to solve it.
+Sorry for the short notice, but I'm going to have a conference call this morning to talk about a problem that we’ve run into and how we’re going to solve it.
 </b><br>
 
 We have to make some fundamental changes in the architecture of the CoApp engine to work around a problem discovered yesterday afternoon.
 
-The problem, is that when the user double-clicks on an a CoApp MSI, Windows Installer elevates the installer process by switching to the LOCALSYSTEM (NT AUTHORITY\SYSTEM) account, but actively removes a bunch of privileges that they didn’t figure an installer would need—specifically the ability to create symlinks has been removed.
+The problem, is that when the user double-clicks on an a CoApp MSI, Windows Installer elevates the installer process by switching to the LOCALSYSTEM (NT AUTHORITY\SYSTEM) account, but actively removes a bunch of privileges that they didn't figure an installer would need—specifically the ability to create symlinks has been removed.
 
-Symlinks are a critical part of CoApp’s design, and I’m not willing to compromise the features that rely on them.
+Symlinks are a critical part of CoApp's design, and I'm not willing to compromise the features that rely on them.
 
 The only way we can get from that crippled LOCALSYSTEM account to a real LOCALSYSTEM account is to create a Win32 service, and spin it up (which we can actually do from that crippled LOCALSYSTEM account), and have it do the work we need done.
 

@@ -15,7 +15,7 @@ I've said it many times, CoApp is at this point, only supporting signed binaries
 
 Really, if you are a proponent of Open Source software, you'd really **only** want to run binaries that you haven't personally built if the publisher had digitally signed them, which would at least give you the satisfaction of being able to track down the publisher of a given binary.
 
-#### Using Code Signing and Strong Naming
+## Using Code Signing and Strong Naming
 
 So that being said, there are a couple of things about Digital Signing that have irked me for a very long time.
 
@@ -57,13 +57,13 @@ I'm sorry, I know that some well-meaning PM thought that this was a good idea, b
 
 So, here we sit with essentially a very valuable concept, wrapped in irksome developer tools, and a flawed process. Final Verdict: EVERYONE HATES TO DO STRONG NAMING.
 
-#### So, I fixed all that. 
+## So, I fixed all that. 
 
 CoApp's *simplesigner* tool (and, by extension, *autopackage*) can now strong name and sign **ANY .NET binary** without having to resort to any goofiness.  It can rewrite assembly attributes on the fly, and insert a new strong name for .NET assebmlies, as well as generate and embed and digital signatures for native and .NET binaries with a single command.  You can leave the certificate in a .pfx fileand it will use the same keypair for signing and strong naming. you can pass the password on the  command line, or have it remember it in an encrypted setting in the user's registry (which can only be decrypted when that user is logged in, and can't be recovered if the user's password is forcibly changed)
 
 It doesn't use command line tools behind the scenes to do its work (a solution I had cobbled together before) nor does it use such things as ILMerge (which was one way to sneak in a new strong name after the fact)
 
-#### Example usage:
+## Example usage:
 
 @[Running simplesigner on an EXE](/images/blog/simplesigner.png)
 
@@ -77,11 +77,10 @@ And of course, you can see the EXE is digitally signed:
 
 @[Verifying that it's signed](/images/blog/DigitallySigned.png)
 
-#### How did I accomplish this strange dark magic? 
+## How did I accomplish this strange dark magic? 
 
 Tons of research into the public APIs for digital signing and strong naming (yeah, everything I've done, is documented **somewhere** ... ) and levereaged the [cci-metadata project](http://ccimetadata.codeplex.com/) from Microsoft Research on codeplex.
 
 CCI-Metadata lets you manipulate .NET binaries, which I used to add in the strong name public key, and after persisting it back to disk, I was able to use the MSCOREE apis to apply the strong-name itself.
 
 I'll see about doing a deep-dive into the code soon. When CoApp Beta 2 is posted in a couple weeks, the simplesigner tool will be there, and you'll be able to just grab that binary and use it foryour own codesigning and strong-naming work.
-

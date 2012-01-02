@@ -9,9 +9,9 @@ On Friday, we had a conference call to discuss a critical problem in the CoApp p
 
 >> ... when the user double-clicks on an a CoApp MSI, Windows Installer 
 >> elevates the installer process by switching to the LOCALSYSTEM (NT AUTHORITY\SYSTEM) 
->> account, but actively removes a bunch of privileges that they didn’t figure an 
+>> account, but actively removes a bunch of privileges that they didn't figure an 
 >> installer would need—specifically the ability to create symlinks has been 
->> removed. Symlinks are a critical part of CoApp’s design, and I’m not willing
+>> removed. Symlinks are a critical part of CoApp's design, and I'm not willing
 >> to compromise the features thatrely on them...
 
 Having looked at a [few ways to overcome this limitation](https://github.com/coapp/coapp.org/wiki/Coapp-engine---engine-as-a-service-redesign), we've pretty much settled on the idea
