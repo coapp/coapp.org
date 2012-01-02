@@ -90,7 +90,7 @@ The different formats that are generally used in CoApp's Website are:
 <table class="zebra-striped">
     <thead><tr><th>Extension</th><th>Format</th><th>Details</th></tr></thead><tbody>
     <tr><td>.ejs</td><td>Embedded Javascript Template</td><td>The actual EJS library used is from https://github.com/visionmedia/ejs , however the documentation at the site http://embeddedjs.com/ may be useful for understanding  </td></tr>
-    <tr><td>.md</td><td>Markdown</td><td>The CoApp website uses a variant of <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> called <a href="/reference/garrett-flavored-markdown">garrett-flavored-markdown</a>, which itself is a variant of <a href="http://github.github.com/github-flavored-markdown" >github-flavored-markdown</a>. </td></tr>
+    <tr><td>.md</td><td>Markdown</td><td>The CoApp website uses a variant of <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> called <a href="/reference/garrett-flavored-markdown">garrett-flavored-markdown</a>, which itself is a variant of <a href="http://github.github.com/github-flavored-markdown">GitHub-Flavored-Markdown</a>. </td></tr>
     <tr><td>.less</td><td>Lesscss - dynamic css</td><td>You can learn more about lesscss at it's website: http://lesscss.org/</td></tr>
     <tr><td>.styl</td><td>Stylus -- "Expressive CSS"</td><td>Only used in one file, but you can find out more: http://learnboost.github.com/stylus/docs/executable.html</td></tr>
     </tbody>

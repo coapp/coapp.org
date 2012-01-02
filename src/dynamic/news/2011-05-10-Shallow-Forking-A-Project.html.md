@@ -8,7 +8,7 @@ tags: [ 'developer', 'coding', 'shallow-forking']
 We're nearing the point where we're able to take open source projects and produce happy-shiny packages for them--uh yeah, *nearing*.  
 It's gonna be a couple more weeks shaking out the tools that generate new Visual Studio project files for a given project and wire all that stuff up.
 
-The good news though, is that we're ready to have people start shallow-forking projects and sticking them into [Github](http://github.com/coapp-packages). 
+The good news though, is that we're ready to have people start shallow-forking projects and sticking them into [GitHub](http://github.com/coapp-packages). 
 
  
 
@@ -22,14 +22,14 @@ Linux distributions do this sort of thing all the time, in order to build packag
 
 ###Can You Help?
 
-We're looking for people to start the leg-work for building packages right now, this means creating a fork in github, and doing the work to get it compiling under Windows no matter how it's done (i.e., you can use a makefile, VS project files, a batch file... whatever). The idea is to just get a successful build that can be replicated on a known configuration--Visual Studio 2010 (even [VS 2010 express](http://www.microsoft.com/express/Downloads/)), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe) ... We'll be automating the work later that creates well-built VS 2010 project files (and eventually other builds like mingw, etc), but that work will leverage the effort done now to create consistent shallow-forks.
+We're looking for people to start the leg-work for building packages right now, this means creating a fork in GitHub, and doing the work to get it compiling under Windows no matter how it's done (i.e., you can use a makefile, VS project files, a batch file... whatever). The idea is to just get a successful build that can be replicated on a known configuration--Visual Studio 2010 (even [VS 2010 express](http://www.microsoft.com/express/Downloads/)), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe) ... We'll be automating the work later that creates well-built VS 2010 project files (and eventually other builds like mingw, etc), but that work will leverage the effort done now to create consistent shallow-forks.
 
  
 
 ###What do you need?
 1.  The aforementioned Visual Studio 2010 (the [express](http://www.microsoft.com/express/Downloads/) version will do), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe).
 
-2. [An account on github](https://github.com/signup/free), and the ability to check stuff in (you can use [msysgit](http://code.google.com/p/msysgit/) or [tortoisegit](http://code.google.com/p/tortoisegit/) , or any other git client for Windows even the [Mercurial](http://mercurial.selenic.com/downloads/) plugin [hg-git](http://hg-git.github.com/), which lets you use git repositories as if they were mercurial repositories. *(Note: I tried the hg-git plugin, and had to use the version [here](https://github.com/sampsyo/hg-git) to get it to work)*
+2. [An account on GitHub](https://github.com/signup/free), and the ability to check stuff in (you can use [msysgit](http://code.google.com/p/msysgit/) or [tortoisegit](http://code.google.com/p/tortoisegit/) , or any other Git client for Windows even the [Mercurial](http://mercurial.selenic.com/downloads/) plugin [hg-git](http://hg-git.github.com/), which lets you use Git repositories as if they were mercurial repositories. *(Note: I tried the hg-git plugin, and had to use the version [here](https://github.com/sampsyo/hg-git) to get it to work)*
 
 3. The ability to build software using Visual Studio we need command line builds, but if you get it working from inside the IDE, we can show you how to automate that from the command line in a single step.
 
@@ -39,9 +39,9 @@ We're looking for people to start the leg-work for building packages right now, 
  
 
 ###Becoming a package maintainer
-The first thing is to get yourself added as a CoApp package-maintainer on github no worries, signing up for this isn't a lifelong commitment. If you are interested in keeping it moving over the long haul, that's great, but even if you can just do up a few projects and get them checked in, we'll figure out the long term maintenance strategy later.
+The first thing is to get yourself added as a CoApp package-maintainer on GitHub no worries, signing up for this isn't a lifelong commitment. If you are interested in keeping it moving over the long haul, that's great, but even if you can just do up a few projects and get them checked in, we'll figure out the long term maintenance strategy later.
 
-In order to get added to the package maintainer group you can send me a message on github (fearthecowboy) or via [email](mailto:garretts@microsoft.com), or heck, even just send me a [tweet](http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+I%27d+like+to+become+a+%23CoApp+package+maintainer.+My+github+id+is+...). All I need is your github account id, and I'll add you to the group.
+In order to get added to the package maintainer group you can send me a message on GitHub (fearthecowboy) or via [email](mailto:garretts@microsoft.com), or heck, even just send me a [tweet](http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+I%27d+like+to+become+a+%23CoApp+package+maintainer.+My+github+id+is+...). All I need is your GitHub account id, and I'll add you to the group.
 
  
 
@@ -61,7 +61,7 @@ Quick Note: This is the first iteration of the Shallow-Fork process there are a 
 
 1. Find an open source C/C++ library or application that you'd like to fork.  You can select one off the list of things that we know we really need, or something else that of particular interest to you, and for which you'd like to see a CoApp package created.  If the project that you want to build has things that it depends on, you may need to go ahead and provide the shallow-fork for that as well we do not want to rely on binary builds that someone else has provided, that would be kinda silly.
 
-2. Create a project in Github. Depending on what you're trying to make a fork of, you're going to do this in one of a few different ways.  If the project is already on github, create a fork for it in the coapp-packages organization. If the source is posted as a zip file, unpack it and create the project manually. If it's in another VCS, there may be a generally-acceptable method to creating a fork in git.  Bottom line, get the project into Github in a project in the coapp-packages organization.
+2. Create a project in Github. Depending on what you're trying to make a fork of, you're going to do this in one of a few different ways.  If the project is already on GitHub, create a fork for it in the coapp-packages organization. If the source is posted as a zip file, unpack it and create the project manually. If it's in another VCS, there may be a generally-acceptable method to creating a fork in Git.  Bottom line, get the project into Github in a project in the coapp-packages organization.
 
 3. Clone the source code into your working directory.
 
@@ -227,4 +227,4 @@ Project Verified.
  
 C:\forks\libjpeg>
 ```
-Once it does what you expect, commit and push the clean version up to github, and give me a shout.
+Once it does what you expect, commit and push the clean version up to GitHub, and give me a shout.

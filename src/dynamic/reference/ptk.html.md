@@ -102,10 +102,10 @@ Defaults to building all the configurations
 ### Action [clean](!clean) 
 Runs the automation steps to clean all temporary and generated files from the source folder.
 
-This should restore everything back to the same state that the source was checked out from git in.
+This should restore everything back to the same state that the source was checked out from Git in.
 
 ### Action [status](!status) 
-Checks to see if the current state is identical to the state the code was checked out from git.
+Checks to see if the current state is identical to the state the code was checked out from Git.
 
 ### Action [verify](!verify) 
 Runs clean, build, verify on the given configuration.  

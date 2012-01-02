@@ -6,7 +6,7 @@ version: '1.0'
 ### Requirements
 You'll need the following in order to correctly set up your development environment for working on CoApp:
 
-- **Git, putty, and a github account** -- see [Getting setup with git and github](/developers/git.html)
+- **Git, putty, and a GitHub account** -- see [Getting setup with Git and GitHub](/developers/git.html)
 - **Visual Studio 2010** (either VS2010 professional, or the free [Visual C# Express](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-csharp-express) and the free [Visual C++ express](http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express) )
 - **Windows SDK 7.1** [Download](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=8279)
 - **Windows WDK** [Download](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=11800)

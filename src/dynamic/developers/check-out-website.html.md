@@ -8,16 +8,16 @@ docid: "developer:checkoutwebsite"
 ## Requirements:
 You'll need the following in order to correctly set up your development environment for working on CoApp:
 
-- **Git, putty, and a github account** -- see [Getting setup with git and github](/developers/git.html)
+- **Git, putty, and a GitHub account** -- see [Getting setup with Git and GitHub](/developers/git.html)
 - a text editor (and not just **notepad**) Suggestions: [Notepad++](http://notepad-plus-plus.org/download/v5.9.6.2.html), [SciTE](http://opensource.ebswift.com/SciTEInstaller/)
 
 You don't need any other special software to work with the Website source code. 
 
 ### Fork the CoApp website 
 
-The CoApp website (the one you're currently reading) is available in source form from the [github project](http://github.com/coapp/coapp.org).
+The CoApp website (the one you're currently reading) is available in source form from the [GitHub project](http://github.com/coapp/coapp.org).
 
-The git repository for the CoApp project is found at: `git@github.com:coapp/coapp.org.git`
+The Git repository for the CoApp project is found at: `git@github.com:coapp/coapp.org.git`
 
 The easiest way to collaborate in the CoApp documentation development is to follow the [Fork + Pull Model](http://help.github.com/send-pull-requests/) well defined and supported by GitHub.
 
@@ -64,7 +64,7 @@ c:\project>
 
 A quick reminder: `username` stands for your own GitHub user name.
 
-### Configuring git remotes
+### Configuring Git remotes
 
 If the CoApp website in the repository you forked from gets updated, you can add those updates to your fork:
 
