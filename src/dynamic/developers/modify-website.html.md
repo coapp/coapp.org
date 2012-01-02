@@ -1,6 +1,6 @@
 ---
 layout: 'article'
-title: 'Modifying the CoApp Website'
+title: 'Making modifications to CoApp website'
 version: 1.0
 docid: 'developer:modifywebsite'
 ---
