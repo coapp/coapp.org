@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'Common command line features' 
 version: '1.2'
+docid: 'reference:cli'
 ---
 
 CoApp tools generally provide consistent options and patterns between the different tools.

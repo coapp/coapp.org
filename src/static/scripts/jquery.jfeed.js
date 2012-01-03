@@ -3,15 +3,15 @@
  * MIT Licensed.
  */
 // Inspired by base2 and Prototype
-(function($) {
-    (function() {
-        var initializing = false, fnTest = /xyz/ .test(function() { xyz; }) ? /\b_super\b/ : /.*/ ;
+(function ($) {
+    (function () {
+        var initializing = false, fnTest = /xyz/.test(function () { xyz; }) ? /\b_super\b/ : /.*/;
         // The base Class implementation (does nothing)
-        this.Class = function() {
+        this.Class = function () {
         };
 
         // Create a new Class that inherits from this class
-        Class.extend = function(prop) {
+        Class.extend = function (prop) {
             var _super = this.prototype;
 
             // Instantiate a base class (but only create the instance,
@@ -25,8 +25,8 @@
                 // Check if we're overwriting an existing function
                 prototype[name] = typeof prop[name] == "function" &&
                     typeof _super[name] == "function" && fnTest.test(prop[name]) ?
-                    (function(name, fn) {
-                        return function() {
+                    (function (name, fn) {
+                        return function () {
                             var tmp = this._super;
 
                             // Add a new ._super() method that is the same method
@@ -66,11 +66,68 @@
     })();
 
 
+    String.prototype.Format = function () {
+        var args = (arguments.length == 1 && typeof (arguments[0]) == "object") ? arguments[0] : arguments;
+
+        var result = this;
+        var z;
+
+        while (z = /\[FOR\:(.*?)\](.*)\[\/FOR\]/.exec(result)) {
+            var tmpString = "";
+            try {
+                var collection = eval(z[1]);
+                for (var iter = 0; iter < collection.length; iter++)
+                    tmpString += z[2].replace(/\$iter/g, iter) + "\r\n";
+            } catch (e) {
+            }
+            result = result.replace(z[0], tmpString);
+        }
+
+        while (z = /\[FOREACH\:(.*?)\](.*)\[\/FOREACH\]/.exec(result)) {
+            var tmpString = "";
+            try {
+                var collection = eval(z[1]);
+                for (var iter in collection)
+                    tmpString += z[2].replace(/\$iter/g, iter) + "\r\n";
+            } catch (e) {
+            }
+            result = result.replace(z[0], tmpString);
+        }
+
+        while (z = /{(.*?)}/.exec(result)) {
+            try {
+                result = result.replace(z[0], isNaN(z[1]) ? eval(z[1]) : (args[z[1]] || "??<" + z[1] + ">??"));
+            } catch (x) {
+                result = result.replace(z[0], "??<" + z[1] + ">??");
+            }
+        }
+        return result.replace(/\?\?\</g, "{").replace(/\>\?\?/g, "}");
+    };
+
+    //+ Jonas Raoni Soares Silva
+    //@ http://jsfromhell.com/string/pad [rev. #1]
+    /// Returns the string with a substring padded on the left, right or both sides.
+    /// length: amount of characters that the string must have
+    /// substring: string that will be concatenated
+    /// type: specifies the side where the concatenation will happen, where: 0 = left, 1 = right and 2 = both sides
+    String.prototype.pad = function (l, s, t) {
+        return s || (s = " "), (l -= this.length) > 0 ? (s = new Array(Math.ceil(l / s.length)
+        + 1).join(s)).substr(0, t = !t ? l : t == 1 ? 0 : Math.ceil(l / 2))
+        + this + s.substr(0, l - t) : this;
+    };
+
+    String.prototype.Trim = function () {
+        return (this || "").replace(/^\s+|\s+$/g, "");
+    };
+
+
+
+
     var Person = Class.extend({
         name: '',
         uri: '',
         email: '',
-        init: function(entry) {
+        init: function (entry) {
             if (entry != null) {
                 this.name = entry.find('name').eq(0).text();
                 this.uri = entry.find('uri').eq(0).text();
@@ -85,23 +142,34 @@
         summary: '',
         updated: '',
         published: '',
-        author: { },
+        author: {},
         link: '',
         links: [],
         description: '',
         categories: [],
-        pkg: { },
-        init: function(entry) {
+        pkg: {},
+
+        formatTextAsHtml: function (text, textType) {
+            if ((textType == "text") || text.indexOf('<') == -1 || text.indexOf('>') == -1) {
+                return '<pre>{0}</pre>'.Format(text);
+            }
+            return text;
+        },
+
+        init: function (entry) {
             this.id = entry.find('id').eq(0).text();
             this.title = entry.find('title').eq(0).text();
             var sum = entry.find('summary').eq(0);
-            this.summary = sum.attr('type') == 'html' ? sum.text() : '<pre>' + sum.text() + '</pre>';
+            // this.summary = sum.attr('type') == 'html' ? sum.text() : '<pre>' + sum.text() + '</pre>';
+
+            this.summary = this.formatTextAsHtml(sum.text(), sum.attr('type'));
+
             this.updated = entry.find('updated').eq(0).text();
             this.published = entry.find('published').eq(0).text();
             this.author = new Person(entry.find('author').eq(0));
 
             var links = this.links;
-            entry.find('link').each(function() {
+            entry.find('link').each(function () {
                 var link = jQuery(this);
                 if (link.attr('rel') == 'enclosure') {
                     links.push(new Link(jQuery(this)));
@@ -109,20 +177,23 @@
             });
 
             this.link = entry.find('link').eq(0).attr('href');
-            this.description = entry.find('content').eq(0).text();
+            var desc = entry.find('content').eq(0);
+            this.description = this.formatTextAsHtml(desc.text(), desc.attr('type'));
 
             var categories = this.categories;
-            entry.find('category').each(function() {
+            entry.find('category').each(function () {
                 categories.push(new Category(jQuery(this)));
             });
         }
+
+
     });
 
     var Link = Class.extend({
         url: '',
         title: '',
 
-        init: function(entry) {
+        init: function (entry) {
             if (entry != null) {
                 url = entry.attr('href');
                 title = entry.attr('title');
@@ -135,7 +206,7 @@
         label: '',
         scheme: '',
 
-        init: function(entry) {
+        init: function (entry) {
             if (entry != null) {
                 term = entry.attr('term');
                 label = entry.attr('label');
@@ -166,7 +237,7 @@
         nsfw: false,
         stability: 0,
 
-        init: function(entry) {
+        init: function (entry) {
         }
     });
 
@@ -177,7 +248,7 @@
         link: '',
         description: '',
 
-        init: function(xml) {
+        init: function (xml) {
             if (jQuery.browser.msie) {
                 var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
                 xmlDoc.loadXML(xml);
@@ -197,14 +268,13 @@
 
             var feed = this;
 
-            jQuery('entry', xml).each(function() {
+            jQuery('entry', xml).each(function () {
                 feed.items.push(new Item(jQuery(this)));
             });
         }
     });
 
-
-    $.fn.getPackageFeed = function(options) {
+    $.fn.getPackageFeed = function (options) {
 
         options = $.extend({
             url: null,
@@ -219,12 +289,12 @@
         if (options.url) {
             if (jQuery.isFunction(options.failure) && jQuery.type(options.error) === 'null') {
                 // Handle legacy failure option
-                options.error = function(xhr, msg, e) {
+                options.error = function (xhr, msg, e) {
                     options.failure(msg, e);
                 };
             } else if (jQuery.type(options.failure) === jQuery.type(options.error) === 'null') {
                 // Default error behavior if failure & error both unspecified
-                options.error = function(xhr, msg, e) {
+                options.error = function (xhr, msg, e) {
                     window.console && console.log('getPackageFeed failed to load feed', xhr, msg, e);
                 };
             }
@@ -235,7 +305,7 @@
                 data: options.data,
                 cache: options.cache,
                 dataType: (jQuery.browser.msie) ? "text" : "xml",
-                success: function(xml) {
+                success: function (xml) {
                     var feed = new AtomFeed(xml);
                     if (jQuery.isFunction(options.success)) {
                         options.success(feed);

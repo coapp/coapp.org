@@ -6,7 +6,7 @@ docid: 'reference:ptk'
 ---
 ## ptk - The Porting Toolkit
 
-**pTk** works uses CoApp's [common command line conventions](/reference/cli.html) as well as uses an input file based on the CoApp [common property sheet](/reference/propertysheet.html)
+**pTk** uses CoApp's [common command line conventions][reference:cli] as well as uses an input file based on the CoApp [common property sheet][reference:propertysheet]
 
 #### Purpose
 
