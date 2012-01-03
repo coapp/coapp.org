@@ -69,39 +69,25 @@
     String.prototype.Format = function () {
         var args = (arguments.length == 1 && typeof (arguments[0]) == "object") ? arguments[0] : arguments;
 
-        var result = this;
-        var z;
-
-        while (z = /\[FOR\:(.*?)\](.*)\[\/FOR\]/.exec(result)) {
-            var tmpString = "";
-            try {
-                var collection = eval(z[1]);
-                for (var iter = 0; iter < collection.length; iter++)
-                    tmpString += z[2].replace(/\$iter/g, iter) + "\r\n";
-            } catch (e) {
+        return this.replace(/{(.*?)}/g, function (match, param) {
+            var v = args[param];
+            
+            if (!IsNullOrUndefined(v)) {
+                return v;
             }
-            result = result.replace(z[0], tmpString);
-        }
-
-        while (z = /\[FOREACH\:(.*?)\](.*)\[\/FOREACH\]/.exec(result)) {
-            var tmpString = "";
+            
             try {
-                var collection = eval(z[1]);
-                for (var iter in collection)
-                    tmpString += z[2].replace(/\$iter/g, iter) + "\r\n";
-            } catch (e) {
+                return eval(param);
+            } catch (err) {
+                for (var i = 0; i < args.length; i++) {
+                    v = args[i][param];
+                    if (!IsNullOrUndefined(v)) {
+                        return v;
+                    }
+                }
             }
-            result = result.replace(z[0], tmpString);
-        }
-
-        while (z = /{(.*?)}/.exec(result)) {
-            try {
-                result = result.replace(z[0], isNaN(z[1]) ? eval(z[1]) : (args[z[1]] || "??<" + z[1] + ">??"));
-            } catch (x) {
-                result = result.replace(z[0], "??<" + z[1] + ">??");
-            }
-        }
-        return result.replace(/\?\?\</g, "{").replace(/\>\?\?/g, "}");
+            return match;
+        });
     };
 
     //+ Jonas Raoni Soares Silva
@@ -120,8 +106,13 @@
         return (this || "").replace(/^\s+|\s+$/g, "");
     };
 
+    function IsNullOrEmpty(str) {
+        return str === null || str === "" || str == undefined;
+    };
 
-
+    function IsNullOrUndefined(str) {
+        return str === null || str == undefined;
+    };
 
     var Person = Class.extend({
         name: '',
