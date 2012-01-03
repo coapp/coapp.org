@@ -176,8 +176,6 @@
                 categories.push(new Category(jQuery(this)));
             });
         }
-
-
     });
 
     var Link = Class.extend({
