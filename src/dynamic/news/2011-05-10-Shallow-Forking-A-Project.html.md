@@ -10,23 +10,18 @@ It's gonna be a couple more weeks shaking out the tools that generate new Visual
 
 The good news though, is that we're ready to have people start shallow-forking projects and sticking them into [GitHub](http://github.com/coapp-packages). 
 
- 
-
-###What's a "shallow-fork" you say? 
+## What's a "shallow-fork" you say? 
 
 A [fork](http://bit.ly/lGYOb6) happens when developers take a copy of source code from one software package and starts independent development on it, creating a distinct piece of software.  A shallow-fork is when the independent development continually brings forward changes from the original project, and attempts not to stray very far from it.  We do this so that we can make appropriate Windows changes (like new build scripts, or better API support) keep compatibility and not break the original project.  If the upstream project is willing to accept changes, great! If not (for whatever reason)... great! Either way, the package maintainer for the CoApp project will aim to keep the projects in sync as much as possible. 
 
 Linux distributions do this sort of thing all the time, in order to build packages for their specific version of Linux.  We're essentially following in the same footsteps, but following the procedure that I'm setting out here, so that we can eventually produce packages of software for CoApp.
 
- 
-
-###Can You Help?
+## Can You Help?
 
 We're looking for people to start the leg-work for building packages right now, this means creating a fork in GitHub, and doing the work to get it compiling under Windows no matter how it's done (i.e., you can use a makefile, VS project files, a batch file... whatever). The idea is to just get a successful build that can be replicated on a known configuration--Visual Studio 2010 (even [VS 2010 express](http://www.microsoft.com/express/Downloads/)), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe) ... We'll be automating the work later that creates well-built VS 2010 project files (and eventually other builds like mingw, etc), but that work will leverage the effort done now to create consistent shallow-forks.
 
- 
+## What do you need?
 
-###What do you need?
 1.  The aforementioned Visual Studio 2010 (the [express](http://www.microsoft.com/express/Downloads/) version will do), and the [Windows SDK 7.1](http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/winsdk_web.exe).
 
 2. [An account on GitHub](https://github.com/signup/free), and the ability to check stuff in (you can use [msysgit](http://code.google.com/p/msysgit/) or [tortoisegit](http://code.google.com/p/tortoisegit/) , or any other Git client for Windows even the [Mercurial](http://mercurial.selenic.com/downloads/) plugin [hg-git](http://hg-git.github.com/), which lets you use Git repositories as if they were mercurial repositories. *(Note: I tried the hg-git plugin, and had to use the version [here](https://github.com/sampsyo/hg-git) to get it to work)*
@@ -36,28 +31,24 @@ We're looking for people to start the leg-work for building packages right now, 
 4. The ability to follow the pretty-darn-simple process below to produce the necessary build.
 
 5. A current build of the CoApp tools. You can [compile them yourself](http://fearthecowboy.com/2011/04/26/weve-moved-coapp-code-hosting-to-github/), or just download my [latest snapshot build](http://cdn.coapp.org/files/coapp-tools-snapshot.zip). Make it easy on yourself, put them in a folder that's in the %PATH%.
- 
 
-###Becoming a package maintainer
+## Becoming a package maintainer
+
 The first thing is to get yourself added as a CoApp package-maintainer on GitHub no worries, signing up for this isn't a lifelong commitment. If you are interested in keeping it moving over the long haul, that's great, but even if you can just do up a few projects and get them checked in, we'll figure out the long term maintenance strategy later.
 
 In order to get added to the package maintainer group you can send me a message on GitHub (fearthecowboy) or via [email](mailto:garretts@microsoft.com), or heck, even just send me a [tweet](http://twitter.com/home?status=Hey%2C+%40fearthecowboy%21+I%27d+like+to+become+a+%23CoApp+package+maintainer.+My+github+id+is+...). All I need is your GitHub account id, and I'll add you to the group.
 
- 
+## Wait! Before You Begin...
 
-###Wait! Before You Begin...
 Since shallow-forking is intended to continually merge in changes from upstream, please keep changes to the project and its files to an absolute minimum don't do any unnecessary changes, don't reorganize the files, and don't try to rebuild a 'cleaner' build process.  You only need to get it to the point where it builds a viable output.  As we progress, we'll capture the data from the process and build shiny new project files that are much nicer expending extra effort now doesn't get you anywhere.
 
- 
+## If you run into trouble, and need help
 
-###If you run into trouble, and need help
 Check on IRC #coapp on freenode.net (try the [webclient](http://webchat.freenode.net/) if you don't have IRC installed) if I'm there, I'm more than willing you help you thru the steps (and fix stuff that needs fixing), or failing that on the (mailing list)[https://launchpad.net/~coapp-developers].
 
- 
+## The Process for Shallow-Forking for CoApp packages
 
-###The Process for Shallow-Forking for CoApp packages
 Quick Note: This is the first iteration of the Shallow-Fork process there are a number of deeper issues when forking projects that have multiple active branches, several configurations, etc.  What we're trying to do here is lay out a common approach so that as we proceed, we can automate as much as possible over the long run.   This procedure is likely to evolve quite a bit as we account for more scenarios and add support for additional compilers, configurations and build types.
-
 
 1. Find an open source C/C++ library or application that you'd like to fork.  You can select one off the list of things that we know we really need, or something else that of particular interest to you, and for which you'd like to see a CoApp package created.  If the project that you want to build has things that it depends on, you may need to go ahead and provide the shallow-fork for that as well we do not want to rely on binary builds that someone else has provided, that would be kinda silly.
 
@@ -94,7 +85,7 @@ You can fill in the values of each of the fields. An example for libjpeg (done b
 }
 ```
 
-#####Create one or more Build Configurations 
+### Create one or more Build Configurations 
 
 A "**Build Configuration**" is analogous to a build configuration with Visual Studio You can create builds for x86, x64, as well as for different flavors (static library vs. dynamic library) etc.  It's not necessary to explicitly create multiple build configuration for x86 and x64 if project compiles well under both without different commands (save for the selection of which platform).  You **do** want multiple configurations when the steps change between platforms (or you know that different files get processed in some libraries, there are separate files for x86 vs. x64), or if you have different expected outputs i.e. some libraries allow you to generate a static and a dynamic version of the same library).  Generally speaking, err on the side of caution and don't create multiple build configurations excessively for projects that behave themselves, we'll autogenerate the alternate configurations when we get around to creating new Visual Studio projects. 
 
@@ -177,7 +168,7 @@ x86 {
 };
 ```
 
-##### Once you have the .buildinfo file complete, you can run the pTk tool from the command line (make sure you're in the root of the project). 
+### Once you have the .buildinfo file complete, you can run the pTk tool from the command line (make sure you're in the root of the project). 
 
 **You should be able to run a build: **
 ``` batch

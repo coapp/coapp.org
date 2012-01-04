@@ -18,4 +18,4 @@ This works by adding a new attribute to the AssemblyInfo.cs file for any project
 [assembly: AssemblyBugtracker("https://github.com/coapp/toolkit/issues")]
 ```
 
-Using <code>--open-bugtracker</code> on the command line will now open the default (the one in the EXE, or the first DLL if the EXE doesn’t have one) bug tracker for the tool in the default browser.
+Using <code>--open-bugtracker</code> on the command line will now open the default (the one in the EXE, or the first DLL if the EXE doesn't have one) bug tracker for the tool in the default browser.

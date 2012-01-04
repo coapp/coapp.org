@@ -12,7 +12,7 @@ rightsideboxes: ['headlines.inc' ,'coapp-tweets.inc' ]
 # Recent News
 <div>
 <ul>
-<% documents.enumerable().orderBy('date').reverse().where(function(each){return each.url.indexOf('/news') == 0;}).take(10).each(function(each) {  %> 
+<% documents.enumerable().orderBy('date').reverse().where(function(each){return each.url.indexOf('/news') == 0;}).take(30).each(function(each) {  %> 
 
 <span style="display:inline-block;">
     <a href="<%= each.url %>" property="dc:title"><h2><%= each.title %></h2></a>
