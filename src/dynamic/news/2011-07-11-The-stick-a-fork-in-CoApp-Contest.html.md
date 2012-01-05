@@ -7,7 +7,7 @@ tags: ['news' ,'contest' ,'packages' ,'developer3']
 ---
 After a break of nearly a month, I'm back in the CoApp groove, and now it's finally time to announce our summer coding contest!
 
-### **The Stick-A-Fork-In-CoApp contest**
+## The Stick-A-Fork-In-CoApp contest
 
 
 Our goal over the summer is to generate a whole slew of nice, clean shallow forks 
