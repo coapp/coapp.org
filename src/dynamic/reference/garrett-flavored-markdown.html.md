@@ -133,6 +133,28 @@ Markdown will translate it to:
 
 However, inside Markdown code spans and blocks, angle brackets and ampersands are *always* encoded automatically. This makes it easy to use Markdown to write about HTML code. (As opposed to raw HTML, which is a terrible format for writing about HTML syntax, because every single `<` and `&` in your example code needs to be escaped.)
 
+#### [Tables](!tables)
+<p class="alert-message block-message success"><i><b>New with Garrett-Flavored-Markdown</b></i><br><br>
+<b>Tables</b><br/>
+Support for automatic tables has been added. Can't get any simpler than this!
+</p>
+To create a table, just use the `|` character to starting at the left margin, and use the `|` again to seperate columns and at the end of a row.
+
+The first row is always the header. 
+
+For example:
+``` text
+    |header1|header2|header3|
+    |row1text1|row1text3|row1text3|
+    |row2text1|row2text3|row2text3|
+```
+
+will render out as:
+
+|header1|header2|header3|
+|row1text1|row1text3|row1text3|
+|row2text1|row2text3|row2text3|
+
 * * *
 
 
