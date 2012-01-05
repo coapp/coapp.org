@@ -92,19 +92,27 @@
 				<h3><a href="/index.html"><image style="margin:0; padding:0; position:absolute; top:2px; left:-2px;" src="/images/logo-small_32x32.png"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CoApp</a></h3>
 				<ul>
 					<% documents.enumerable().orderBy('order').where(function(each){ return each.url.indexOf('/pages') == 0;}).each(function(each) { %>  
+                        <% if (each.url == "/pages/developers.html" ) { %>
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle">Developers</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pages/developers">Developer Tutorials</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://github.com/coapp"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub" > CoApp Source Repositories</a></li>
+                                <li><a href="http://github.com/coapp-packages"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub"> Package Source Repositories</a></li>
+                                <li class="divider"></li>
+                                <li><a href="https://github.com/coapp/coapp.org/wiki"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub" > Developer Wiki</a></li>
+                                <li><a href="https://github.com/coapp/coapp/issues"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub" > CoApp Bugtracker</a></li>
+                                <li><a href="https://github.com/coapp/devtools/issues"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub" > DevTools Bugtracker</a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://github.com/organizations/coapp"><img style="margin-bottom:-3px;" src="/images/github.png" title="GitHub" >CoApp GitHub Home</a></li>
+                            </ul>
+                        </li>
+                        <% } else { %>
                         <li typeof="sioc:Page" about="<%= each.url %>" class="<%= document.url == each.url ? 'active' : '' %>">
                             <a href="<%= each.url %>" property="dc:title"><%= each.title %></a>
                         </li>
-                        <% if (each.url == "/pages/developers.html" ) { %>
-                        <li class="dropdown" >
-                            <a href="#" class="dropdown-toggle">GitHub</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="http://github.com/coapp">CoApp Source Repositories</a></li>
-                                <li><a href="http://github.com/coapp-packages">Packages Source Repositories</a></li>
-                                <li class="divider"></li>
-                                <li><a href="http://github.com/organizations/coapp">Organization</a></li>
-                            </ul>
-                        </li>
+
                         <% } %>
                     <% }); %>
 				</ul>
