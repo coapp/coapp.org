@@ -280,7 +280,7 @@ license[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 
 application[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     include: {
-         «/*(kt):(files-reference)*/«#filesreference
+         «/*(kt):(files-reference)*/«#filesreference»
     }
 }
 
@@ -288,18 +288,18 @@ application[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 
 #### assemblies / assembly
 
-``` c# 
+``` c#
 // easy way to do assemblies, instead of listing them one-off 
 // this creates individual assembly entries, one for each file.
 assemblies {
     include: {
-        «/*(kt):(files-reference)*/«#filesreference
+        «/*(kt):(files-reference)*/«#filesreference»
     };
 }
 
 assembly[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     include: { 
-        «/*(kt):(files-reference)*/«#filesreference
+        «/*(kt):(files-reference)*/«#filesreference»
     };
     //if this is an "any" package, don't allow more than one thing here
 }
@@ -307,35 +307,35 @@ assembly[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 ```
 
 #### developer-library
-``` c# 
+``` c#
 developer-library[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // specifies headers, libs, docs, "include"
 }
 ```
 
 #### service
-``` c# 
+``` c#
 service[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // like apps, with options to register/start/stop
 }
 ```
 
 #### web-application 
-``` c# 
+``` c#
 web-application {
     // register into a webserver, with a handlers, etc
 }
 ```
 
 #### source-code 
-``` c# 
+``` c#
 source-code[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // specifies the source files 
 }
 ```
 
 #### driver 
-``` c# 
+``` c#
 driver[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // yada-yada
 }
