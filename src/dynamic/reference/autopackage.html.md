@@ -309,7 +309,12 @@ assembly[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 #### developer-library
 ``` c#
 developer-library[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
-    // specifies headers, libs, docs, "include"
+    headers: { 
+    }
+    libs: { 
+    }
+    docs: { 
+    }
 }
 ```
 
