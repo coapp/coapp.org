@@ -50,7 +50,7 @@ All CoApp packages are required to be digitally signed with a certificate.
 ### Standard Rules
 
 #### package
-The package rule contains the manditory data for creating a package.
+The `package` rule contains the manditory data for creating a package.
 
 ``` c#
 package { 
@@ -80,6 +80,9 @@ package {
 |[display-name](!package.displayname)|A cosmetic name for the product being packaged (ie, `"Acme Widgets"` instead of the `"acme.widgets"` [name](#package.name) property) |
 
 #### metadata
+
+The `metadata` rule contains additional cosmetic data about the contents of the package.
+
 ``` c#
 metadata { 
     «description«#metadata.description» : «string«#string»; 
@@ -104,61 +107,88 @@ metadata {
 **Metadata Property Descriptions**
 
 |Property Name|Property Description|
-|[description](!metadata.description)|XXX|
-|[summary](!metadata.summary)|XXX|
-|[icon](!metadata.icon)|XXX|
-|[licenses](!metadata.licenses)|XXX|
-|[author-version](!metadata.authorversion)|XXX|
-|[bug-tracker](!metadata.bugtracker)|XXX|
-|[publish-date](!metadata.publishdate)|XXX|
-|[nsfw](!metadata.nsfw)|XXX|
-|[stability](!metadata.stability)|XXX|
-|[tags](!metadata.tags)|XXX|
-|[contributors](!metadata.contributors)|XXX|
+|[description](!metadata.description)|A full-text description of the software package. Limited HTML may be rendered by the client.|
+|[summary](!metadata.summary)|A short description of the package.|
+|[icon](!metadata.icon)|The [path](#filepath) to an image that can be used as an icon for the package. Must be limited to 256x256. PNG images will preserve alpha channels|
+|[licenses](!metadata.licenses)|One or more [license-references](#licensereference) that specify the license for the package.|
+|[author-version](!metadata.authorversion)|a cosmetic string that contains the version the author has assigned to the product. (ie, this can be `"1.0f"` instead of in the [four-digit-version](#fourdigitversion) `"1.0.9.0"` |
+|[bug-tracker](!metadata.bugtracker)|A URL pointing to the location of a given product's Bug Tracker.|
+|[publish-date](!metadata.publishdate)|The [date](#date) this package is published. Defaults to the current date/time.|
+|[nsfw](!metadata.nsfw)|a [boolean](#boolean) flag that the publisher can set to indicate that the package is "not safe for work". NSFW packages that don't set this will incur my wrath.|
+|[stability](!metadata.stability)|an integer value ranging from -100 (very unstable) to 100 (very stable) to indicate to consumers the relative stability of the contents of the package. |
+|[tags](!metadata.tags)|one or more strings containing arbitrary 'tags' about the product (ie, `tools` ) |
+|[contributors](!metadata.contributors)|one or more [identity-reference](identityreference»)s specifying the contact information of the people who contributed to the package. It is common courtesy to list the original authors of a given open source package.|
 
 
 #### provides
+<p class="alert-message warning"><span class="label success">CoApp 1.0-RC</span> While you can specify this rule, currently it has no effect.<br/></p>
+
+The `provides` rule specifies what features the package provides.
 
 ``` c#
 provides { 
-    feature: «/*(kt):(feature-name)*/«#featurename» = «/*(kt):(feature-version)*/«#featureversion»;
+    «feature«#provides.feature»: «/*(kt):(feature-name)*/«#featurename» = «/*(kt):(feature-version)*/«#featureversion»;
 };
 ```
+**Provides Property Descriptions**
+
+|Property Name|Property Description|
+|[feature](!provides.feature)| the feature property allows the packager to express any number of feature/versions that the given package satisfies |
+
+> TODO: We need to build a feature string registry. 
 
 #### requires
+<p class="alert-message warning"><span class="label success">CoApp 1.0-RC</span> Currently, dependencies only match on packages, feature matching is not yet available.<br/></p>
+
+The `requires` rule allows the publisher to specify what packages are necessary to install this package.
 
 ``` c#
 requires  {
-    package: «/*(kt):(canonical-package-name)*/«#packagename»
+    «package«#requires.package»: «/*(kt):(canonical-package-name)*/«#packagename»;
 
     // exact matches are done in RC 
-    // package: exact = "coapp.developer.toolkit-1.1.0-any-9999AAAABBBBBCCCC",
-    
+    «package: exact«#requires.package.exact» = «/*(kt):(canonical-package-name)*/«#packagename»;
+
     // features are targeted for RC
-    // feature: developer.language.python=2.7, developer.language.python=3.1+;
-    // feature: external.developer.dotnet=4.5;
+    «feature«#requires.feature»: {
+        «/*(kt):(feature-name)*/«#featurename» = «/*(kt):(feature-version-modifier)*/«#featureversion»...
+    };
 }
 ```
 
+**Requires Property Descriptions**
+
+|Property Name|Property Description|
+|[package](!requires.package)|Given a canonical package name, this specifies an explicit dependency on another package. The package-manager may associate the latest binary-compatable version instead of the specified version|
+|[package](!requires.package.exact)|<span class="label success">CoApp 1.0-RC</span> Given a canonical package name, this specifies an explicit dependency on another package, matching the version exactly. |
+|[feature](!requires.feature)|<span class="label success">CoApp 1.0-RC</span> specifies a dependency on given *feature*, with an optional version, or version-plus-modifier.|
+
 #### compatability-policy
-This section defines the previous versions of this software which this version replaces.
-This section is asserting that this version is binary compatable with all replaced versions.
+The `compatability-policy` rule defines the previous versions of this software which this version replaces. This asserts that this version is binary compatable with all replaced versions.
 
 ``` c#
 compatability-policy { 
-    minimum: «/*(kt):(four-digit-version)*/«#fourdigitversion»;
-    maximum: «/*(kt):(four-digit-version)*/«#fourdigitversion»;
-    versions : {
+    «minimum«#compatability-policy.minimum»: «/*(kt):(four-digit-version)*/«#fourdigitversion»;
+    «maximum«#compatability-policy.maximum»: «/*(kt):(four-digit-version)*/«#fourdigitversion»;
+    «versions«#compatability-policy.versions» : {
         «/*(kt):(two-digit-version)*/«#twodigitversion» ...
     }; // if not specified, find the versions by looking at the feeds and finding all the major/minor versions in range.
 };
 ```
+**Compatability Property Descriptions**
+
+|Property Name|Property Description|
+|[minimum](!compatability-policy.minimum)|The lowest [four-digit-version](#fourdigitversion) for which this package is a binary-compatable replacement.|
+|[maximum](!compatability-policy.maximum)|The highest [four-digit-version](#fourdigitversion) for which this package is a binary-compatable replacement.|
+|[versions](!compatability-policy.versions)|a collection of [two-digit-version](#twodigitversion)s between the minimum and maximum versions that have been published|
 
 #### files
 
+The `files` rule allows the publisher to specify groups of files that can be used in other properties.
+
 ``` c#
 files[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
-    root: «/*(kt):(folder-path)*/«#folderpath»;";
+    root: «/*(kt):(folder-path)*/«#folderpath»;;
     
     include: { 
        «/*(kt):(file-mask)*/«#filemask»...
