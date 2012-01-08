@@ -84,9 +84,9 @@ A: Yep.  That's because ... uh, well, let's just say I disagree with how they us
                   publicKeyToken='1fc8b3b9a1e18e3b' />
 ```
 
-Now, as you can plainly see they use version **8.90.50727.42**. Let's assume you want to run an app, and it needs the C++ redist files, and what if moments before, you had installed the C++ redistributables for the first time, with the version number **8.90.50727.40**?  When the application didn't work, you'd think to yourself, but I just installed them (and you' really didn't know what version it was), why is it not working? There isn't an easy way for end-users to track this down, and it makes people go insane.
+Now, as you can plainly see they use version **8.90.50727.42**. Let's assume you want to run an app, and it needs the C++ redist files, and what if moments before, you had installed the C++ redistributables for the first time, with the version number **8.90.50727.40**? When the application didn't work, you'd think to yourself, but I just installed them (and you' really didn't know what version it was), why is it not working? There isn't an easy way for end-users to track this down, and it makes people go insane.
 
-You're probably thinking that well, you need to get the newest build, right?  But you know what? The app probably would have run perfectly with the previous version, and if it was that damn important to have the absolute up-to-the-moment build, they should have given you the updated runtime in the app's installer.
+You're probably thinking that well, you need to get the newest build, right? But you know what? The app probably would have run perfectly with the previous version, and if it was that damn important to have the absolute up-to-the-moment build, they should have given you the updated runtime in the app's installer.
 
 ## Q: What should Visual C++ be doing?
 
@@ -94,7 +94,7 @@ A: Well, in my humble opinion, they should have been binding to version 8.90.0.0
 
 ## Q: The Visual Studio team fixed that in VC10 right?
 
-A: *blink*.  Um... sortof.  The VC team stopped using WinSxS for the C++ runtime.  I don't really agree with what they've done, but heck, maybe I'm just a back-woods hick who doesn't really understand the problem.  After all, how much can you really know about this stuff without one of those fancy college educations?
+A: *blink*.  Um... sortof.  The VC team stopped using WinSxS for the C++ runtime. I don't really agree with what they've done, but heck, maybe I'm just a back-woods hick who doesn't really understand the problem.  After all, how much can you really know about this stuff without one of those fancy college educations?
 
 ## Q: But... you still want to use this for CoApp?
 

@@ -53,7 +53,7 @@ A: Strong naming is not code signing. Although digital signatures are used to ge
 
 If'n you're still having problems, perhaps you should what my pappy always used to tell me:
 
-> Don't try to understand 'em, Just rope, throw, and brand 'em
+> Don't try to understand 'em, Just rope, throw, and brand'em
 
 Now, it's entirely possible he was talkin' about cattle and not code at the time, but I figure it's good advice at the best of times.
 

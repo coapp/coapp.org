@@ -11,14 +11,13 @@ docid: "news:20100414faq"
 
 We had a discussion on the mailing list about maintaining a Symlink to the most recent version of a particular library, and this was of some concern.
 
-The installation directory (where libraries and their associated files) are installed has absolutely zero effect on binding choices for picking up the actual DLL used for a particular shared library.  The directory layout is actually a convenience for a *developer* who wishes to simply use the latest, CoApp packaged version.
+The installation directory (where libraries and their associated files) are installed has absolutely zero effect on binding choices for picking up the actual DLL used for a particular shared library.  The directory layout is actually a convenience for a **developer** who wishes to simply use the latest, CoApp packaged version.
 
-Shared library binding is handled by WinSXS, where a developer chooses a particular version of a library to bind to. So, for example let's say that you want to compile up Python with OpenSSL  0.98h . You can specifically choose the path for the import library by including the version, and you are bound to that version. Now, there is one slight caveat.
+Shared library binding is handled by WinSXS, where a developer chooses a particular version of a library to bind to. So, for example let's say that you want to compile up Python with OpenSSL 0.98h . You can specifically choose the path for the import library by including the version, and you are bound to that version. Now, there is one slight caveat.
 
 WinSXS allows a publisher of a shared library to set the policy of the shared library so that if they put in a bug fix, but do alter the binary interface (ABI) then at run time, the application picks up the latest ("Most recommended") *binary compatible* version of the library.
 
 This means that you bind Python to OpenSSL 0.98h. A bug is found, the publisher of OpenSSL releases 0.98k, and since the ABI hasn't changed, the major & minor versions haven't changed [0][98], just the revision [k]. So once the new library is installed, Python will use it.
-
 
 ## This is the behavior we want
 
