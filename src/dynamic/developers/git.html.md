@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'Setting up Git and GitHub for development on Windows' 
 version: '1.0'
+docid: "developer:git-setup"
 ---
 
 ### Requirements:
