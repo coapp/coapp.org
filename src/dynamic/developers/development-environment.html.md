@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'Setting up the developer environment' 
 version: '1.0'
+docid: "developer:development-environment"
 ---
 ### Requirements
 You'll need the following in order to correctly set up your development environment for working on CoApp:

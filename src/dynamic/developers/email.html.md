@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'Mailing Lists'
 version: '1.0'
+docid: "developer:mailinglist"
 ---
 
 The CoApp mailing list is the place where most of the detailed discussions about CoApp project development occur. It also is the place where users send support requests and e-mail questions which do not fit very well the real-time chats on [IRC](/developers/irc.html) channel.
