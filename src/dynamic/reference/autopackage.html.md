@@ -240,6 +240,19 @@ package-composition[«/*(kt):(reference-declaration)*/«#referencedeclaration»]
 ``` c#
 signing {
     replace-signature: «/*(kt):(boolean)*/«#boolean»; 
+    
+    attributes : { 
+        company=«string«#string»;
+        description=«string«#string»;
+        product-name=«string«#string»;
+        product-version=«/*(kt):(four-digit-version)*/«#fourdigitversion»;
+        file-version=«/*(kt):(four-digit-version)*/«#fourdigitversion»;
+        copyright=«string«#string»;
+        trademark=«string«#string»;
+        title=«string«#string»;
+        comments=«string«#string»;
+    }
+    
     include: { 
         «/*(kt):(files-reference)*/«#filesreference»... 
     };    
@@ -287,6 +300,7 @@ application[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 ```
 
 #### assemblies / assembly
+<p class="alert-message warning"><span class="label success">CoApp 1.0-Rc</span> Native assemblies are currently broken. Fix should be available in the next week.<br/></p>
 
 ``` c#
 // easy way to do assemblies, instead of listing them one-off 
@@ -306,12 +320,32 @@ assembly[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 
 ```
 
+#### manifest
+<p class="alert-message warning"><span class="label success">CoApp 1.0-Rc</span> Native assemblies are currently broken. Fix should be available in the next week.<br/></p>
+
+Adds native manifest entries to PE Binaries to link them to assemblies..
+
+
+``` c#
+manifest[name] {
+    assembly : {
+        «/*(kt):(assembly-reference)*/«#assemblyreference...
+    };
+
+    include {
+        «/*(kt):(files-reference)*/«#filesreference»...
+    }
+}
+```
+
 #### developer-library
+<p class="alert-message warning"><span class="label success">CoApp 1.0-RC</span> While you can specify this rule, currently it has no effect.<br/></p>
+
 ``` c#
 developer-library[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     headers: { 
     }
-    libs: { 
+    libraries: { 
     }
     docs: { 
     }
@@ -319,6 +353,8 @@ developer-library[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 ```
 
 #### service
+<p class="alert-message warning"><span class="label success">CoApp 1.5</span> While you can specify this rule, currently it has no effect.<br/></p>
+
 ``` c#
 service[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // like apps, with options to register/start/stop
@@ -326,6 +362,8 @@ service[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 ```
 
 #### web-application 
+<p class="alert-message warning"><span class="label success">CoApp 1.5</span> While you can specify this rule, currently it has no effect.<br/></p>
+
 ``` c#
 web-application {
     // register into a webserver, with a handlers, etc
@@ -333,6 +371,8 @@ web-application {
 ```
 
 #### source-code 
+<p class="alert-message warning"><span class="label success">CoApp 1.5</span> While you can specify this rule, currently it has no effect.<br/></p>
+
 ``` c#
 source-code[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // specifies the source files 
@@ -340,6 +380,8 @@ source-code[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 ```
 
 #### driver 
+<p class="alert-message warning"><span class="label success">CoApp 1.5</span> While you can specify this rule, currently it has no effect.<br/></p>
+
 ``` c#
 driver[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
     // yada-yada
@@ -351,22 +393,59 @@ driver[«/*(kt):(reference-declaration)*/«#referencedeclaration»] {
 #### Primitive Types
 
 ##### [string](!string) type
+The string type is any [literal string value.][reference:propertysheet#literals].
+
 ##### [date](!date) type
+Dates are specified in ... ? 
+> TODO: Find out what date format we use
+
 ##### [boolean](!boolean) type
+The boolean type is either `true` or `false` .. specifiying anything else may lead to unpredicable results.
+
 ##### [stability-value](!stability) type
+The stability type is an integer ranging from -100 to 100. Negative values are considered less stable, positive values, more stable.
+> TODO: maybe set some guidelines for how much is how much
+
 ##### [url](!url) type
+The URL is any legal url that points to an actual location. Accepted schemes are:
+
+|Scheme|Description|
+|http|HTTP Protocol|
+|https|HTTPS (secure) Protocol|
+|file|local file references, including UNC references.|
+
 ##### [email-address](!email) type
+An email address for a given individual. (i.e. `bob@somewhere.com` .)
+
 ##### [canonical-package-name](!packagename) type
+A package reference in the format:  `name`-`version`-`architecutre`-`publickeytoken`
+
+Example:
+    `coapp.toolkit.1.1.2.1296-any-1231123112311231`
 
 #### Version Types
 
 ##### [two-digit-version](!twodigitversion) class
+Two 16-bit positive integers seperated by a single period. (ie, `1.0` , `4.76` ).
+
+The numbers can range from 0 to 65535.
+
+This is only used in compatability-policy.
+
 ##### [four-digit-version](!fourdigitversion) class
+Four 16-bit positive integers seperated by a periods. (ie, `1.0.0.0` , `4.76.1231.99` ).
+
+The numbers can range from 0 to 65535.
 
 #### Enumeration Types
 
 ##### [architecture](!architecture) enumeration
+
+One of `x86` , `x64` , `any` .
+
 ##### [trim-path](!trimpath) enumeration
+
+One of `none` , `all` , `minimal` .
 
 #### File/Folder Types
 
@@ -394,8 +473,8 @@ Resolved at package build time:
 |`${OneLessThanCurrent}`|   Current version - 1 (used to get the maximum policy version)|
 |`${OutputFilename}`|Filename of the MSI being created (foo-1.2.3.4-x86.msi)|
 |`${Package.Name}`|application name (foo)|
-|`${Package.Version}`||
-|`${Package.Architecture}`||
+|`${Package.Version}`| the four digit version of the package|
+|`${Package.Architecture}`| the architecture of the package|
 |`${Package.Vendor}`||
 |`${Package.PublicKeyToken}`||
 |`${Package.BindingPolicyMinVersion}`||
@@ -411,7 +490,7 @@ Resolved at package build time:
 
 Resolved at install time:
 
-|Macro Variable|Description|
+|Macro Variable|Description|Example|
 |`${apps}`|coapp root directory (typically c:\apps)|
 |`${installed}`|`${apps}\.installed`|
 |`${cache}`|`${apps}\.cache`|
