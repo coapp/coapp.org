@@ -9,7 +9,7 @@ docid: "news:20100415faq"
 
 (cross-posted to the [mailing list][developer:mailinglist])
 
-Windows Side-by-side (WinSxS) technology is a really shiny piece of technology that is not well enough understood, and often misused. This comes from a variety of reasons, one of which is the documentation-while quite excellent-only makes sense if you actually understand everything about WinSxS before hand. When I started brainstormin' how to make CoApp go, I had an inklin' that WinSxS would solve many of the most painful problems, it was just a matter of me figurin' it out. Like my pappy always used to tell me **"It may not be the easy way, but it's the cowboy way."** ... Well, WinSxS may not be the easy way (yet!), but it will most assuredly be the CoApp way.
+Windows [Side-by-side (WinSxS)](http://en.wikipedia.org/wiki/Side-by-side_assembly) technology is a really shiny piece of technology that is not well enough understood, and often misused. This comes from a variety of reasons, one of which is the documentation-while quite excellent-only makes sense if you actually understand everything about WinSxS before hand. When I started brainstormin' how to make CoApp go, I had an inklin' that WinSxS would solve many of the most painful problems, it was just a matter of me figurin' it out. Like my pappy always used to tell me **"It may not be the easy way, but it's the cowboy way."** ... Well, WinSxS may not be the easy way (yet!), but it will most assuredly be the CoApp way.
 
 ## Q: What exactly is Windows Side-by-side (WinSxS)?
 
