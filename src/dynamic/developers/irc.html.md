@@ -2,6 +2,7 @@
 layout: 'article'
 title: 'IRC (Internet Relay Chat)'
 version: '1.0'
+docid: "developer:irc"
 ---
 
 ### Requirements
