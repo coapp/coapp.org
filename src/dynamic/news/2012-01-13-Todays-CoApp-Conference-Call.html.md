@@ -1,4 +1,4 @@
-As per usual, there will be a CoApp Conference call today  10:30 PST
+As per usual, there will be a CoApp Conference call today  [10:30 PST](http://www.timeanddate.com/worldclock/fixedtime.html?msg=CoApp+Conference+Call&iso=20120113T1030&p1=234&ah=1)
 
 Topics:
 - some ideas about packaging:
