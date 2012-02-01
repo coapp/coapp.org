@@ -1,0 +1,36 @@
+---
+layout: 'default'
+title: 'CoApp Technical Background Information'
+order: 20
+rightsideboxes: ['headlines.inc', 'coapp-connect.inc' ]
+--- 
+# CoApp Technical Background
+
+It should be noted before going too far that this is a reference document detailing what technologies are being used by CoApp, how they are being used, and what new technologies or techniques have been created in order to make the CoApp we know today.
+
+If this is not what you are looking for, you can instead try looking at our [overview of CoApp](/reference/overview.html) for general information about our software.  
+If you are a developer seeking more information on the topics contained herein, you may wish to look through our [in-depth technical discussion](/reference/in-depth-tech.html) regarding the CoApp technologies.
+
+-----
+
+### Topics
+
+1. CoApp:  What it **IS** and is **NOT**.
+2. CoApp:  How does it do what we claim?
+3. CoApp:  Digging deeper...
+
+# CoApp:  What it **IS** and is **NOT**.
+## What CoApp is:
+* CoApp **IS** a package management system for Windows, the likes of which has not been seen before.  CoApp provides a convenient way to distribute, locate, develop, and use software on Windows systems.  Dependencies are tracked and updated seamlessly according to binary compatibility, meaning that any software you run will always be running with the most stable and secure versions available **without** breaking your programs.
+
+
+## What CoApp is **not**:
+* CoApp is **NOT** the FreeBSD Ports collection, or any other source code distribution system.  While a source package may be available for a given piece of software, it is still distributed in the CoApp Package format and is handled internally in a functionally identical manner to binary packages.  In addition, we *expect* that there will be many packages available for binary executables that do not have an equivilant source package.  We're not trying to say that you can't grab only source packages and "roll your own" binaries, but we won't promise that everything will have source available to the public.
+
+* CoApp is **NOT** a source code versioning system.  As stated above, there may be source packages available for various software, but these are static, atomic packages containing a snapshot of that source code, not its versioning and history.  You're looking for something like SVN, git, or CVS (which we DO have installation packages for, if you need them).
+
+* CoApp is **NOT** GetIt.  CoApp will likely not list big brand-name closed-source products, at least not right away.  We have no need or desire to try packaging up these large programs and declaring them proper CoApp packages.  If those various companies wish to use CoApp to package their own software, that's fine with us, but it will be their signatures on the packages and I really hope they slim down the installers for everyday use and rethink their update schemes.
+
+* CoApp is **NOT** dpkg.  CoApp shares some characteristics with dpkg and there is the potential for dpkg to someday change its ways to solve many of the problems we have solved with CoApp, but these two systems are NOT equal.  Our team has put in a great deal of effort to ensure that there can be **_no package collisions_**, either during dependency resolution or at install-time.  You want to have 6 or 10 versions of PHP being used at the same time?  We think you're crazy, but you can absolutely do that.  You have 20 programs all requiring different versions of zlib?  Not a problem.
+
+
