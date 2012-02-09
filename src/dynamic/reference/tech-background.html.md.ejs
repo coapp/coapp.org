@@ -1,0 +1,83 @@
+---
+layout: 'default'
+title: 'CoApp Technical Background Information'
+order: 20
+rightsideboxes: ['headlines.inc', 'coapp-connect.inc' ]
+--- 
+# CoApp Technical Background
+
+It should be noted before going too far that this is a reference document detailing what technologies are being used by CoApp, how they are being used, and what new technologies or techniques have been created in order to make the CoApp we know today.
+
+If this is not what you are looking for, you can instead try looking at our [overview of CoApp][overview] for general information about our software.  
+If you are a developer seeking more information on the topics contained herein, you may wish to look through our [in-depth technical discussion][in-depth] regarding the CoApp technologies.
+
+-----
+
+### Topics
+
+1. CoApp:  What it **IS** and is **NOT**.
+2. CoApp:  How does it do what we claim?
+3. CoApp:  Enterprise and consumer friendly.
+4. CoApp:  Digging deeper...
+
+## 1) CoApp:  What it **IS** and is **NOT**.
+### What CoApp is **not**:
+* CoApp is **NOT** the FreeBSD Ports collection, or any other source code distribution system.  While a source package may be available for a given piece of software, it is still distributed in the CoApp Package format and is handled internally in a functionally identical manner to binary packages.  In addition, we *expect* that there will be many packages available for binary executables that do not have an equivilant source package.  We're not trying to say that you can't grab only source packages and "roll your own" binaries, but we won't promise that everything will have source available to the public.
+
+* CoApp is **NOT** a source code versioning system.  As stated above, there may be source packages available for various software, but these are static, atomic packages containing a snapshot of that source code, not its versioning and history.  You're looking for something like SVN, git, or CVS (which we DO have installation packages for, if you need them).
+
+* CoApp is **NOT** GetIt, or AppSnap, or any other Windows apt-get clone.  Unlike apt-get look-alikes for Windows, CoApp focuses on packages of very small granularity.  This means that a specific individual package should contain ONLY those files which it needs AND which are not part of a dependency package.  This means that even if you install 40+ programs that depend on zlib, you will only ever need 1 copy of the zlib libraries installed on the system, and that none of those 40+ other packages will include the zlib package.  This keps individual packages slim and easily transferable over even the lowest bandwidth connection.  Additionally, this means that if you copy all of the installers to a flash drive (or even a floppy disk, for the sake of argument) you only have 1 copy of each shared library that you need to transfer, instead of 1 copy for every program you want to install on the target computer.
+
+* CoApp is **NOT** dpkg.  CoApp shares some characteristics with dpkg and there is the potential for dpkg to someday change its ways to solve many of the problems we have solved with CoApp, but these two systems are NOT equal.  Our team has put in a great deal of effort to ensure that there can be **_no package collisions_**, either during dependency resolution or at install-time.  You want to have 6 or 10 versions of PHP being used at the same time?  We think you're crazy, but you can absolutely do that.  You have 20 programs all requiring different versions of zlib?  Not a problem.
+
+### What CoApp is:
+* CoApp **IS** a package management system for Windows, the likes of which has not been seen before.  CoApp provides a convenient way to distribute, locate, develop, and use software on Windows systems.  Dependencies are tracked and updated seamlessly according to binary compatibility, meaning that any software you run will always be running with the most stable and secure versions available **without** breaking your programs.
+
+* CoApp **IS** a unique set of tools that allows developers to painlessly and seamlessly leverage powerful features provided by the Windows operating system as well as effortlessly package and distribute software across multiple Windows platforms.
+
+* CoApp **IS** open source, meaning that anyone with a desire to do so can see *exactly* how CoApp does what it does.  No tricks here.  No black boxes or magic curtains.  If you would like to help contribute to the project, just drop us a line [on IRC][irc].
+
+## 2) CoApp:  How does it do what we claim?
+The greatest single technology that allows us to make these claims of greatness is [Windows Side-by-Side][SxS].  CoApp also makes gratuitous use of symbolic links in the file system to avoid keeping unnecessary copies of files and thus reducing the drivespace footprint of any packages that are installed.  In addition to both of these items, there are a number of tools and functions that were purpose-built by the CoApp team to ensure seamless operation.
+
+### Windows Side-by-Side technology
+Windows Side-by-Side (SxS) has been built into Windows since XP with a direct intention to reduce or remove [DLL hell][].  SxS allows multiple versions of an assembly (library, executable, or other versioned files) to be installed and used simultaneously on the same system.  SxS also provides controls for declaring version forwarding rules of an assembly, meaning that if version 1.0.0.0 of something is installed but has a bug, installing version 1.0.1.3 (which fixes the bug) can include a rule saying that all versions 1.0.0.0 - 1.0.1.2 may instead use version 1.0.1.3 and be fully compatible.  If a piece of software was compiled with and is only aware of version 1.0.0.0 then when it requests this version of the assembly from Windows, it will instead be given version 1.0.1.3 automatically.  Thus SxS allows any software to always use the most recent versions available of any libraries or other assemblies that are compatible with the versions the software requires.
+
+In addition to this, all assemblies stored in SxS must be digitally signed and can be identified by hash of the public key of the signer (publisher).  In this way assembly collisions can be avoided, as a collision would require two assemblies with the same name, version, and public key signature hash.  While this is not impossible, it is sufficiently unlikely that we're willing to ignore it until it becomes a problem (our tester assures us that computers will likely be obsolete by then).  Not only does this allow multiple versions of an assembly and from different publishers to be installed and used simultaneously, but it also ensures that software which references a specific publisher's assembly can never be poisoned by another publisher's assembly on the same system.
+
+Unfortunately, the tools available to create and install SxS libraries and executables are generally difficult at best to use, and the requirements to actually place such assemblies into SxS make doing so manually a herculean task.  This has resulted in almost nobody using SxS for versioning their assemblies.  Use of SxS is sufficiently difficult out-of-the-box that Microsoft actually *stopped* using SxS to store their Visual C runtime library after VC9 (see *Differences between Visual C++ 2008 and Visual C++ 2010* on [this page][msvcr10]).  Our solution to this problem was to remove all of the difficulty and confusion in using SxS and build the CoApp toolset to make use of SxS seamlessly in the background of everything else.  This has imposed some relatively minor requirements on developers seeking to publish packages with CoApp (such as the requirements of code signing and versioning), but we have done our best to make even these requirements painless.  More information on how to make your own packages can be found [here][publish].
+
+### Windows symbolic links (Symlinks)
+Anyone familiar with \*nix systems likely knows what symlinks are.  What may not be so well known is that symlinks have been supported in the Windows operating system since XP.  Much like SxS, symlinks have been available for quite a while, but are generally less than intuitive to use on Windows unless you already know how.  CoApp uses symlinks to provide 'copies' of files in appropriate locations in the file system for easy use and access, while housing the original files in a location that can be easily managed by CoApp itself.  No, we're not trying to hide the actual files from you.  In fact, Windows will tell you exactly where those files are if you actually look at one of the symlinks.  Handling the files in this way provides us the greatest flexibility while also keeping a minimal footprint in actual drivespace.
+
+### Seamless usage
+CoApp has built a number of tools that are intended to make a developer's life easier.  Want to make a SxS assembly but don't want to make it a CoApp package?  We've got a tool for that.  Want to build your project with 2 compilers for 3 different platforms with only one command?  We've got a tool for that.  Want to convert your gcc Makefile into a VC10 project?  We've got a tool for that. *(This one is still under construction.)*
+
+Our aim is to make everything about developing for Windows easier.  If you try out CoApp and find it to be lacking a critical tool or mechanism, please talk to us about it [on IRC][irc] or submit a [feature request][bugs].
+
+## 3. CoApp:  Enterprise and consumer friendly.
+Everyday consumers can feel confident about the software they're installing, as every package in the primary [package repository][repository] is vetted by the CoApp team to ensure that the package is properly signed and that they install and uninstall cleanly without complications.  Enterprise users can fully customize the operation of CoApp to suit their needs, including (but not limited to):
+
+* Disabling access to the primary repository to prevent undesired installs.
+
+* Host a private repository containing only those packages which are desired internally.  This also ensures that this software is always up to date on every computer.
+
+* Lock down package management to a select set of publishers (internal certificates only, perhaps?).
+
+* Automatically push new packages to client machines or virtual servers.  *(coming soon)*
+
+## 4. CoApp:  Digging deeper...
+If you'd like to see the details of the road CoApp has tried to pave over the difficulties in developing for Windows, an [in-depth technical review][in-depth] is available.
+
+
+
+
+[overview]: </reference/overview.html>
+[in-depth]: </reference/in-depth-tech.html>
+[irc]: </developers/irc.html>
+[SxS]: <http://www.wikipedia.org/wiki/Side-by-side_assembly>
+[DLL hell]: <http://www.wikipedia.org/wiki/DLL_hell>
+[msvcr10]: <http://msdn.microsoft.com/en-us/library/dd293574(VS.100).aspx>
+[publish]: </pages/publishers.html>
+[bugs]: <developers/bugs.html>
+[repository]: </pages/packages.html>

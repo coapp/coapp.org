@@ -1,0 +1,85 @@
+---
+layout: 'default'
+title: 'CoApp In-Depth Tech Discussion'
+order: 20
+rightsideboxes: ['headlines.inc', 'coapp-connect.inc' ]
+--- 
+# CoApp:  In-Depth
+
+If you are not a developer and are just looking for general information about CoApp, the page you really want is our [overview of CoApp][overview].
+If you are new to CoApp and the technologies contained therein, it is highly recommended that you first read our [technical background paper][TechRef].
+
+-----
+
+### Topics
+
+1. Windows Side-by-Side
+    * Windows XP
+    * Manifests
+    * Publishers, Public Keys, and Forwarding
+    * Assembly directory trees
+2. Symlinks and special cases
+    * Windows XP
+    * Installation
+3. CoApp tools
+    * ptk
+    * Trace
+    * mkSpec and mkProject
+    * Client-Service interaction
+
+## 1. Windows Side-by-Side
+This is much of the meat of CoApp, and it is by far the most complicated existing system that we try to work with.  The existing tools are documented in such a way that if you already know how everything works then they are wonderful reminder documents, but if you are trying to decipher the workings of SxS for the first time, you will generally end up horribly lost.  We'll have a look at the major problems in SxS that CoApp makes an effort to address for the average developer.
+
+### Windows XP
+It should be noted that only one method was provided on Windows XP to add assemblies to Side-by-Side, and that is during installation with an MSI install file.  For this reason (above all other potential reasons), CoApp packages are .msi files.
+
+### Manifests
+Manifests are required for anything which wishes to reference a SxS assembly.  At first glance they appear merely daunting, but one quickly realizes that some of the rules for their creation are not fully documented, and some of the documented requirements aren't really required.  Failure to produce a perfect manifest results in cryptic errors or a silent failure to work.
+
+In building CoApp we found that we had to produce tools that would generate proper functioning manifests to reference seemingly arbitrary assembles.  Since we had to build such a tool for many of our internal operations to work anyway, we have also provided the manifest generation tool as a stand-alone utility in our DevTools package.  We see no reason why generating manifests needs to be as hard as the original Microsoft developers initially made it, so you are welcome to use this utility (and any others you find useful) even if you have no intention of ever producing a CoApp package.
+
+### Publishers, Public Keys, and Forwarding
+*This is a work in progress.  A problem description will be provided soon.  We are still determining how to correct this issue.*
+
+### Assembly directory trees
+*This is a work in progress.  A problem description will be provided soon.  We are still determining how to correct this issue.*
+
+## 2. Symlinks and special cases
+There are two problems that the CoApp team encountered in the decision to use symlinks for almost everything under the sun.  First was the issue that traditional symlinks (as seen in \*nix and Windows 7) did not exist in Windows XP.  Second was the unfortunate discovery that the Administrator permissions available when installing an MSI file (the chosen format for CoApp packages, for reasons provided earlier in this document) explicitly **deny** the permission to create symlinks.
+
+### Windows XP
+Handling the problem of symlinks on Windows XP was actually fairly straightforward.  XP *does* provide the ability to create hardlinks (a symlink that you can't copy, move, or otherwise handle like a normal file).  We simply check if the system we are on is Windows XP at the time we try to create a symlink, and if it is we create a hardlink instead.  It's not terribly elegant, but it works and as yet does not have any apparent side effects.
+
+### Installation
+Ok, so this was the real killer for CoApp for a couple weeks during initial development.  On Windows Vista and higher if you have User Account Control enabled (which we have to assume everyone does, because we **cannot** require every user of CoApp to disable it if we want to be an acceptable Enterprise application), running an MSI through Windows Installer when not elevated will mean you cannot install to any protected location (system drive root, Program Files, etc.), but allowing Windows Installer to run as an elevated user will actually run the MSI under a *special* subset of Administrator privileges that allows you to install system services (services that run as SYSTEM), write to protected locations, but explicitly **denies** creating symlinks.  We genuinely couldn't believe this when we first discovered it.
+
+The solution came up with was to split the CoApp application into a Client part and a Service part.  In order to maintain something resembling security, we built the Service to intentionally not have network access, and it only communicates via a (local machine only) named pipe.  This resulted in the Service being responsible for anything that actually changes the system (like making symlinks) and the Client being responsible for user interaction and anything needing to talk off-box (thus you can only download something if the user you are logged in as has permission to do so).  We have also introduced security restrictions upon the Service whereby it checks the user connected to the communication pipe to determine if that user actually has permission to do what they're trying to do (install, update, remove, or even just listing packages).  
+
+Our thoughts behind the move to a Client-Server structure can be found in the wiki [here][Service Redesign].
+The Client-Server setup is covered in more detail below in *Client-Service interaction* or on [our wiki][Service Interface]
+
+## 3. CoApp tools
+This section takes a look at some of the more unusual tools that are included as part of either CoApp itself or the CoApp DevTools developer package.
+
+### ptk
+This started out as just a convenient batch scripter to provide slightly better internal functionality than the bare windows command prompt or windows batch files.  It has since grown wildly into a far more complicated and slightly intelligent system to automate building software with a wide variety of tools and across many platforms simultaneously.  We're really not sure quite how that transformation happened, but it did.  The present intention for ptk is to allow a developer to build, sign, package, and publish their software for multiple compilers and/or platforms with a single command.
+*At this time ptk is in the queue to be re-written almost from scratch to perform its newly appointed tasks more effectively (instead of spawning 20 copies of itself to a long list of sequential tasks).*
+
+### Trace
+This is something of a crazy tool if ever there was on.  Trace is capable of watching a process (and all children, direct or indirect) and listing every detail of system interaction that occurs down to individual file reads and writes.  The intended purpose is to be used as part of the mkSpec program (more on that below) to identify what source files and libraries are *actually* touched and used in a build process, what the final outputs are, list every intermediate file in between start and end.  
+*Trace is currently undergoing a rewrite to provide remote reporting functionality for tracing the build of "very large systems".*
+
+### mkSpec and mkProject
+These two tools combine to achieve a long-desired effect in cross-platform development (at least for windows developers).  When used together, mkSpec and mkProject can translate any buildable software project from one project format (eg. Makefile) to another (eg. Visual C++ 2010).  mkSpec works by using specific output from the Trace program (above) to determine what files are reference from what other files, and at what point in the process those references occur.  Using mkSpec on a project that does not successfully build (eg. a failed manual attempt to port from *nix to Windows) can provide information on what the files and project are expecting but are unable to find or accomplish, allowing the developer to correct the identified problems and try again.  The output from mkSpec is a format neutral specification file containing the information detailed above.  This specification file can then be used by mkProject to produce a functioning build file/script for any supported format or compiler.  The intention of these tools is to reduce the time necessary to port an arbitrary project to Windows down to less than a day for almost all cases.
+*These tools are partially complete, but presently on hold pending completion of other tools.*
+
+### Client-Service interaction
+*This section under construction.  General information available [here][Service Redesign] and [here][Service Interface].*
+
+
+
+
+[overview]: </reference/overview.html>
+[TechRef]: </reference/tech-background.html>
+[Service Redesign]: <https://github.com/coapp/coapp.org/wiki/Coapp-engine---engine-as-a-service-redesign>
+[Service Interface]: <https://github.com/coapp/coapp.org/wiki/Coapp-service-engine---interface>
