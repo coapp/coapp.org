@@ -5,6 +5,9 @@ version: '1.0'
 docid: "developer:irc"
 ---
 
+### To Instantly connect to #CoApp IRC via the web
+<span class="label success">New!</span>[Click HERE to Instantly Connect](http://webchat.freenode.net?randomnick=1&channels=CoApp&uio=OT10cnVlJjExPTky11). You need only pass the CAPTCHA, and you will be chatting with us live.
+
 ### Requirements
 
 You'll need the following in order to connect to CoApp IRC channel:
