@@ -185,6 +185,7 @@ Example:
 ``` c#
     product-name: "libjpeg"; // the name of the project is "libjpeg"
 ```   
+
 ##### .buildinfo [#product-info/version](!version)
 The `version` is the original project version of the source code.
 
@@ -202,6 +203,7 @@ Example:
 ``` c#
     original-source-location: "http://ijg.org/files/jpegsr8c.zip"; // the source was downloaded from there
 ```   
+
 ##### .buildinfo [#product-info/original-source-website](!originalsourcewebsite)
 The `original-source-website` is the human-readable website where the developer can go for more information
 
