@@ -45,4 +45,4 @@ Again, this is very similar to the Windows Update installation screen.
 
 The update client is on a very aggressive schedule with the plan of having it committed into the main CoApp repository in about three weeks and to be officially released in the CoApp 1 RC.
 
-Because of this timeline, if you want your suggestions added into the Updater for this initial release, time is of the essence! Please provide feedback as soon as possible on this post, the CoApp [mailing list](https://launchpad.net/~coapp-developers) and/or the [CoApp IRC channel](http://coapp.org/developers/irc.html)
+Because of this timeline, if you want your suggestions added into the Updater for this initial release, time is of the essence! Please provide feedback as soon as possible on this post, the CoApp [mailing list](https://launchpad.net/~coapp-developers), the CoApp [IRC channel](http://coapp.org/developers/irc.html) and/or directly to me on [Twitter](https://twitter.com/wwahammy)
