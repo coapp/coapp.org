@@ -52,11 +52,11 @@ Reviews for products are actually a combination of reviews for every package in 
 
 @[Installing Product](/images/blog/guipreview/installpopup.png)
 
-Installing a product with dependencies will ask the user whether they want to all the dependencies of the product. As you can see in the upper right corner, there is a link, in this case titled "4 packages installing"  to see what packages are being installed. If there is an error during installation, the link will note that an error occurred, turn red and an exclamation point will slowly flash next to the link.
+Installing a product with dependencies will ask the user whether they want all the dependencies of the product. As you can see in the upper right corner, there is a link, in this case titled "4 packages installing"  to see what packages are being installed. If there is an error during installation, the link will note that an error occurred, turn red and an exclamation point will slowly flash next to the link.
 
 @[Install Blocked](/images/blog/guipreview/installblocked.png)
 
-If a product or one of it's dependencies is blocked, the user will be asked to unblock the blocked packages.
+If a product or one of its dependencies is blocked, the user will be asked to unblock the blocked packages.
 
 @[Package details](/images/blog/guipreview/packagedetails.png)
 
