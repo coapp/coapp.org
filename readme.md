@@ -1,7 +1,6 @@
 # CoApp Website Source Code
 
 
-
 This is the soruce code to the new CoApp website, which is statically generated using a fork of [DocPad](https://github.com/balupton/docpad).
 
 Everything you need to rebuild and test the content is including in the repository, so you should be able to just check this out 
