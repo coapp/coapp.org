@@ -88,6 +88,10 @@ autopackage COPKG\MakeTestCert.autopkg
 </code>
 </p> 
 
+<p class="alert-message block-message success">
+Normally, Autopackage can be run from any command prompt but a bug in the CoApp engine requires Autopackage to be run from an elevated command prompt. This bug should be fixed in the next week.
+</p>
+
 ###Where do I go from here?
 
 Over the next few weeks, I will have additional tutorials that describe more features of Autopackage. In the mean time, play around with autopackage and look at the .autopkg files used by CoApp and by the packages in the [coapp-packages organization](https://github.com/coapp-packages). Additionally feel free to email me at (wwahammy@gmail.com), contact me on Twitter [@wwahammy](http://twitter.com/wwahammy) or visit our [IRC channel](http://coapp.org/developers/irc.html). Feel free to ask questions! We know CoApp can be a bit daunting (that's why we have the GSoC projects!) and we're very interested in helping!
