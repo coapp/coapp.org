@@ -151,14 +151,23 @@ function get_pkg_details(latest_pkg, package_ids, pkg_num, pkg_flavors_html, pkg
     
     pkg_details_html += '<div id="more_info_' + pkg_num + '" class="more_content modal hide fade">';// style="display: none;"
     
-    var name = latest_pkg.pkg.name;
+    //var name = latest_pkg.pkg.name;
+    var name = latest_pkg.pkg.displayName;
     var architecture = latest_pkg.pkg.architecture;
     var version = latest_pkg.pkg.version;
+    var flavor = latest_pkg.pkg.flavor;
     
     pkg_details_html += '<div class="modal-header">';
     pkg_details_html += '<a href="#" class="close">&times;</a>';
     
-    var pkg_name = name + ' ' + version + ' ' + architecture;
+    var pkg_name = new Array();
+    
+    if(name != '') pkg_name.push( name );
+    if(version != '') pkg_name.push( version );
+    if(flavor != '') pkg_name.push( flavor );
+    if(architecture != '') pkg_name.push( architecture );
+    
+    var pkg_name = pkg_name.join(' ');
     
     if(link != '') pkg_name = '<a href="' + link + '">' + pkg_name + '</a>';
     
@@ -172,7 +181,7 @@ function get_pkg_details(latest_pkg, package_ids, pkg_num, pkg_flavors_html, pkg
     pkg_details_html += '<li class="active"><a href="#desc_' + pkg_num + '">Description</a></li>';
     if(dependencies.length > 0) pkg_details_html += '<li><a href="#dependencies_' + pkg_num + '">Dependencies</a></li>';
     if(pkg_flavors_html != '') pkg_details_html += '<li><a href="#prev_versions_' + pkg_num + '">Previous Versions</a></li>';
-    pkg_details_html += '<li><a href="#other_' + pkg_num + '">Other</a></li>';
+    pkg_details_html += '<li><a href="#details_' + pkg_num + '">Details</a></li>';
     if(typeof pkg_html != 'undefined') pkg_details_html += '<li><a href="#variations_' + pkg_num + '">Variations</a></li>';
     pkg_details_html += '</ul>';
     
@@ -194,7 +203,7 @@ function get_pkg_details(latest_pkg, package_ids, pkg_num, pkg_flavors_html, pkg
         pkg_details_html += '</div>';
     }
     
-    pkg_details_html += '<div class="tab-pane" id="other_' + pkg_num + '"><pre>';
+    pkg_details_html += '<div class="tab-pane" id="details_' + pkg_num + '"><pre>';
     if(author != '') pkg_details_html += 'Author: ' + author + '\n';
     pkg_details_html += 'Last Updated: ' + latest_updated_date_str + '\n';
     
@@ -222,19 +231,17 @@ function get_pkg_details(latest_pkg, package_ids, pkg_num, pkg_flavors_html, pkg
     
     pkg_details_html += '</div>';//modal-body
     
-    /*
     pkg_details_html += '<div class="modal-footer">';
     if(link != '') pkg_details_html += '<a href="' + link + '" class="btn primary">Download</a>';
     //pkg_details_html += '<a href="javascript:close_modal(\''+pkg_num+'\');" class="btn secondary">Close</a>';
     pkg_details_html += '</div>';
-    */
     
     pkg_details_html += '</div>';//more_info
     
     return pkg_details_html;
 }
 
-function get_pkg_listing(num_variations, pkg_name, variations, pkg_header_html, author, pkg_num, show_details_link, pkg_details_html)
+function get_pkg_listing(pkg_header_html, pkg_num, show_details_link, pkg_details_html)
 {
     var package_html = '';
     
@@ -359,60 +366,12 @@ jQuery(function () {
                 
                 var pkg = feed.items[i].pkg;
                 
-                var name = pkg.name;
+                var name = pkg.shortName;
                 var architecture = pkg.architecture;
                 var version = pkg.version;
                 
-                var variation = '';
-                var flavor = '';
-                
-                var first_dash = name.indexOf('-');
-                
-                var last_begin_bracket = name.lastIndexOf('[');
-                var last_end_bracket = name.lastIndexOf(']');
-                
-                if(first_dash != -1)
-                {
-                    if(last_begin_bracket != -1)
-                    {
-                        if(first_dash > last_end_bracket)
-                        {
-                            variation = name.slice(first_dash + 1);
-                            
-                            if( check_variation_validity(variation) )
-                            {
-                                name = name.slice(0, first_dash);
-                            }
-                        }
-                        else if(first_dash < last_begin_bracket)
-                        {
-                            variation = name.slice(first_dash + 1, last_begin_bracket);
-                            
-                            if( check_variation_validity(variation) )
-                            {
-                                name = name.slice(0, first_dash) + name.slice(last_begin_bracket);
-                                
-                                var last_begin_bracket = name.lastIndexOf('[');
-                                var last_end_bracket = name.lastIndexOf(']');
-                            }
-                        }
-                    }
-                    else
-                    {
-                        variation = name.substr(first_dash + 1);
-                        
-                        if( check_variation_validity(variation) )
-                        {
-                            name = name.slice(0, first_dash);
-                        }
-                    }
-                }
-                
-                if(last_begin_bracket != -1)
-                {
-                    flavor = name.slice(last_begin_bracket + 1, last_end_bracket);
-                    name = name.slice(0, last_begin_bracket);
-                }
+                var variation = pkg.variation;
+                var flavor = pkg.flavor;
                 
                 if(typeof packages[name] == 'undefined')
                 {
@@ -720,16 +679,20 @@ jQuery(function () {
                                     
                                     if(output_normal)
                                     {
+                                        /*
                                         var pkg_display_name = pkg_name;
                                         
                                         if(pkg_variation != '') pkg_display_name += '-' + pkg_variation;
+                                        */
+                                        
+                                        var pkg_display_name = latest_pkg.pkg.displayName;
                                         
                                         pkg_header_html = get_pkg_header(num_flavors, flavors_plain, flavors, num_archs, archs_plain, archs, latest_version, latest_version_link, pkg_display_name);
                                         
                                         if(num_flavors <= 1 && num_archs <= 1 && latest_version != null) var show_details_link = true;
                                         else var show_details_link = false;
                                         
-                                        pkg_html += get_pkg_listing(num_variations, pkg_display_name, variations, pkg_header_html, author, pkg_num, show_details_link);//, pkg_details_html
+                                        pkg_html += get_pkg_listing(pkg_header_html, pkg_num, show_details_link);//, pkg_details_html
                                     }
                                     else
                                     {
@@ -792,12 +755,14 @@ jQuery(function () {
                                     }
                             );
                             
-                            pkg_header_html = get_pkg_header(num_flavors, flavors_plain, flavors, num_archs, archs_plain, archs, latest_version, latest_version_link, pkg_name);
+                            var pkg_display_name = latest_pkg.pkg.displayName;
+                            
+                            pkg_header_html = get_pkg_header(num_flavors, flavors_plain, flavors, num_archs, archs_plain, archs, latest_version, latest_version_link, pkg_display_name);
                             
                             if(num_flavors <= 1 && num_archs <= 1 && latest_version != null) var show_details_link = true;
                             else var show_details_link = false;
                             
-                            pkg_html = get_pkg_listing(num_variations, pkg_name, variations, pkg_header_html, author, base_pkg_num, show_details_link, pkg_details_html);
+                            pkg_html = get_pkg_listing(pkg_header_html, base_pkg_num, show_details_link, pkg_details_html);
                         }
                         
                         pkg_html += all_pkg_details_html;
