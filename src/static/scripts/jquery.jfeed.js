@@ -216,6 +216,10 @@
         publicKeyToken: '',
         displayName: '',
         publisherDirectory: '',
+        
+        flavor: '',
+        variation: '',
+        shortName: '',
 
         bindingPolicyMinVersion: 0,
         bindingPolicyMaxVersion: 0,
@@ -276,6 +280,62 @@
                 this.licenses = licenses;
                 
                 //this.IconLocations = details.find('[nodeName="coapp:IconLocations"]').eq(0).text();
+                
+                var name = this.name;
+                var variation = '';
+                var flavor = '';
+                
+                var first_dash = name.indexOf('-');
+                
+                var last_begin_bracket = name.lastIndexOf('[');
+                var last_end_bracket = name.lastIndexOf(']');
+                
+                if(first_dash != -1)
+                {
+                    if(last_begin_bracket != -1)
+                    {
+                        if(first_dash > last_end_bracket)
+                        {
+                            variation = name.slice(first_dash + 1);
+                            
+                            if( check_variation_validity(variation) )
+                            {
+                                name = name.slice(0, first_dash);
+                            }
+                        }
+                        else if(first_dash < last_begin_bracket)
+                        {
+                            variation = name.slice(first_dash + 1, last_begin_bracket);
+                            
+                            if( check_variation_validity(variation) )
+                            {
+                                name = name.slice(0, first_dash) + name.slice(last_begin_bracket);
+                                
+                                var last_begin_bracket = name.lastIndexOf('[');
+                                var last_end_bracket = name.lastIndexOf(']');
+                            }
+                        }
+                    }
+                    else
+                    {
+                        variation = name.substr(first_dash + 1);
+                        
+                        if( check_variation_validity(variation) )
+                        {
+                            name = name.slice(0, first_dash);
+                        }
+                    }
+                }
+                
+                if(last_begin_bracket != -1)
+                {
+                    flavor = name.slice(last_begin_bracket + 1, last_end_bracket);
+                    name = name.slice(0, last_begin_bracket);
+                }
+                
+                this.shortName = name;
+                this.variation = variation;
+                this.flavor = flavor;
             }
         }
     });
