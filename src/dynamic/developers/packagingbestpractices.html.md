@@ -7,8 +7,17 @@ docid: 'reference:packagingbestpractices'
 ## Package building best practices
 This document sets forth the standard guidelines the CoApp team uses for package building and publishing.  If you are a package developer and wish to have your package considered for direct publishing by the CoApp project, your package **must** follow these guidelines.
 
-### File locations
-All build and configuration files for CoApp tools must reside in the `COPKG` subdirectory of the project root.  The location of any other files is left to the discretion of the developer.
+-----
+
+* [File Locations](#files)
+* [The .buildinfo file](#buildinfo)
+* [*.autopkg files](#autopkg)
+* [General Recommendations](#recommendations)
+
+-----
+
+### File locations[](!files)
+All build and configuration files for CoApp tools must reside in the `COPKG` subdirectory of the project root.  The location of any other files is left to the discretion of the developer.  _Developers forking existing software projects should make an active effort to change as little as possible from the original project files outside of the `COPKG` directory.  This will allow for easier updates and merges from the upstream project over time._
 
 e.g.
 ``` text
@@ -25,7 +34,7 @@ C:\MyProject> dir
 At a minimum, there must exist a `.buildinfo` file and at least one autopackage file (e.g. `MyProject.autopkg`).
 
 
-### The .buildinfo file
+### The .buildinfo file[](!buildinfo)
 The following targets **must** be implemented in the `.buildinfo` file in any order.
 
 1. [test](#Test-Target)
@@ -118,11 +127,43 @@ any {
 ```
 
 
-### *.autopkg files
-These need to be constructed to build any package files you wish to publish.  Proper procedure is to have one `*.autopkg` file for for each msi output.
-_This section under construction_
+### *.autopkg files[](!autopkg)
+Proper procedure dictates one `*.autopkg` file for for each type of package to be produced.  For example, if one wishes to package up a dynamically linked library for use by other software, this would typically have three (3) seperate `.autopkg` files.  Assuming that the library is titled `MyLib`, we would expect to see the following `.autopkg` files in the `COPKG` directory:
+``` text
+MyLib.autopkg				<== Will produce packages containing the end-user dlls
+MyLib-dev.autopkg			<== Will produce packages containing developer linking libraries (.lib files)
+MyLib-dev-common.autopkg	<== Will produce a package containing all relavent headers/include files.
+									Generally also includes any developer documentation.
+```
 
-### Recommended usage
+AutoPackage files may be constructed as described on the [AutoPackage][autopackage] page.
+
+Package developers and maintainers wishing to have the CoApp team build their packages should make an active effort to provide for future extendability in their AutoPackage files.  By this it is meant that `.autopkg` files should be designed to accept and operate based upon variable input for the package flavor information (eg. `vc10`) and the system archetecture (eg. `x64`) as appropriate.  In addition, packaging information that is likely to change over time (such as the package version information) should be placed in a seperate file to be included by the AutoPackage files.
+
+Example `version.inc` - Defines version info:
+``` text
+#define { package-version: "1.12.3.45"; } 
+```
+
+Partial example `MyLib.autopkg` - Includes version info and uses variables to produce package:
+``` text
+@import "version.inc";
+
+#define { 
+    flavor: "${comp??vc10}"; 
+    arch : "${plat??x86}";
+}
+
+package {
+    name: "MyLib[${flavor}]";
+    version: "${package-version}";
+    arch : "${arch}";
+}
+
+...
+```
+
+### General Recommendations[](!recommendations)
 There are a few conventions that the CoApp team suggests using, but which are neither required nor enforced.
 
 #### Output files
@@ -194,4 +235,4 @@ To use the above `.buildinfo` file, we could use any of the following command li
 `ptk build`  ==> will build a debug version of the project in VC10 (the listed default for that target)
 `ptk release --COMPILERS="vc6, vc71"`  ==> assuming that the necessary solution files are in the correct locations, this will build release versions of the project in both VC6 and VC7.1 (VC 2003)
 
-
+[autopackage]: </developers/autopackage.html>
