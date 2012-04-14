@@ -44,12 +44,12 @@ From that prompt, you can switch from an 'x64' to an 'x86' configuration using t
 
 ``` bat
 
-C:\Program Files\Microsoft SDKs\Windows\v7.1> setenv /x86
+C:\Program Files\Microsoft SDKs\Windows\v7.1\bin> setenv /x86
 
 Setting SDK environment relative to C:\Program Files\Microsoft SDKs\Windows\v7.1\.
 Targeting Windows 7 x64 Debug
 
-C:\Program Files\Microsoft SDKs\Windows\v7.1>_
+C:\Program Files\Microsoft SDKs\Windows\v7.1\bin>_
 
 ```
 
@@ -57,12 +57,12 @@ and back:
 
 ``` bat
 
-C:\Program Files\Microsoft SDKs\Windows\v7.1> setenv /x64
+C:\Program Files\Microsoft SDKs\Windows\v7.1\bin> setenv /x64
 
 Setting SDK environment relative to C:\Program Files\Microsoft SDKs\Windows\v7.1\.
 Targeting Windows 7 x64 Debug
 
-C:\Program Files\Microsoft SDKs\Windows\v7.1>_
+C:\Program Files\Microsoft SDKs\Windows\v7.1\bin>_
 
 
 ```
