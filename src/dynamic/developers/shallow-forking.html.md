@@ -7,7 +7,7 @@ version: 1.0
 * [CoApp Toolkit][Toolkit] and [Devtools][Devtools] must be installed
 * A git client (such as msys-git) must be installed
 * [WiX 3.6][WIX] (or higher) must be installed
-* A code-signing certificate (typically a .pfx file) will be required.  [A self-signed certificate is fine][Cert].
+* A code-signing certificate (typically a .pfx file) will be required.  [A self-signed certificate is fine][Certs].
 
 If you have not already set up a default signing certificate for SimpleSigner, it is suggested that you do that now with the following command:
 ``` text
