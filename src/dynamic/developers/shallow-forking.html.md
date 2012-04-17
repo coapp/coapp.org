@@ -4,10 +4,10 @@ title: 'Shallow-Forking'
 version: 1.0
 ---
 ### Forking prerequisites:
-* CoApp Toolkit and Devtools must be installed
+* [CoApp Toolkit][Toolkit] and [Devtools][Devtools] must be installed
 * A git client (such as msys-git) must be installed
-* WiX 3.6 (or higher) must be installed
-* A code-signing certificate (typically a .pfx file) will be required.  A self-signed certificate is fine.
+* [WiX 3.6][WIX] (or higher) must be installed
+* A code-signing certificate (typically a .pfx file) will be required.  [A self-signed certificate is fine][Cert].
 
 If you have not already set up a default signing certificate for SimpleSigner, it is suggested that you do that now with the following command:
 ``` text
@@ -213,4 +213,8 @@ git merge upstream
 git push origin CoApp
 ```
 
+[Toolkit]: <http://coapp.org/install>
+[Devtools]: <http://coapp.org/devtools>
+[WIX]: <http://wix.codeplex.com/releases/view/85409>
 [Packaging]: </developers/packagingbestpractices.html>
+[Certs]: </developers/self-signed-certs.html>
