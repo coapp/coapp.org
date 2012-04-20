@@ -15,7 +15,7 @@ version: 1.0
 
 /////////////////////////
 //
-//  Imports
+//  «Imports«/developers/example-imports.html»
 //
 //  These work very much like C-style #include references, where the contents of
 //   imported files are effectively copied into this one when processing.
@@ -26,9 +26,9 @@ version: 1.0
 //                     packages you may build.  This often contains at least
 //                     an 'identity' role.
 //
-@import "version.inc";
-@import "compat.inc" ;
-@import "outercurve.inc";
+@import "«version.inc«/developers/example-imports.html»";
+@import "«compat.inc«/developers/example-imports.html»" ;
+@import "«outercurve.inc«/developers/example-imports.html»";
 
 /////////////////////////
 //
