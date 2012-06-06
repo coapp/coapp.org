@@ -39,7 +39,8 @@ The following targets **must** be implemented in the `.buildinfo` file in any or
 
 1. [test](#Test-Target)
 2. [package](#Package-Target)
-3. [release](#Release-Target)
+3. [commit-version](#commit-version)\*
+4. [release](#Release-Target)
 
 The following targets _should_ be implemented in the `.buildinfo` file.
 
@@ -50,7 +51,7 @@ The following targets _should_ be implemented in the `.buildinfo` file.
 5. [any](#Any-Target)  (if applicable)
 
 #### [test](!Test-Target) target
-This target should depend on the [Release](#Release-Target), and then run any project-specific tests that the developer provides.  _**\*It is expected that developers will provide tools and/or libraries for testing the function of their software.  The CoApp team WILL NOT perform additional tests on arbitrary packages before release.  Failure to provide testing functionality is grounds for removal from publishing by the CoApp team.\***_
+This target should depend on the [release](#Release-Target), and then run any project-specific tests that the developer provides.  _**\*It is expected that developers will provide tools and/or libraries for testing the function of their software.  The CoApp team WILL NOT perform additional tests on arbitrary packages before release.  Failure to provide testing functionality is grounds for removal from publishing by the CoApp team.\***_
 
 Example:
 ``` text
@@ -63,15 +64,23 @@ MyTestProg.exe -doStuff";
 ```
 
 #### [package](!Package-Target) target
-This required target should call the [Sign](#Sign-Target) target (if present) and [Release](#Release-Target) target (as appropriate for the [Sign](#Sign-Target) target), followed by any post-build actions necessary to produce all intended final package files.  This includes running `AutoPackage` with any relevant `*.autopkg` files.
+This required target should call the [sign](#Sign-Target) target (if present) and [release](#Release-Target) target (as appropriate for the [Sign](#Sign-Target) target), followed by any post-build actions necessary to produce all intended final package files.  This includes running `AutoPackage` with any relevant `*.autopkg` files.  When this target is run without additional parameters, it must also increase any relavent version number used for packaging.  An optional parameter (such as `--noversion=true`) may be included which will allow skipping reversioning.  This target must be able to run successfully immediately following a call to the [test](#Test-Target) target.  An optional parameter of `--built=true` may skip calling the [release](#Release-Target) target at the package maintainer's discretion.
 
 Example:
 ``` text
 package {
     uses: sign;
-    build-command: @"autopackage.exe COPKG\*.autopkg";
+    build-command: @"
+        echo #define { package-version: ${package-version++}; } > COPKG\version.inc
+        autopackage.exe COPKG\*.autopkg
+    ";
 }
 ```
+
+#### [commit-version](!commit-version)\* target
+\* _This target is only required if no `version.inc` file is maintained to track the package version._
+This target may assume that the `package` target has already been run.  When complete, this target must have performed a `git commit`, including any relavent files and an appropriate commit message.
+
 
 #### [release](!Release-Target) target
 This required target is expected to set necessary environment variables, then either call the appropriate [x86](#x86-Target), [x64](#x64-Target), and/or [Any](#Any-Target) targets or provide direct build commands to produce officially releasable binaries/libraries/etc. for the project.
