@@ -2,3 +2,6 @@ out/
 tmp/
 *.suo
 *.user
+daemon/bin
+daemon/obj
+src/static/web.config
