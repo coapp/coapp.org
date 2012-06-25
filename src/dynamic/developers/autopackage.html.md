@@ -1,7 +1,7 @@
 ---
 layout: 'article'
 title: 'Making AutoPackage Files'
-version: 0.6
+version: 0.7
 ---
 
 This document details the thought process for generating a `.autopkg` file to produce the desired output.  For details on all possible fields of an AutoPackage file, [look here][ref-autopackage].
@@ -22,6 +22,7 @@ The documentation on this page is based upon CoApp.Devtools version 1.2.0.108.
         * [developer-library](#devlib-role)
         * [assembly](#assembly-role)
 * [Frequently Used Rules](#frequent)
+ 	* [metadata](#metadata-rule)
 * [Other Optional Rules](#optional)
 
 -----
@@ -32,7 +33,7 @@ The documentation on this page is based upon CoApp.Devtools version 1.2.0.108.
 This contains much of the basic descriptive information about a package.
 ``` c#
 package {
-    name: "MyPackage";	// Name or title of package.  This is also called the "common name"
+    name: "MyPackage";	// Name or title of package.  This is also called the "common name" must only use ascii 								//letters, numbers, underscores and periods
     version: "1.2.3.4";			/* Must be a 4-part version string:  "a.b.c.d"
     								a = Major version
     								b = Minor version
@@ -44,8 +45,17 @@ package {
     							   Software with only 2- or 3-part versions should be left-justified, with
                                     the build and revision numbers padded out to form a 4-part version.
     							   As a general rule, the build number should never be less than "1".
+    							   If not provided it will be extracted from the first binary file in the package. If no file exists, package will not build.
     							*/
-    arch: [x86 | x64 | any];	// Any particular package should be for exactly ONE of these architectures.
+    arch: [x86 | x64 | any];	/* Any particular package should be for exactly ONE of these architectures. If not 											provided it will be extracted from the first binary file in the package. If no file exists, 										package will not build */
+    
+    
+    /* optional properties */
+    display-name: "any name"; /* a user friendly name, any string that is less than 260 characters I believe.*/
+    
+    location: http://coapp.org/repository/${OutputFilename}; /* url to the location where package can be downloaded 																		from.*/
+    feed: http://coapp.org/repository/packages.atom.xml; /* url to the feed where this and newer version of the package 																can be found. */
+    publisher: "publisher name"; 						// the name of a group or person publishing the package
 }
 ```
 
@@ -140,6 +150,7 @@ requires {
         "LibA-2-x86-1111222233334444",
         "LibB-9.1-x86-ffff0000ffff0000"
     };
+    //packages can be less specific
 }
 ```
 <span class="label warning">Note!</span>  Please note that the version listed is a partial version and not a 4-part version.  Providing a full 4-part version in the package identifier will bind against that **EXACT** version, and will not accept an alternate (binary compatable) installation.  By providing a partial version, CoApp will look for any binary compatable version of the package specified that is at least the version specified.
@@ -150,7 +161,7 @@ If your package links to assemblies in another CoApp package, it may be necessar
 manifest[zlib] {
     assembly : {
         // This is the assembly name to reference.
-        // It must be the name of an assembly from a package in the "requires" rule. (see «assembly role«#assembly-role» below)
+        // It must be the name of an assembly from a package in the "requires" rule. (see ï¿½assembly roleï¿½#assembly-roleï¿½ below)
         "zlib[vc10]"
     };
 
@@ -208,7 +219,7 @@ developer-library[<LibName>] {
 
 ## [Frequently Used Rules](!frequent)
 
-#### metadata
+#### [metadata](!metadata-rule)
 
 #### compatability-policy
 
