@@ -74,7 +74,7 @@ namespace Handlers {
                     var count = json.commits.Count;
                     var doSiteRebuild = false;
                     for (int i = 0; i < count; i++) {
-                        string username = json.commits[i].author.name.Value;
+                        string username = json.commits[i].author.email.Value;
                         var atSym = username.IndexOf('@');
                         if( atSym > -1 ) {
                             username = username.Substring(0, atSym);
