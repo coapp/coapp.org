@@ -22,7 +22,7 @@ namespace Handlers {
     using CoApp.Toolkit.Collections;
     using CoApp.Toolkit.Logging;
     using CoApp.Toolkit.Pipes;
-    using CoApp.Toolkit.Tasks;
+    // using CoApp.Toolkit.Tasks;
     using Microsoft.WindowsAzure;
 
     public class CommitMessageHandler : RequestHandler {
