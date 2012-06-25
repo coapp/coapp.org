@@ -74,7 +74,12 @@ namespace Handlers {
                     var count = json.commits.Count;
                     var doSiteRebuild = false;
                     for (int i = 0; i < count; i++) {
-                        var username = json.commits[i].author.username.Value;
+                        string username = json.commits[i].author.name.Value;
+                        var atSym = username.IndexOf('@');
+                        if( atSym > -1 ) {
+                            username = username.Substring(0, atSym);
+                        }
+
                         var commitMessage = json.commits[i].message.Value;
                         var repository = json.repository.name.Value;
                         
