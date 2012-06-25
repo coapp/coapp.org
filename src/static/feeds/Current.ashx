@@ -1,13 +1,7 @@
-﻿<%@ WebHandler Language="C#" Class="Upload" %>
+﻿<%@ WebHandler Language="C#" Class="Current" %>
 
-using System;
-using System.Text;
-using System.Web;
-using CoApp.RepositoryService;
-using CoApp.Toolkit.Extensions;
-using System.Linq;
-using CoApp.Toolkit.Pipes;
+using Handlers;
 
-public class Upload : UploadedFileHandler {
+public class Current : UploadedFileHandler {
     
 }
