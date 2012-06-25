@@ -102,7 +102,6 @@ namespace Handlers {
                             _tweeter.Tweet("{0} => {1} via {2} {3}", repository, commitMessage, handle, commitUrl);
                             Logger.Message("{0} => {1} via {2} {3}", repository, commitMessage, handle, commitUrl);
                         });
-
                     }
                     // just rebuild the site once for a given batch of rebuild commit messages.
                     if( doSiteRebuild) {
