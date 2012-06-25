@@ -67,7 +67,6 @@ namespace Handlers {
                 return;
             }
             Logger.Message("payload = {0}",payload);
-            
                 try {
                     dynamic json = JObject.Parse(payload);
                     Logger.Message("MSG Process begin {0}", json.commits.Count);
