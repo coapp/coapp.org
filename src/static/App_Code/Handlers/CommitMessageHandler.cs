@@ -66,7 +66,7 @@ namespace Handlers {
                 response.Close();
                 return;
             }
-
+            Logger.Message("payload = {0}",payload);
             
                 try {
                     dynamic json = JObject.Parse(payload);
