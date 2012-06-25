@@ -93,6 +93,7 @@ namespace Handlers {
                             if (n < 0) {
                                 commitMessage = commitMessage.Substring(0, (commitMessage.Length + n) - 1) + "\u2026";
                             }
+
                             _tweeter.Tweet("{0} => {1} via {2} {3}", repository, commitMessage, handle, commitUrl);
                             Logger.Message("{0} => {1} via {2} {3}", repository, commitMessage, handle, commitUrl);
                         });
