@@ -66,7 +66,7 @@ namespace Handlers {
 
                     var path = context.Request.CurrentExecutionFilePath;
                     _feedName = Path.GetFileNameWithoutExtension(path).ToLower();
-                    _remoteFeedFilename = (_feedName + ".feed.xml");
+                    _remoteFeedFilename = (_feedName + ".xml");
                     _localfeedLocation = _remoteFeedFilename.GenerateTemporaryFilename();
 
                     _canonicalFeedUrl = new Uri(feedPrefixUrl.HttpSlashed(_feedName));
