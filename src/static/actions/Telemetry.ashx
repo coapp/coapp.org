@@ -17,7 +17,11 @@ using Services;
 public class Telemetry : RequestHandler {
     private const string Container = "telemetry";
     private static XDictionary<string,string> tmpFiles = new XDictionary<string, string>();
-    
+
+    public override void Post(HttpResponse response, string relativePath, CoApp.Toolkit.Pipes.UrlEncodedMessage message) {
+        Get( response, relativePath, message);
+    }
+
     public override void  Get(HttpResponse response, string relativePath, CoApp.Toolkit.Pipes.UrlEncodedMessage message) {
         var blobName = "{0}-{1}-installedfiles.log".format(Environment.GetEnvironmentVariable("COMPUTERNAME"), DateTime.Today.ToString("yyyyMMMdd"));
         var tmpName = tmpFiles.GetOrAdd(blobName, () => (Container + blobName).MD5Hash().GenerateTemporaryFilename());
@@ -33,7 +37,7 @@ public class Telemetry : RequestHandler {
             }
 
             using (var writer = File.AppendText(tmpName)) {
-                writer.WriteLine(message.ToString());
+                writer.WriteLine(message.ToString().UrlDecode());
             }
 
             // blob.UploadByteArray();
