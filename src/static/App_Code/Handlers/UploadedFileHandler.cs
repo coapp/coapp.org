@@ -87,7 +87,8 @@ namespace Handlers {
                 }
             }
         }
-        /*
+        
+
         public override void Get(HttpResponse response, string relativePath, UrlEncodedMessage message) {
             switch (message.Command) {
                 case "add":
@@ -99,7 +100,7 @@ namespace Handlers {
                                 var rf = new RemoteFile(uri, filename);
                                 rf.Get();
                                 if (File.Exists(filename)) {
-                                    return HandleFile(filename).ContinueWith(antecedent => {
+                                    HandleFile(filename).ContinueWith(antecedent => {
                                         if (antecedent.IsFaulted) {
                                             var e = antecedent.Exception.InnerException;
                                             HandleException(e);
@@ -109,7 +110,7 @@ namespace Handlers {
                                             response.StatusCode = antecedent.Result;
                                             response.Close();
                                         }
-                                    });
+                                    }).Wait();
                                 }
                             }
                         } catch {
@@ -118,7 +119,7 @@ namespace Handlers {
                     break;
 
                 case "validate":
-                    return Validate().ContinueWith(antecedent => {
+                    Validate().ContinueWith(antecedent => {
                         if (antecedent.IsFaulted) {
                             var e = antecedent.Exception.InnerException;
                             HandleException(e);
@@ -128,14 +129,14 @@ namespace Handlers {
                             response.StatusCode = antecedent.Result;
                             response.Close();
                         }
-                    });
+                    }).Wait();
+                    break;
             }
 
             response.StatusCode = 500;
             response.Close();
-            return "".AsResultTask();
         }
-        */ 
+        
 
         private CloudBlobContainer RepositoryContainer {
             get {
@@ -151,7 +152,6 @@ namespace Handlers {
 
         private Task<int> Validate() {
             return Task.Factory.StartNew(() => {
-               
                     var feed = new AtomFeed();
                     //load the feed from the _canonicalFeedUrl if we can
                     try {
@@ -174,7 +174,6 @@ namespace Handlers {
                         return 500;
                     }
                     return 200;
-                
             });
         }
 
@@ -189,9 +188,8 @@ namespace Handlers {
 
             var filename = "UploadedFile.bin".GenerateTemporaryFilename();
             File.WriteAllBytes(filename, data);
-            
-            /*
-            return HandleFile(filename).ContinueWith(antecedent => {
+
+            HandleFile(filename).ContinueWith(antecedent => {
                 if (antecedent.IsFaulted) {
                     var e = antecedent.Exception.InnerException;
                     HandleException(e);
@@ -201,8 +199,8 @@ namespace Handlers {
                     response.StatusCode = antecedent.Result;
                     response.Close();
                 }
-            });
-             */
+            }).Wait();
+            filename.TryHardToDelete();
         }
 
         private void InsertIntoFeed(CanonicalName pkgCanonicalName, FourPartVersion pkgVersion, Uri location, AtomItem item = null) {
