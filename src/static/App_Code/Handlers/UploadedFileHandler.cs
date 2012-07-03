@@ -47,7 +47,7 @@ namespace Handlers {
         private string _remoteFeedFilename;
         private string _feedName;
         private bool _initialized;
-        private static readonly IDictionary<string, UploadedFileHandler> FeedHandlers = new XDictionary<string, UploadedFileHandler>();
+        private static IDictionary<string, UploadedFileHandler> FeedHandlers;
 
         public override bool IsReusable {
             get {
@@ -56,7 +56,9 @@ namespace Handlers {
         }
 
         public override void LoadSettings(HttpContext context) {
-            lock (this) {
+            lock (typeof(UploadedFileHandler)) {
+                FeedHandlers = FeedHandlers ?? new XDictionary<string, UploadedFileHandler>();
+
                 if (!_initialized) {
                     var feedPrefixUrl = CloudConfigurationManager.GetSetting("feed-prefix-url");
                     var packagePrefixUrl = CloudConfigurationManager.GetSetting("package-prefix");
@@ -242,9 +244,13 @@ namespace Handlers {
                             // if an older version of this package is in the current feed, 
                             if (i.Model.CanonicalName.DiffersOnlyByVersion(pkgCanonicalName) && i.Model.CanonicalName.Version < pkgVersion) {
                                 // push it to the archive feed.
-                                FeedHandlers["archive"].InsertIntoFeed(i.Model.CanonicalName, i.Model.Version, i.Model.Locations[0]);
-                                // and skip it
-                                continue;
+                                try {
+                                    FeedHandlers["archive"].InsertIntoFeed(i.Model.CanonicalName, i.Model.Version, i.Model.Locations[0]);
+                                    // and skip it
+                                    continue;
+                                } catch {
+                                    
+                                }
                             }
                         }
                         feed.Add(i);
