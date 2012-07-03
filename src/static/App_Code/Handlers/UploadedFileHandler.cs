@@ -144,7 +144,13 @@ namespace Handlers {
                     response.Write(txt);
                     // response.Close();
                     return;
-
+                case "test":
+                    var txt2 = "Hello World"
+                    response.ContentType = "application/text";
+                    response.StatusCode = 200;
+                    response.Write(txt2);
+                    // response.Close();
+                    return;
                     
             }
 
