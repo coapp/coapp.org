@@ -317,6 +317,7 @@ namespace Handlers {
                   return xmlText;
               }*/
 
+            WebPiFeedBlob.WriteText(webPiFeed.ToString());
             return webPiFeed.ToString();
         }
 
