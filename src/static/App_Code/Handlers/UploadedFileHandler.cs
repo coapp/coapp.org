@@ -16,8 +16,10 @@ namespace Handlers {
     using System.IO;
     using System.Linq;
     using System.Net;
+    using System.ServiceModel.Syndication;
     using System.Threading.Tasks;
     using System.Web;
+    using System.Xml;
     using Extensions;
     using Microsoft.WindowsAzure;
     using CoApp.Packaging.Client;
@@ -58,7 +60,7 @@ namespace Handlers {
 
         public override void LoadSettings(HttpContext context) {
             lock (this) {
-                if (!_initialized) {
+                if (!_initialized) { 
                     var feedPrefixUrl = CloudConfigurationManager.GetSetting("feed-prefix-url");
                     var packagePrefixUrl = CloudConfigurationManager.GetSetting("package-prefix");
 
@@ -66,31 +68,33 @@ namespace Handlers {
 
                     var path = context.Request.CurrentExecutionFilePath;
                     _feedName = Path.GetFileNameWithoutExtension(path).ToLower();
-                    _remoteFeedFilename = (_feedName + ".xml");
-                    _localfeedLocation = _remoteFeedFilename.GenerateTemporaryFilename();
+                    if (_feedName != null) {
+                        _remoteFeedFilename = (_feedName + ".xml") ?? "current.xml";
+                        _localfeedLocation = _remoteFeedFilename.GenerateTemporaryFilename();
 
-                    _canonicalFeedUrl = new Uri(feedPrefixUrl.HttpSlashed(_feedName));
-                    _packagePrefixUrl = new Uri(packagePrefixUrl.HttpSlashed());
+                        _canonicalFeedUrl = new Uri(feedPrefixUrl.HttpSlashed(_feedName));
+                        _packagePrefixUrl = new Uri(packagePrefixUrl.HttpSlashed());
 
-                    _packageStorageFolder = null; // we don't store packages locally.
-                    
+                        _packageStorageFolder = null; // we don't store packages locally.
 
-                    _tweeter = new Tweeter(twitterHandle);
 
-                    CurrentTask.Events += new DownloadProgress((remoteLocation, location, progress) => {
-                    });
-                    CurrentTask.Events += new DownloadCompleted((remoteLocation, locallocation) => Logger.Message("Downloaded '{0}' => '{1}'", remoteLocation, locallocation));
+                        _tweeter = new Tweeter(twitterHandle);
 
-                    FeedHandlers.Add(_feedName, this);
+                        CurrentTask.Events += new DownloadProgress((remoteLocation, location, progress) => {
+                        });
+                        CurrentTask.Events += new DownloadCompleted((remoteLocation, locallocation) => Logger.Message("Downloaded '{0}' => '{1}'", remoteLocation, locallocation));
 
-                    _initialized = true;
+                        FeedHandlers.Add(_feedName, this);
+
+                        _initialized = true;
+                    }
                 }
             }
         }
         
 
         public override void Get(HttpResponse response, string relativePath, UrlEncodedMessage message) {
-            switch (message.Command) {
+            switch (message["action"]) {
                 case "add":
                     if (!string.IsNullOrEmpty(message["location"])) {
                         try {
@@ -111,6 +115,7 @@ namespace Handlers {
                                             response.Close();
                                         }
                                     }).Wait();
+                                    return;
                                 }
                             }
                         } catch {
@@ -130,7 +135,17 @@ namespace Handlers {
                             response.Close();
                         }
                     }).Wait();
+                    return;
                     break;
+                case "makewebpi":
+                    var txt = RegenerateWebPI();
+                    response.ContentType = "application/xml";
+                    response.StatusCode = 200;
+                    response.Write(txt);
+                    // response.Close();
+                    return;
+
+                    
             }
 
             response.StatusCode = 500;
@@ -147,6 +162,12 @@ namespace Handlers {
         private CloudBlob FeedBlob {
             get {
                 return new CloudBlob(RepositoryContainer[_remoteFeedFilename]);
+            }
+        }
+
+        private CloudBlob WebPiFeedBlob {
+            get {
+                return new CloudBlob(RepositoryContainer["webpi."+_remoteFeedFilename]);
             }
         }
 
@@ -254,7 +275,43 @@ namespace Handlers {
                     }
                 }
                 SaveFeed(blob,feed);
+
+                // regenerate the webpi feed based on the items in this feed
+                SaveWebPiFeed(feed);
             });
+        }
+
+        private string RegenerateWebPI() {
+            AtomFeed atomFeed = null;
+            
+            atomFeed = LoadFeed(FeedBlob);
+            
+
+            return SaveWebPiFeed(atomFeed);
+        }
+
+        private string SaveWebPiFeed(AtomFeed feed) {
+            var webPiFeed = new WebPIFeed(_canonicalFeedUrl.AbsoluteUri, _feedName, feed.Items.Select( each => each as AtomItem));
+            
+
+            /*
+              using (var xmlDocumentStream = new MemoryStream()) {
+                  XmlWriter writer = XmlWriter.Create(xmlDocumentStream);
+                  Atom10FeedFormatter atom10Formatter = webPiFeed.GetAtom10Formatter();
+                  atom10Formatter.PreserveAttributeExtensions = true;
+                  atom10Formatter.PreserveElementExtensions = true;
+                  
+                  atom10Formatter.WriteTo(writer);
+                  writer.WriteEndDocument();
+                  writer.Close();
+                  var xmlText = xmlDocumentStream.PrettyXml();
+                  
+                  // WebPiFeedBlob.Lock(blob => blob.WriteText(xmlText));
+                  WebPiFeedBlob.WriteText(xmlText);
+                  return xmlText;
+              }*/
+
+            return webPiFeed.ToString();
         }
 
         private AtomFeed LoadFeed(CloudBlob blob) {
