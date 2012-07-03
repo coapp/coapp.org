@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CoApp.Developer.Toolkit, Version=1.2.0.313, Culture=neutral, PublicKeyToken=1e373a58e25250cb, processorArchitecture=MSIL" />
-    <Reference Include="CoApp.Toolkit, Version=1.2.0.430, Culture=neutral, PublicKeyToken=1e373a58e25250cb, processorArchitecture=MSIL" />
+    <Reference Include="CoApp.Toolkit, Version=1.2.0.442, Culture=neutral, PublicKeyToken=1e373a58e25250cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ServiceBus, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-06\ref\Microsoft.ServiceBus.dll</HintPath>

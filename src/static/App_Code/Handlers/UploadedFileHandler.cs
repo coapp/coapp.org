@@ -16,24 +16,21 @@ namespace Handlers {
     using System.IO;
     using System.Linq;
     using System.Net;
-    using System.ServiceModel.Syndication;
     using System.Threading.Tasks;
     using System.Web;
-    using System.Xml;
-    using Extensions;
-    using Microsoft.WindowsAzure;
     using CoApp.Packaging.Client;
     using CoApp.Packaging.Common;
     using CoApp.Packaging.Common.Model.Atom;
-    using Microsoft.WindowsAzure.StorageClient;
-    using Services;
     using CoApp.Toolkit.Collections;
-    using CoApp.Toolkit.Configuration;
     using CoApp.Toolkit.Extensions;
     using CoApp.Toolkit.Logging;
     using CoApp.Toolkit.Pipes;
     using CoApp.Toolkit.Tasks;
     using CoApp.Toolkit.Win32;
+    using Extensions;
+    using Microsoft.WindowsAzure;
+    using Microsoft.WindowsAzure.StorageClient;
+    using Services;
 
     public class UploadedFileHandler : RequestHandler {
         private Tweeter _tweeter;
@@ -41,16 +38,16 @@ namespace Handlers {
         private string _packageStorageFolder;
         private Uri _packagePrefixUrl;
         private Uri _canonicalFeedUrl;
+
         private static Lazy<string> _packageContainerName = new Lazy<string>(() => {
             var result = CloudConfigurationManager.GetSetting("package-storage-container");
             return string.IsNullOrEmpty(result) ? "repository" : result;
         });
 
-        private string _remoteFeedFilename; 
+        private string _remoteFeedFilename;
         private string _feedName;
         private bool _initialized;
         private static readonly IDictionary<string, UploadedFileHandler> FeedHandlers = new XDictionary<string, UploadedFileHandler>();
-
 
         public override bool IsReusable {
             get {
@@ -60,7 +57,7 @@ namespace Handlers {
 
         public override void LoadSettings(HttpContext context) {
             lock (this) {
-                if (!_initialized) { 
+                if (!_initialized) {
                     var feedPrefixUrl = CloudConfigurationManager.GetSetting("feed-prefix-url");
                     var packagePrefixUrl = CloudConfigurationManager.GetSetting("package-prefix");
 
@@ -77,7 +74,6 @@ namespace Handlers {
 
                         _packageStorageFolder = null; // we don't store packages locally.
 
-
                         _tweeter = new Tweeter(twitterHandle);
 
                         CurrentTask.Events += new DownloadProgress((remoteLocation, location, progress) => {
@@ -91,9 +87,13 @@ namespace Handlers {
                 }
             }
         }
-        
 
         public override void Get(HttpResponse response, string relativePath, UrlEncodedMessage message) {
+            if (string.IsNullOrEmpty(message["action"])) {
+                response.StatusCode = 200;
+                response.Write("No Action Specified."); 
+            }
+
             switch (message["action"]) {
                 case "add":
                     if (!string.IsNullOrEmpty(message["location"])) {
@@ -151,13 +151,11 @@ namespace Handlers {
                     response.Write(txt2);
                     // response.Close();
                     return;
-                    
             }
 
             response.StatusCode = 500;
             response.Close();
         }
-        
 
         private CloudBlobContainer RepositoryContainer {
             get {
@@ -173,44 +171,44 @@ namespace Handlers {
 
         private CloudBlob WebPiFeedBlob {
             get {
-                return new CloudBlob(RepositoryContainer["webpi."+_remoteFeedFilename]);
+                return new CloudBlob(RepositoryContainer["webpi." + _remoteFeedFilename]);
             }
         }
 
         private Task<int> Validate() {
             return Task.Factory.StartNew(() => {
-                    var feed = new AtomFeed();
-                    //load the feed from the _canonicalFeedUrl if we can
-                    try {
-                        FeedBlob.Lock(blob => {
-                            var originalFeed = LoadFeed(blob);
-                            foreach (AtomItem i in originalFeed.Items.Where(each => each is AtomItem)) {
-                                // drop dead urls
-                                i.Model.Feeds = i.Model.Feeds.Distinct().Where(Peek).ToXList();
-                                i.Model.Locations = i.Model.Locations.Distinct().Where(Peek).ToXList();
-                                foreach (var l in i.Links.ToArray().Where(each => !Peek(each.Uri))) {
-                                    i.Links.Remove(l);
-                                }
-                                if (i.Model.Locations.Any()) {
-                                    feed.Add(i);
-                                }
+                var feed = new AtomFeed();
+                //load the feed from the _canonicalFeedUrl if we can
+                try {
+                    FeedBlob.Lock(blob => {
+                        var originalFeed = LoadFeed(blob);
+                        foreach (AtomItem i in originalFeed.Items.Where(each => each is AtomItem)) {
+                            // drop dead urls
+                            i.Model.Feeds = i.Model.Feeds.Distinct().Where(Peek).ToXList();
+                            i.Model.Locations = i.Model.Locations.Distinct().Where(Peek).ToXList();
+                            foreach (var l in i.Links.ToArray().Where(each => !Peek(each.Uri))) {
+                                i.Links.Remove(l);
                             }
-                            SaveFeed(blob,feed);
-                        });
-                    } catch {
-                        return 500;
-                    }
-                    return 200;
+                            if (i.Model.Locations.Any()) {
+                                feed.Add(i);
+                            }
+                        }
+                        SaveFeed(blob, feed);
+                    });
+                } catch {
+                    return 500;
+                }
+                return 200;
             });
         }
 
         private static readonly PackageManager _packageManager = new PackageManager();
 
-        public override void  Put(HttpResponse response, string relativePath, byte[] data) {
+        public override void Put(HttpResponse response, string relativePath, byte[] data) {
             if (data.Length < 1) {
                 response.StatusCode = 500;
                 response.Close();
-                return ;
+                return;
             }
 
             var filename = "UploadedFile.bin".GenerateTemporaryFilename();
@@ -280,7 +278,7 @@ namespace Handlers {
                         feed.Add(item);
                     }
                 }
-                SaveFeed(blob,feed);
+                SaveFeed(blob, feed);
 
                 // regenerate the webpi feed based on the items in this feed
                 SaveWebPiFeed(feed);
@@ -289,33 +287,20 @@ namespace Handlers {
 
         private string RegenerateWebPI() {
             AtomFeed atomFeed = null;
-            
-            atomFeed = LoadFeed(FeedBlob);
-            
 
-            return SaveWebPiFeed(atomFeed);
+            var result = "FAILURE?";
+            // atomFeed = LoadFeed(FeedBlob);
+            FeedBlob.Lock(blob => {
+                atomFeed = LoadFeed(blob);
+                result = SaveWebPiFeed(atomFeed);
+            });
+
+            //return SaveWebPiFeed(atomFeed);
+            return result;
         }
 
         private string SaveWebPiFeed(AtomFeed feed) {
-            var webPiFeed = new WebPIFeed(_canonicalFeedUrl.AbsoluteUri, _feedName, feed.Items.Select( each => each as AtomItem));
-            
-
-            /*
-              using (var xmlDocumentStream = new MemoryStream()) {
-                  XmlWriter writer = XmlWriter.Create(xmlDocumentStream);
-                  Atom10FeedFormatter atom10Formatter = webPiFeed.GetAtom10Formatter();
-                  atom10Formatter.PreserveAttributeExtensions = true;
-                  atom10Formatter.PreserveElementExtensions = true;
-                  
-                  atom10Formatter.WriteTo(writer);
-                  writer.WriteEndDocument();
-                  writer.Close();
-                  var xmlText = xmlDocumentStream.PrettyXml();
-                  
-                  // WebPiFeedBlob.Lock(blob => blob.WriteText(xmlText));
-                  WebPiFeedBlob.WriteText(xmlText);
-                  return xmlText;
-              }*/
+            var webPiFeed = new WebPIFeed(_canonicalFeedUrl.AbsoluteUri, _feedName, feed.Items.Select(each => each as AtomItem));
 
             WebPiFeedBlob.WriteText(webPiFeed.ToString());
             return webPiFeed.ToString();
@@ -325,7 +310,7 @@ namespace Handlers {
             try {
                 blob.CopyToFile(_localfeedLocation);
                 if (!string.IsNullOrEmpty(_localfeedLocation) && File.Exists(_localfeedLocation)) {
-                    return AtomFeed.LoadFile(_localfeedLocation) ?? new AtomFeed() ;
+                    return AtomFeed.LoadFile(_localfeedLocation) ?? new AtomFeed();
                 }
             } catch {
             }
@@ -418,7 +403,7 @@ namespace Handlers {
         }
 
         private void CopyFileToDestination(string filename, string targetFilename, Package pkg) {
-            RepositoryContainer[targetFilename].Lock( blob => {
+            RepositoryContainer[targetFilename].Lock(blob => {
                 blob.CopyFromFile(filename);
             });
 
