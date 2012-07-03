@@ -245,9 +245,11 @@ namespace Handlers {
                             if (i.Model.CanonicalName.DiffersOnlyByVersion(pkgCanonicalName) && i.Model.CanonicalName.Version < pkgVersion) {
                                 // push it to the archive feed.
                                 try {
-                                    FeedHandlers["archive"].InsertIntoFeed(i.Model.CanonicalName, i.Model.Version, i.Model.Locations[0]);
-                                    // and skip it
-                                    continue;
+                                    if (FeedHandlers["archive"] != null) {
+                                        FeedHandlers["archive"].InsertIntoFeed(i.Model.CanonicalName, i.Model.Version, i.Model.Locations[0]);
+                                        // and skip it
+                                        continue;
+                                    }
                                 } catch {
                                     
                                 }
