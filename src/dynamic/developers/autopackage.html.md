@@ -1,13 +1,13 @@
 ---
 layout: 'article'
 title: 'Making AutoPackage Files'
-version: 0.7
+version: 0.7.1
 ---
 
 This document details the thought process for generating a `.autopkg` file to produce the desired output.  For details on all possible fields of an AutoPackage file, [look here][ref-autopackage].
 Examples/boilerplates of a [.autopkg file][autopkg-file] and the typical [@import files][imports] are available.
 
-The documentation on this page is based upon CoApp.Devtools version 1.2.0.108.
+The documentation on this page is based upon CoApp.Devtools version 1.2.0.315.
 
 -----
 
