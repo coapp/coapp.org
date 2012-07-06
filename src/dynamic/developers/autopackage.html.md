@@ -244,7 +244,20 @@ The goal of the CoApp project is to create a community of developers dedicated t
 }
 ```
 
-#### compatability-policy
+#### [compatability-policy](!compatability-policy-rule)
+Describes the range of previous versions this package is binary compatible with
+
+``` c#
+compatability-policy {
+    minimum: "1.0.0.0"; // The minimum version this package is binary compatible with (inclusive)
+    maximum: "${OneLessThanCurrent}"; // The minimum version this package is binary compatible with (inclusive)
+    versions : {
+        "1.0",
+        "1.1",
+        "1.2",
+    }; // the major.minor version numbers that this package replaces (this is used to create policy assemblies). if non are included, this is deduced from the feed locations available on the build computer
+}
+```
 
 #### signing
 
