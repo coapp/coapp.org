@@ -220,6 +220,29 @@ developer-library[<LibName>] {
 ## [Frequently Used Rules](!frequent)
 
 #### [metadata](!metadata-rule)
+Used to specify characteristics of a package. Metadata information is often a good thing to provide but isn't required.
+``` c#
+metadata {
+    summary: "The CoApp Core Package Manager."; //A short blurb about your package. Must be less than 160 characters and shouldn't have line breaks
+    description: @"This is the core component for CoApp. 
+
+CoApp, is the Common Opensource Application Publishing Platform, an open-source package management system for Windows. 
+
+The goal of the CoApp project is to create a community of developers dedicated to creating a set of tools and processes that enable other open source developers to create and maintain their open source products with Windows as a primary build target..";  // A description of any length to describe your package. May also be a  																					path to a file.
+    icon: @"images\logo3.png"; //ignore, not currently used
+    
+    author-version : "1.2 Release Canididate"; // a human readable description of your package's version. For example, for Windows Vista, the author-version would be "Vista" instead of 6.0.6000.<some build number>
+    bug-tracker: "https://github.com/organizations/coapp/dashboard/issues"; // a url to the bugtracker for the package
+    stability : "0"; // number illustrating the stability of a package. -100 is the most unstable while 100 is the most stable. if none is provided, 0 is assumed
+    tags : {
+        green, red
+    }; // Any string under *add number of characters* characters for describing a package
+    
+    licenses : {
+        Apache20
+    }; // a list of licenses that refer to either a license rule in the file or one of the default licenses?
+}
+```
 
 #### compatability-policy
 
