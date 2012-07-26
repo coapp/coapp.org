@@ -28,6 +28,7 @@ public class Telemetry : RequestHandler {
         Logger.Message("filename is '{0}'", tmpName);
         // return Task.Factory.StartNew(() => _cloudFileSystem.Value[Container][blobName].Lock(blob => {
         
+        Task.Factory.StartNew(() => { 
             // var blob = _cloudFileSystem.Value[Container][blobName];
         _cloudFileSystem.Value[Container][blobName].Lock( blob => {
             try {
@@ -46,6 +47,6 @@ public class Telemetry : RequestHandler {
             response.WriteString("OK", this);
             response.StatusCode = 200;
         });
-        
+        });
     }
 }
