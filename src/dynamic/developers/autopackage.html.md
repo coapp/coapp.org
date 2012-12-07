@@ -232,7 +232,7 @@ The goal of the CoApp project is to create a community of developers dedicated t
     icon: @"images\logo3.png"; //ignore, not currently used
     
     author-version : "1.2 Release Canididate"; // a human readable description of your package's version. For example, for Windows Vista, the author-version would be "Vista" instead of 6.0.6000.<some build number>
-    bug-tracker: "https://github.com/organizations/coapp/dashboard/issues"; // a url to the bugtracker for the package
+    bug-tracker: "https://github.com/coapp/coapp/issues"; // a url to the bugtracker for the package
     stability : "0"; // number illustrating the stability of a package. -100 is the most unstable while 100 is the most stable. if none is provided, 0 is assumed
     tags : {
         green, red
