@@ -18,6 +18,20 @@ AutoPackage consists of two "cascading" scripts that automate the package creati
 
 **Property sheets** is a domain-specific language (DSL) that CoApp created for the writing of AutoPackage scripts.  It is similar to Cascading Style Sheets, but the semantics are customized to meet the specific needs of package creation.  The property sheet semantics are illustrated in the examples shown throughout this document.  See <a href="http://www.coapp.org/reference/overview.html">property sheets</a> for more information.
 
+#### AutoPackage Node Names and Values
+
+AutoPackage recognizes the following node names:
+
+* Nuget - container for Nuget propoerties
+* Targets - TBD
+* Props - TBD
+* Files -TBD
+* Configuratons - TBD
+* Linkage - TBD
+* Platform - TBD
+* Configuration - TBD
+* Tool set - TBD
+
 #### Base AutoPackage Script
 
 The Base AutoPackage (base.autopkg) consists of two sections. The first section is directly included in all runs of AutoPackage unless explicitly declared otherwise in a file being processed.  Following are the default attribute definitions.
