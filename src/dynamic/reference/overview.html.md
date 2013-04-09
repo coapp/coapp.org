@@ -1,19 +1,28 @@
 ---
 layout: 'article'
-title: 'XXXX' 
-version: '0.0'
+title: 'Property Sheets' 
+version: '0.1'
 ---
 <div class="alert-message warning">
-    <p>This is a placeholder document -- actual content coming soon</p>
+    <p>This is a draft document -- send feedback to hanrahat@microsoft.com</p>
 </div>
-## XXXX - The XXXX
+## Property Sheets - The CoApp Domain Specific Language
 
-**XXX** ...
+**Property sheets** is a domain-specific language (DSL) that CoApp created for the writing of AutoPackage scripts.  It is similar to Cascading Style Sheets, but the semantics are customized to meet the specific needs of package creation.
 
 #### Purpose
 
-**XXXX** is designed to ...
+The property sheets language is designed to enable you to write scripts that specify the attributes of the packages you create through CoApp.
 
+#### Overview
+
+Property sheets attrributes:
+
+* Targets - ???
+* Props - Properties - 
+* Files - 
+
+<!----------------------------------------------------------------------------------
 #### Command Line Help
 
 ``` text
@@ -37,3 +46,4 @@ xxxx [options]
 ```
 
 ### Option [foo](!foo) 
+----------------------------------------------------------------------------------------->
