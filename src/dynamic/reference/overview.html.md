@@ -10,7 +10,7 @@ version: '0.1'
 
 #### Purpose
 
-**Property sheets** is a domain-specific language (DSL) that CoApp created for the writing of AutoPackage and BuildPackage scripts.  It is similar to Cascading Style Sheets, but the semantics are customized to meet the specific needs of package creation.
+**Property sheets (PS)** is a domain-specific language (DSL) that CoApp has created for the writing of AutoPackage and BuildPackage scripts.  It is similar to [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), but the semantics are customized to meet the specific needs of package creation.
 
 #### Overview
 
@@ -25,7 +25,7 @@ The operator '//' designates a comment that extends to the end of the line
 
 #### Nodes
 
-As a general rule nodes are defined as follows:
+In general, nodes are used to specify the many options you have available as you build components and create packages to deploy them.  As a general rule nodes are defined as follows:
 
 	node_name{
 		new_node_name{
@@ -58,7 +58,7 @@ Properties have a name and a value.  Values can be one of two types, a string or
 	property_name_1 = some string value
 	property_name_2: {value_1, value_2, value_3}
 	
-Note that when a string value is assigned quotation marks are not required.  The one exception to this rule is when the string contains a semicolon, in which case the value must be preceded and followed by quotation marks as follows:
+Note that when a string value is assigned, quotation marks are not required.  The one exception to this rule is when the string contains a semicolon, in which case the value must be preceded and followed by quotation marks as follows:
 
 	property_name_1 = "some string value that has a ; in it"
 	
@@ -66,7 +66,7 @@ A collection can be delimited by either commas or semicolons, so the following i
 
 	property_name_2: {value_1; value_2; value3}
 	
-A collection can consist of one element.  In such cases the {} the contain the collection list are not required:
+A collection can consist of one element.  In such cases the {} that contain the collection list are not required:
 
 	property_name_2: value_1
 	
@@ -98,7 +98,9 @@ In this first example, a node name "configurations" is defined.  It contains a s
 		}
 	}
 	
-In the next example the parameter lists [Win32,v110,dynamic] and [x64,v110,dynamic] represent pivot points.  In the first condition the package is being created for the Win32 (x86) platform for Visual Studio 2012 and as a dynamic link library.  In the second condition the platform is changed to x64.  Visual Studio 2012 and the dynamic link format remain unchanged.  Notice how the "condition" node is expressed with only square brackets []. 
+The next example is extracted from an AutoPackage script used to build zlib packages.  As its name implies, AutoPackage is the CoApp tool that drives the automated package creation process.  AutoPackage lets you create multiple variantions of the same package based on different build options.  You may have a dozen or more variants of the same package based on a variety of build criteria including the version of the C or C++ compiler you use, the platform architecture you target, the format of the library you're creating, as well as other build options.  The sample code below shows a portion of "files" node definitions that the script requires to build two variations of the zlib package.
+
+The first variation is specified by the parameter list [Win32,v110,dynamic]. This parameter list instucts AutoPackage to create a zlib package for the Win32 (x86) platform, using Visual C 2012, and that the contents of the package be created as a dynamic link library.  The second variation build is guided by the parameter list[x64,v110,dynamic].  In this case, the target platform is changed to x64.  Visual C 2012 and the dynamic link format remain unchanged.  Notice that both [Win32,v110,dynamic] and [x64,v110,dynamic] are "condition" nodes expressed with only square brackets []. 
 
     // the files that go into the content folders
     files {
