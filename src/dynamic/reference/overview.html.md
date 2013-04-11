@@ -10,7 +10,7 @@ version: '0.1'
 
 #### Purpose
 
-**Property sheets (PS)** is a domain-specific language (DSL) that CoApp has created for the writing of AutoPackage and BuildPackage scripts.  It is similar to [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), but the semantics are customized to meet the specific needs of package creation.
+**Property sheets (PS)** is a domain-specific language (DSL) that CoApp has created for writing AutoPackage and BuildPackage scripts.  It is similar to [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), but the semantics are customized to meet the specific needs of package creation.
 
 #### Overview
 
@@ -45,7 +45,7 @@ Nodes can have parameters, which are designated by square brackets [].  The squa
 		... node properties ...
 	}
 		
-There is a "special case" node designated by * or the name "condition."  This special case node always takes parameters so the square brackets are required.  However, for this particular node, neither the * nor the node name are required.  Each of the following three designations is equivalent:
+There is a "special case" node designated by "*" or the name "condition."  This special case node always takes parameters so the square brackets are required.  However, for this particular node, neither the * nor the node name are required.  Each of the following three designations is equivalent:
 
 	condition[parameter_1, parameter_2] {}
 	*[parameter_1, parameter_2]{}
@@ -78,7 +78,7 @@ The collective assign also recognizes the additive operator +=.  So you can add 
 
 	property_name_2 += value_n
 	
-If the original value for property_name_2 was {value_1, value_2, value_3} then the resulting value for property becomes:
+If the original value for property_name_2 was {value_1, value_2, value_3} then the resulting value for the property becomes:
 
 	{value_1, value2, value_3, value_n}
 	

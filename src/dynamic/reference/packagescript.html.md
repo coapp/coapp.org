@@ -10,26 +10,26 @@ version: '0.1'
 
 #### Purpose
 
-**AutoPackage** is designed to automate the package creation process.  It allows you to identify the build options you want to control and lets you determine the number and types of packages you create.  For example, you can choose to create dynamic link, static link or standard call (stdcall) library packages, or all three.  You can choose to create packages targeted to Win32, x64 or ARM platforms, or all three.  This document gives examples of the AutoPackage scripts you need to write in order to manage the package creation process.
+**AutoPackage** is designed to automate the CoApp package creation process.  It allows you to define the build options you want to control and lets you determine the number and types of packages you create for a particular software component.  For example, if you're building a library component, you can choose to create a dynamic link, static link or standard call (stdcall) variant of the package, or you can choose to create all three.  You can choose to create the packages targeted to Win32, x64 or ARM platforms, or all three.  This document gives examples of the AutoPackage scripts you need to write in order to manage the package creation process.
 
 #### Overview
 
-AutoPackage consists of "cascading" scripts that automate the package creation process. The scripts are "cascading" in the sense that CoApp provides a base script that AutoPackage implicitly includes and you provide additional scripts that further direct the creation process.  The AutoPackage scripts are identified with the extension .autopkg.
+You control the AutoPackage tool through a set of "cascading" scripts. The scripts are "cascading" in the sense that CoApp provides a base script that AutoPackage implicitly includes and you provide additional scripts that further direct the creation process.  The AutoPackage scripts are identified with the extension .autopkg.
 
-**Property Sheets (PS)** is a domain-specific language (DSL) that CoApp created for the writing of AutoPackage scripts.  It is similar to [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), but the semantics are customized to meet the specific needs of package creation.  The property sheet semantics are illustrated in the examples shown throughout this document.  See [property sheets](http://www.coapp.org/reference/overview.html) for more information about the language itself.
+**Property Sheets (PS)** is a domain-specific language (DSL) that CoApp created for writing AutoPackage scripts.  It is similar to [Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets), but the semantics are customized to meet the specific needs of package creation.  The property sheet semantics are illustrated in the examples shown throughout this document.  See [property sheets](http://www.coapp.org/reference/overview.html) for more information about the language itself.
 
 <h4 id="AutoPackage Nodes">AutoPackage Nodes</h4>
 
-AutoPackage controls the package creation process through AutoPackage scripts.  Within an AutoPackage script, you define the nodes let you specify the build options for the packages you create.  These build options, which we also refer to as "pivots" or "pivot points," let you specify things like the version of the Visual C or C++ compiler you want to build with and the architecture of the platform you want to target.  Following are some of the nodes that are defined by default for AutoPackage:
+Within an AutoPackage script, you define nodes that let you specify the build options for the packages you create.  These build options, which we also refer to as "pivots" or "pivot points," let you specify things like the version of the Visual C or C++ compiler you want to build with and the architecture of the platform you want to target.  Following are some of the nodes that are defined by default for AutoPackage:
 
 * Toolset - specifies which version of Visual Studio to use: v110 == VS 2012, v100 == VS 2010, etc.
 * Platform - specifies the target architecture: Win32 x86 for example
 * Configuration - specifies whether to produce a "release" or "beta" version of the product
-* Linkage - specifies the format in which to create a library: dynamic or static for example
-* CallingConvention - specifies the calling convention to use for x86 targets: stdcall or cdecl for example
+* Linkage - specifies the format in which to create a library: dynamic, static, or stdcall
+* CallingConvention - specifies the calling convention to use for x86 targets: stdcall or cdecl for instance
 * Files - specifies the file name/location for output
 
-AutoPackage lets you automatically create multiple versions of a package, each version with a unique pivot as illustrated later in this document with the "user-defined" script shown for a build of zlib.  You'll see in that example that twelve different variations of the zlib package are created based on the combination of build options specified.  You'll see there is a package built using Visual C 2012, targeted for a Win32 (x86) platform and formatted as a dynamic link library, and there is another package built using Visual C 2012, targeted for an x64 platform and formatted as a dynamic link library, and so on.  
+AutoPackage lets you automatically create multiple versions of a package, each version with a unique pivot.   This docmument uses the creation of zlib packages as an example of how the creation process works.  Later you'll see that twelve different variations of the zlib package are created based on the combination of build options specified.  For instance, one of the packages is built using Visual C 2012, targeted for a Win32 (x86) platform and formatted as a dynamic link library, and another one is built using Visual C 2012, targeted for an x64 platform and formatted as a dynamic link library, and so on.  
 
 AutoPackage node definitions are the mechanism that give you control over the creation process.
 
@@ -167,12 +167,12 @@ nuget {
 }
 
 ```
+<br>
+#### User-Defined AutoPackage Scripts
 
-#### User-Defined AutoPackage Script
+To complete the AutoPackage process for a particular software component you must provide one or more component-specific scripts.  Following is the AutoPackage script we used to build the zlib library.  It's a good example of the semantics and syntax you need to use in order to generate packages intended for distribution through the NuGet repository.
 
-To complete the AutoPackage process for a particular package you must provide one of more package-specific scripts.  Following is the AutoPackage script we used to build the zlib library.  It's a good example of the semantics and syntax you need to follow in writing the scripts you would need to generate other packages in a Nuget format.
-
-As noted in <a href="#AutoPackage Nodes">AutoPackage Nodes</a>, the following zlib example specifies that twelve different variations of the zlib package be created, each based on a different combination of build options.  The first variation specified for the package is built using Visual C 2012, targets the Win32 (x86) platform and is formatted as a dynamic link library.  This specification is defined by the condition [Win32,v110,dynamic].  The second package variation is built using Visual C 2012, targets an x64 platform and is formatted as a dynamic link library.  This variant is specified by the condition [x64,v110,dynamic].  The remaining ten variations are defined in a similar fashion.
+As mentioned in <a href="#AutoPackage Nodes">AutoPackage Nodes</a>, the following zlib example specifies that twelve different variations of the zlib package be created, each based on a different combination of build options.  The first variation specified for the package is built using Visual C 2012, targets the Win32 (x86) platform and is formatted as a dynamic link library.  This specification is defined by the condition [Win32,v110,dynamic].  The second package variation is built using Visual C 2012, targets an x64 platform and is formatted as a dynamic link library.  This variant is specified by the condition [x64,v110,dynamic].  The remaining ten variations are defined in a similar fashion.
 
 ``` text
 
@@ -280,7 +280,9 @@ nuget {
 }
 
 ``` 
-
+<br>
+You can find examples of AutoPackage scripts for other software components built by the CoApp community in the GitHub repository  <a href="https://github.com/organizations/coapp-packages/">coapp-packages</a>.
+<br> 
 
 <!----------------------------------------------------------------------------------
 #### Command Line Help
