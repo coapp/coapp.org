@@ -33,5 +33,5 @@ Anyone interested in hacking away on Open Source software, hanging out, munching
 Microsoft, Outercurve Foundation
 
 ### Registration: 
-You can [register online](http://www.regonline.com/Register/Checkin.aspx?EventId=1224520) for the Hackathon--or, even better, register for both the Hackathon and the OuterConf conference!
+You can [register online](http://www.regonline.com/Register/Checkin.aspx?EventId=1224520) for the Hackathon--or, even better, register for both the Hackathon and the [OuterConf conference](http://www.regonline.com/builder/site/Default.aspx?EventID=1224520)!
 
