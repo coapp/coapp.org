@@ -13,6 +13,8 @@ An opportunity for Open Source Developers  to come together, and get some things
 
 With the NuGet 2.5 release, NuGet now supports building Native libraries for C/C++, so we’re bringing special attention to hacking away on producing NuGet packages for as many open source projects as possible. Don’t know how to use NuGet? Come and Learn? Want to make some packages? Come on out!
 
+Want to work on some other Open Source stuff? Cool, that works too!
+
 Prizes, drinks, food, and whole lot of code! 
 
 ### When: 
