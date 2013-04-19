@@ -1,0 +1,180 @@
+---
+layout: 'article'
+title: 'AutoPackage SScript Guide' 
+version: '0.4'
+---
+<div class="alert-message warning">
+    <p>This is a draft document -- send feedback to tiroger@microsoft.com</p>
+</div>
+### Table of Contents
+* [General Format](#Format)
+
+* [Detailed Information](#Details)
+    * [Pivots](#Pivots)
+    * [Output Files](#OutputFiles)
+
+
+-----
+
+### [General Format](!Format)
+
+``` c#
+
+#defines { 
+    // Global variables may be added here.
+    // Variables on the "value" side of each definition will be processed at access time.
+    GlobalVar1 = "";
+}
+
+configurations {
+    // This node contains pivot information.  These are discussed in detail in the «Pivots section«#Pivots».
+}
+
+nuget {
+
+	#defines { 
+     	// Variable definitions specific to this node (ie. "nuget").  Only available while inside this scope.
+        // This metadata is not needed for most packages and is typically omitted.
+	};
+	
+    #output-packages {
+        // Output file definitions.  These are covered in detail in «Output Files«#OutputFiles».
+        // This metadata is not needed for most packages and is typically omitted.
+    }
+
+	files {
+        // File location information.  This node is critical for all packages, and is where much of the effort is.  All file paths are relative to this .autopkg file's location.
+        
+        // This node is frequently divided by multiple condition statements or rules.  Below is an example of how a typical package might be described.
+        // For the below examples, we assume that this file is in <src_root>\contrib\coapp\  and that the compiled libraries are in a semi-logical directory tree in <src_root>\output\.
+        
+        // All .h and .hpp  files in <src_root>\include, but not in subdirectories.
+        include: { ..\include\*.h, ..\include\*.hpp }; // Included for all conditions.
+
+        // All files in <src_root>\doc\, including all subdirectories recursively.
+		docs: {  ..\doc\**\* }; // Included for all conditions.
+    
+        // Include these specific files in the libpath and "copy to output" path only under these pivot conditions.
+		[Win32,dynamic] {  // x86, dll (dynamic linking)
+			lib: { ..\output\x86\release\mylib.lib };
+			bin: { ..\output\x86\release\mylib.dll };
+		}
+
+		[x64,dynamic] {  // x64, dll (dynamic linking)
+			lib: { ..\output\x64\release\mylib.lib };
+			bin: { ..\output\x64\release\mylib.dll };
+		}
+		
+		[Win32,static] {  // x86, static linking
+			lib: { ..\output\x86\release\mylib-static.lib };
+		}
+
+		[x64,static] {  // x64, static linking
+			lib: { ..\output\x64\release\mylib-static.lib };
+		}
+		
+	};
+    
+    props {
+        // Additional declarations to insert into consuming projects before most of the project settings. (These may be modified in visual studio by a developer consuming this package.)
+        // This node is typically not needed for most packages and may be omitted.
+    }
+    
+    targets {
+        // Additional declarations to insert into consuming projects after most of the project settings. (These may not be modified in visual studio by a developer consuming this package.)
+        // This node is often used to set defines that are required that must be set by the consuming project in order to correctly link to the libraries in this package.  Such defines may be set either globally or only set under specific conditions.
+		Defines += HAS_MyLib;
+        [dynamic]
+            Defines += HAS_MyLib;
+    }
+    
+}
+
+```
+
+
+### [Detailed Information](!Details)
+
+#### [Pivots](!Pivots)
+
+A _pivot_ is the generic term used for a unique set of mutually exclusive build/configuration options as viewed from the perspective of a Visual Studio project.  As an example, one cannot build a Visual Studio project for both x64 and ARM simultaneously.  These options therefore belong to a single pivot.
+
+A single package script (`.autopkg`) may define many pivots, each of which may in turn contain many choices.  The basic syntax for defining a pivot is presented below.
+
+``` c#
+configurations {
+	PivotName { 
+        // MSBuild property name.  This is only supplied if there is a direct mapping between the pivot choices and an MSBuild property.
+		key : "MSBuildPropertyName"; 
+        
+        // List of possible selections from this pivot.  When processing, only one choice from each pivot may be selected simultaneously.
+		choices: { option1, option2, option3 };  
+    
+        // This is the description used by Visual Studio for this pivot if no key was provided.
+        description = "The option to use for this library";
+
+        // These are alternate names by which to reference "option1".
+        option1.aliases : { o1, opt1 }; 
+        
+        // This is what will display in the drop-down list in Visual Studio to identify this choice for this pivot.  Defaults to the choice name (eg. "option2") if this is not provided.
+		option2.description = "Second option";
+
+		option3.restricted-to = "Win32"; // This will prevent Visual Studio from allowing this choice if "Win32" is not selected in another pivot.
+    };
+}
+```
+
+<span class="label warning">NOTE!</span>  At this time it is expected that every choice across all pivots has a unique name.  The behaviour if this is not the case is undefined.
+
+There are a number of pivots that are pre-defined and will be automatically included in every `.autopkg` file:
+
+``` c#
+    Toolset { 
+        key : "PlatformToolset"; 
+        choices: { v110, v100, v90, v80, v71, v70, v60, gcc };  
+    };
+    
+    Platform {
+        key : "Platform"; 
+        choices: { Win32, x64, ARM, AnyCPU };
+        Win32.aliases : { x86, win32, ia32, 386 };
+        x64.aliases : { x64, amd64, em64t, intel64, x86-64, x86_64 };
+        ARM.aliases : { arm, woa };
+        AnyCPU.aliases : { anycpu, any };
+    };
+
+    Configuration {
+        key : "Configuration"; 
+        choices: { Release, Debug };
+    };
+
+    Linkage { 
+        choices : { dynamic, static, ltcg, sxs };
+        description = "Which version of the .lib file to link to this library";
+
+        ltcg.description = "Link Time Compiler Generation";
+        dynamic.description = "Dynamic Library (DLL)";
+        static.description = "Static";
+        sxs.description = "Side-by-Side";
+    };
+
+    CallingConvention {
+        // Only really applicable to x86
+        choices : { cdecl, stdcall, fastcall, thiscall, clrcall };
+        description = "Calling convention model to use (for x86 only)";
+        cdecl.description = "cdecl";
+        stdcall.description = "stdcall (Uncommon)";
+        fastcall.description = "fastcall (Rare)";
+        thiscall.description = "thiscall (Rare)";
+        clrcall.description = "clrcall (Rare)";
+
+        stdcall.restricted-to = "Win32";
+        fastcall.restricted-to = "Win32";
+        thiscall.restricted-to = "Win32";
+        clrcall.restricted-to = "Win32";
+    };
+
+```
+
+#### [Output Files](!OutputFiles)
+
