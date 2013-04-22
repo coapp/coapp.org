@@ -1,39 +1,19 @@
----
-layout: 'article'
-title: 'XXXX' 
-version: '0.0'
----
-<div class="alert-message warning">
-    <p>This is a placeholder document -- actual content coming soon</p>
-</div>
-## XXXX - The XXXX
-
-**XXX** ...
-
-#### Purpose
-
-**XXXX** is designed to ...
-
-#### Command Line Help
-
-``` text
-Outercurve Foundation XXXX Version 1.1.1.1 for x64
-Copyright (c) Garrett Serack, CoApp Contributors 2010-2011. All rights reserved
-CoApp xxxxx
--------------------------------------------------------------------------------
-
-Usage:
--------
-
-xxxx [options] 
-
-    Options:
-    --------
-    «--help«/reference/cli.html#help»                      this help 
-    «--nologo«/reference/cli.html#nologo»                    don't display the logo
-    «--load-config=<file>«/reference/cli.html#loadconfig»        loads configuration from <file>
-    «--verbose«/reference/cli.html#verbose»                   prints verbose messages
-
-```
-
-### Option [foo](!foo) 
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\set-signatureviaservice.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\add-restcmdlet.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\copy-itemex.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\get-azurecredentials.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\get-uploadlocation.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\invoke-build.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\publish-nugetpackage.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\remove-restcmdlet.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\set-codesignature.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\set-defaultremoteservice.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\set-publiccertificate.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\set-servicepassword.html.mda
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\show-coapptoolsversion.htm
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\start-restservice.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\stop-restservice.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\update-coapptools.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\write-nugetpackage.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\sample-autopackage-scripts.html.md
+touch /c  C:\root\V2\coapp.org\src\dynamic\reference\packagescript.html.md

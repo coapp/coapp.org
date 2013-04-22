@@ -1,39 +1,49 @@
 ---
 layout: 'article'
-title: 'XXXX' 
-version: '0.0'
+title: 'Update-CoAppTools Cmdlet' 
+version: '1.0'
 ---
-<div class="alert-message warning">
-    <p>This is a placeholder document -- actual content coming soon</p>
-</div>
-## XXXX - The XXXX
 
-**XXX** ...
+## SYNOPSIS 
 
-#### Purpose
+Downloads the most recent version of the CoApp PowerShell tools and installs it.
 
-**XXXX** is designed to ...
-
-#### Command Line Help
+## SYNTAX
 
 ``` text
-Outercurve Foundation XXXX Version 1.1.1.1 for x64
-Copyright (c) Garrett Serack, CoApp Contributors 2010-2011. All rights reserved
-CoApp xxxxx
--------------------------------------------------------------------------------
-
-Usage:
--------
-
-xxxx [options] 
-
-    Options:
-    --------
-    «--help«/reference/cli.html#help»                      this help 
-    «--nologo«/reference/cli.html#nologo»                    don't display the logo
-    «--load-config=<file>«/reference/cli.html#loadconfig»        loads configuration from <file>
-    «--verbose«/reference/cli.html#verbose»                   prints verbose messages
+	Update-CoAppTools [-Beta] [-KillPowershells]
 
 ```
 
-### Option [foo](!foo) 
+## DESCRIPTION
+
+This cmdlet looks online for the most recent build of the CoApp PowerShell tools (found online at http://downloads.coapp.org/files/CoApp.Tools.Powershell.msi), downloads the MSI and compares the version to the version currently running.
+
+If the version downloaded is a higher version, it proceeds to install the updated MSI.
+
+**PARAMETERS**
+
+**-Beta** *<SwitchParameter>*
+
+If specified, will retrieve the latest 'beta' build (newer, but possibly less stable than the default). Found online at http://downloads.coapp.org/files/Beta.CoApp.Tools.Powershell.msi
+
+**-KillPowershells** *<SwitchParameter>*
+
+If specified, will attempt to kill all the PowerShell processes after kicking off the installer. (May require administrator permissions).
+
+**-Quiet** *<SwitchParameter>*
+
+Suppress output of all non-essential messages
+
+**-Verbose** *<SwitchParameter>*
+
+Prints a lot of extra details about the process. May be useful for debugging.
+
+
+
+## RELATED LINKS
+
+Online Help: [http://coapp.org/reference/update-coapptools.html](http://coapp.org/reference/update-coapptools.html)
+Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
+
+

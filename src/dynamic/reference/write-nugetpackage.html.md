@@ -14,7 +14,6 @@ Generates one or more NuGet packages from an .autopkg script file.
 	Write-NuGetPackage [-Package] <file>.autopkg [-NoClean] [-Quiet] [-NoWarnings]
 
 ```
-	
 
 ## DESCRIPTION
 
@@ -72,15 +71,15 @@ PS C:> PS C:project> Write-NuGetPackage -Package .cpprestsdk.autopkg
  >:Successfully created package 'C:projectcpprestsdk.symbols.0.6.0.12.nupkg'.
 ```
 
-Building a simple C++ package.
- The .autopackage script contains the required files to generate the base, redist and symbols packages.
- This example's .autopkg and other files can be found at http://downloads.coapp.org/files/CPP_Rest_SDK_Example.zip
+** Building a simple C++ package. **
+The .autopackage script contains the required files to generate the base, redist and symbols packages.
+This example's .autopkg and other files can be found at http://downloads.coapp.org/files/CPP_Rest_SDK_Example.zip
 
 ## RELATED LINKS
 
 Online Help: [http://coapp.org/reference/write-nugetpackage.html](http://coapp.org/reference/write-nugetpackage.html)
- Sample .autopkg scripts: [http://coapp.org/reference/sample-autopackage-scripts.html](http://coapp.org/reference/sample-autopackage-scripts.html)
- Detailed Autopackage script reference: [http://coapp.org/reference/packagescript.html](http://coapp.org/reference/packagescript.html)
- Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
+Sample .autopkg scripts: [http://coapp.org/reference/sample-autopackage-scripts.html](http://coapp.org/reference/sample-autopackage-scripts.html)
+Detailed Autopackage script reference: [http://coapp.org/reference/packagescript.html](http://coapp.org/reference/packagescript.html)
+Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
 
 

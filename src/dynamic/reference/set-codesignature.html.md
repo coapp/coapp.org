@@ -1,39 +1,46 @@
 ---
 layout: 'article'
-title: 'XXXX' 
-version: '0.0'
+title: 'XXX Cmdlet' 
+version: '1.0'
 ---
-<div class="alert-message warning">
-    <p>This is a placeholder document -- actual content coming soon</p>
-</div>
-## XXXX - The XXXX
 
-**XXX** ...
+## SYNOPSIS 
 
-#### Purpose
+XXXX
 
-**XXXX** is designed to ...
-
-#### Command Line Help
+## SYNTAX
 
 ``` text
-Outercurve Foundation XXXX Version 1.1.1.1 for x64
-Copyright (c) Garrett Serack, CoApp Contributors 2010-2011. All rights reserved
-CoApp xxxxx
--------------------------------------------------------------------------------
-
-Usage:
--------
-
-xxxx [options] 
-
-    Options:
-    --------
-    «--help«/reference/cli.html#help»                      this help 
-    «--nologo«/reference/cli.html#nologo»                    don't display the logo
-    «--load-config=<file>«/reference/cli.html#loadconfig»        loads configuration from <file>
-    «--verbose«/reference/cli.html#verbose»                   prints verbose messages
+	XXXX
 
 ```
 
-### Option [foo](!foo) 
+## DESCRIPTION
+
+XXXX
+
+**PARAMETERS**
+
+**-XXX** *<SwitchParameter>*
+
+XXXX
+
+**-XXX** *<SwitchParameter>*
+
+XXXX
+
+**-Quiet** *<SwitchParameter>*
+
+Suppress output of all non-essential messages
+
+**-Verbose** *<SwitchParameter>*
+
+Prints a lot of extra details about the process. May be useful for debugging.
+
+
+
+## RELATED LINKS
+
+Online Help: [http://coapp.org/reference/update-coapptools.html](http://coapp.org/reference/update-coapptools.html)
+Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
+
