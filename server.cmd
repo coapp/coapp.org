@@ -1,5 +1,6 @@
 @echo off
 @setlocal 
+cd %~dp0
 
 if exist %~dp0\out rmdir /s /q %~dp0\out
 mkdir %~dp0\out
