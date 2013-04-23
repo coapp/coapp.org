@@ -13,7 +13,9 @@ version: '0.4'
     * [Pivots](#Pivots)
     * [Output Files](#OutputFiles)
 
-
+* [Other Resources](#Resources)
+    * [Implicit AutoPackage Rules](#ImplicitRules)
+    
 -----
 
 ### [General Format](!Format)
@@ -32,15 +34,48 @@ configurations {
 
 nuget {
 
+
 	#defines { 
      	// Variable definitions specific to this node (ie. "nuget").  Only available while inside this scope.
         // This metadata is not needed for most packages and is typically omitted.
 	};
 	
+
+	nuspec {
+    	// The nuspec file metadata.
+		id = MyNewPackage;  // Unique package identifier
+		version : 1.1.0;  // Version number.  Follows NuGet standards. (currently SemVer 1.0)
+		title: My new library;  // Display name for package.
+		authors: {bob, sam, mark};  // List of package authors.  Braces may be ommited if only one author.
+		owners: {bob, tom};  // List of owners.  Braces may be ommited if only one author.  Ignored by the default NuGet repository.
+		licenseUrl: "";  // URL link to the license this package is released under.
+		projectUrl: "";  // URL to the project website (if any).
+		iconUrl: "";  // URL to an image to be used for package icons.
+		requireLicenseAcceptance:false;  // If the license this package is being released under has use restrictions, set this to "true".
+		summary:My new library package.  Now with features!;  //  Brief summary of the package contents.
+		description: My random description...;  // Extended description of the package contents.
+		releaseNotes: "Public release!";  // Brief notes about this version of the package.
+		copyright: Copyright 2013;  // Copyright notice.
+		tags: { Stuff!, native, random };  // Tags of arbitrary text for categorizing and filtering.
+	};
+    
+    
     #output-packages {
         // Output file definitions.  These are covered in detail in «Output Files«#OutputFiles».
         // This metadata is not needed for most packages and is typically omitted.
     }
+    
+
+    dependencies {
+        // This node defines any outside items which may be needed to consume this package.
+        packages : {
+            // This is a list of other NuGet packages required to use this package.
+            // Each item follows the format "<pkg_name>/<version>"
+            my_pkg/1.0.0,
+            my_other_pkg/2.1.5.33
+        };
+    }
+
 
 	files {
         // File location information.  This node is critical for all packages, and is where much of the effort is.  All file paths are relative to this .autopkg file's location.
@@ -75,11 +110,13 @@ nuget {
 		
 	};
     
+
     props {
         // Additional declarations to insert into consuming projects before most of the project settings. (These may be modified in visual studio by a developer consuming this package.)
         // This node is typically not needed for most packages and may be omitted.
     }
     
+
     targets {
         // Additional declarations to insert into consuming projects after most of the project settings. (These may not be modified in visual studio by a developer consuming this package.)
         // This node is often used to set defines that are required that must be set by the consuming project in order to correctly link to the libraries in this package.  Such defines may be set either globally or only set under specific conditions.
@@ -177,4 +214,26 @@ There are a number of pivots that are pre-defined and will be automatically incl
 ```
 
 #### [Output Files](!OutputFiles)
+
+This metadata node defines the `.nupkg` files which will be generated.  These may be referenced by collections in the `Files`, `Props`, and `Targets` nodes to direct certain files and actions to be placed in different files.  Below is presented the list of default output packages defined by AutoPackage.  These exist automatically without needing to include them in your `.autopkg` file.
+
+``` c#
+    // For reference,  ${pkgname} resolves to the ID specified in the nuspec node.
+
+    #output-packages {
+        default : ${pkgname};          //  eg.  bob.nupkg
+        redist : ${pkgname}.redist;    //  eg.  bob.redist.nupkg
+		symbols : ${pkgname}.symbols;  //  eg.  bob.symbols.nupkg
+    }
+```
+
+
+
+### [Other Resources](!Resources)
+
+
+#### [Implicit AutoPackage Rules](!ImplicitRules)
+
+For a complete listing of the AutoPackage rules that are assigned automatically before the `autopkg` file is read, see the [Implicit PackageScript](/reference/implicit-packagescript.html)
+
 

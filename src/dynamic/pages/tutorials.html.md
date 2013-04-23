@@ -24,6 +24,7 @@ This section contains tutorials about how you can help out with CoApp.
 
 ### I want to build my own native packages for NuGet
 <span class="label warning">soon</span> [Building a simple NuGet package](/tutorials/building-a-package.html) - Step-by-step instructions on creating a simple native package.
+<span class="label success">New!</span> [PackageScript Reference Guide](/reference/autopackage-guide.html) - A concise reference guide for `.autopkg` files.
 
 <!--
 <span class="label success">soon</span> [Building](/tutorials/anotheritem.html) - what's next
