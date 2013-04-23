@@ -10,16 +10,16 @@ version: '0.5'
 
 This package script is automatically loaded before the the first `.autopkg` file being referenced.
 
+##### [#defines](!defines)
 ``` css
-// Implicity loaded template script for Autopackage
-// This file is automatically imported into Autopackage to set the defaults 
-
 #defines { 
     ElementId = "";
-    // condition = ${ElementId};
     conditionFolder = ${ElementId};
 }
+```
 
+##### [Configurations](!Configurations)
+``` css
 configurations {
     Toolset { 
         key : "PlatformToolset"; 
@@ -66,7 +66,10 @@ configurations {
         clrcall.restricted-to = "Win32";
     };
 }
-
+```
+    
+##### [nuget](!nuget)
+``` css
 nuget := {
     // built-in defines 
     #defines { 
@@ -86,8 +89,8 @@ nuget := {
         d_tools     = ${tools_root}\${conditionFolder},
 		d_src       = ${src_root}
 
-        // since the generated msbuild props/targets files are always in a directory two 
-        // deep from the package root.
+        // since the generated msbuild props/targets files are always in a directory 
+        // two deep from the package root.
         pkg_root    = $(MSBuildThisFileDirectory)..\..\,
     };
     
