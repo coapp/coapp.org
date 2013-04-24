@@ -1,6 +1,6 @@
 ---
 layout: 'article'
-title: 'How to Build a Packaqge' 
+title: 'How to Build a Package' 
 version: '1.0'
 ---
 
