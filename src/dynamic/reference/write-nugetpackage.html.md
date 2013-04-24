@@ -31,7 +31,7 @@ The `symbols` package (ie, `foolib.symbols.nupkg` contains the debug symbols (.p
 
 **-Package** *<String>* (Required)
 
-Autopackage script file (.autopkg) to generate packages from. See [package script format reference](/reference/packagescript.html).
+Autopackage script file (.autopkg) to generate packages from. See [package script format reference](/reference/autopackage-ref.html).
 
 **-NoClean** *<SwitchParameter>*
 
@@ -79,7 +79,7 @@ This example's .autopkg and other files can be found at http://downloads.coapp.o
 
 Online Help: [http://coapp.org/reference/write-nugetpackage.html](http://coapp.org/reference/write-nugetpackage.html)
 Sample .autopkg scripts: [http://coapp.org/reference/sample-autopackage-scripts.html](http://coapp.org/reference/sample-autopackage-scripts.html)
-Detailed Autopackage script reference: [http://coapp.org/reference/packagescript.html](http://coapp.org/reference/packagescript.html)
+Detailed Autopackage script reference: [http://coapp.org/reference/autopackage-ref.html](http://coapp.org/reference/autopackage-ref.html)
 Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
 
 

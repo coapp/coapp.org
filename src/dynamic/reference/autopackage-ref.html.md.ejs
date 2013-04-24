@@ -1,6 +1,6 @@
 ---
 layout: 'article'
-title: 'AutoPackage Script Guide' 
+title: 'AutoPackage Script Guide'
 version: '0.4'
 ---
 <div class="alert-message warning">
@@ -16,14 +16,16 @@ version: '0.4'
 
 * [Other Resources](#Resources)
     * [Implicit AutoPackage Rules](#ImplicitRules)
-    
+
 -----
 
 ### [General Format](!Format)
 
+An annotated overview of a general .autopkg script:
+
 ``` c#
 
-#defines { 
+#defines {
     // Global variables may be added here.
     // Variables on the "value" side of each definition will be processed at access time.
     GlobalVar1 = "";
@@ -37,43 +39,68 @@ configurations {
 nuget {
 
 
-	#defines { 
+	#defines {
      	// Variable definitions specific to this node (ie. "nuget").
         // Only available while inside this scope.
         // This metadata is not needed for most packages and is typically omitted.
 	};
-	
 
+
+	// The nuspec file metadata.
 	nuspec {
-    	// The nuspec file metadata.
-		id = MyNewPackage; // Unique package identifier
-		version : 1.1.0; // Version number. Follows NuGet standards. (currently SemVer 1.0)
-		title: My new library; // Display name for package.
-		authors: {bob, sam, mark}; // List of package authors.  Braces may be ommited if
-                                   // only one author.
-		owners: {bob, tom}; // List of owners.  Braces may be ommited if only one author.
-                            // Ignored by the default NuGet repository.
-		licenseUrl: "http_://directory.fsf.org/wiki/License:Apache2.0"; // URL link to the license this package is released under.
-		projectUrl: "http_://mysite.info/myproject"; // URL to the project website (if any).
-		iconUrl: "http_://mysite.info/myproject/logo.png"; // URL to an image to be used for package icons.
-		requireLicenseAcceptance:false; // If the license this package is being released
-                                        // under has use restrictions, set this to "true".
-		summary:My new library package.  Now with features!; // Brief summary of the 
-                                                             // package contents.
-		description: My random description...; // Extended description of the package
-                                               // contents.
-		releaseNotes: "Public release!";  // Brief notes about this version of the package.
-		copyright: Copyright 2013;        // Copyright notice.
-		tags: { stuff, native, random }; // Tags of arbitrary text for categorizing 
-                                          // and filtering.
+
+		// Unique package identifier
+		id = MyNewPackage;
+
+		// Version number. Follows NuGet standards. (currently SemVer 1.0)
+		version : 1.1.0;
+
+		// Display name for package.
+		title: My new library;
+
+		// List of package authors.  Braces may be ommited if only one author.
+		authors: {bob, sam, mark};
+
+		// List of owners.  Braces may be ommited if only one author.
+		// Ignored by the default NuGet repository.
+		owners: {bob, tom};
+
+		// URL link to the license this package is released under.
+		licenseUrl: "http_://directory.fsf.org/wiki/License:Apache2.0";
+		
+		// URL to the project website (if any).
+		projectUrl: "http_://mysite.info/myproject"; 
+		
+		// URL to an image to be used for package icons.
+		iconUrl: "http_://mysite.info/myproject/logo.png"; 
+		
+		// If the license this package is being released
+		// under has use restrictions, set this to "true".
+		requireLicenseAcceptance:false; 
+                                        
+		// Brief summary of the package contents. Keep it short!
+		summary:My new library package.  Now with features!; 
+                                               
+		// Extended description of the package contents.										   
+		description: My random description...; 
+                                          
+		// Brief notes about this version of the package.										  
+		releaseNotes: "Public release!";  
+		
+		// Copyright notice.
+		copyright: Copyright 2013;       
+
+		// Tags of arbitrary text for categorizing and filtering.
+		tags: { stuff, native, random }; 
+                                          
 	};
-    
-    
+
+
     #output-packages {
         // Output file definitions.  These are covered in detail in «Output Files«#OutputFiles».
         // This metadata is not needed for most packages and is typically omitted.
     }
-    
+
 
     dependencies {
         // This node defines any outside items which may be needed to consume this package.
@@ -90,20 +117,22 @@ nuget {
         // File location information.  This node is critical for all packages, and is
         // where much of the effort is.  All file paths are relative to this .autopkg
         // file's location.
-        
+
         // This node is frequently divided by multiple condition statements or rules.
         // Below is an example of how a typical package might be described.
         // For the below examples, we assume that this file is in
         //      <src_root>\contrib\coapp\
-        // and that the compiled libraries are in a semi-logical directory tree in 
+        // and that the compiled libraries are in a semi-logical directory tree in
         //      <src_root>\output\.
-        
+
         // All .h and .hpp  files in <src_root>\include, but not in subdirectories.
-        include: { ..\include\*.h, ..\include\*.hpp }; // Included for all conditions.
+		// Included for all conditions.
+        include: { ..\include\*.h, ..\include\*.hpp }; 
 
         // All files in <src_root>\doc\, including all subdirectories recursively.
-		docs: {  ..\doc\**\* }; // Included for all conditions.
-    
+		// Included for all conditions.
+		docs: {  ..\doc\**\* }; 
+
         // Include these specific files in the libpath and "copy to output" path only
         // under these pivot conditions.
 		[Win32,dynamic] {  // x86, dll (dynamic linking)
@@ -115,7 +144,7 @@ nuget {
 			lib: { ..\output\x64\release\mylib.lib };
 			bin: { ..\output\x64\release\mylib.dll };
 		}
-		
+
 		[Win32,static] {  // x86, static linking
 			lib: { ..\output\x86\release\mylib-static.lib };
 		}
@@ -123,17 +152,17 @@ nuget {
 		[x64,static] {  // x64, static linking
 			lib: { ..\output\x64\release\mylib-static.lib };
 		}
-		
+
 	};
-    
+
 
     props {
         // Additional declarations to insert into consuming projects before most of the
-        // project settings. (These may be modified in visual studio by a developer 
+        // project settings. (These may be modified in visual studio by a developer
         // consuming this package.)
         // This node is typically not needed for most packages and may be omitted.
     }
-    
+
 
     targets {
         // Additional declarations to insert into consuming projects after most of the
@@ -147,7 +176,7 @@ nuget {
         [dynamic]
             Defines += HAS_MyLib;
     }
-    
+
 }
 
 ```
@@ -163,22 +192,22 @@ A single package script (`.autopkg`) may define many pivots, each of which may i
 
 ``` c#
 configurations {
-	PivotName { 
+	PivotName {
         // MSBuild property name.  This is only supplied if there is a direct mapping
         // between the pivot choices and an MSBuild property.
-		key : "MSBuildPropertyName"; 
-        
+		key : "MSBuildPropertyName";
+
         // List of possible selections from this pivot.  When processing, only one
         // choice from each pivot may be selected simultaneously.
-		choices: { option1, option2, option3 };  
-    
+		choices: { option1, option2, option3 };
+
         // This is the description used by Visual Studio for this pivot if no key
         // was provided.
         description = "The option to use for this library";
 
         // These are alternate names by which to reference "option1".
-        option1.aliases : { o1, opt1 }; 
-        
+        option1.aliases : { o1, opt1 };
+
         // This is what will display in the drop-down list in Visual Studio to identify
         // this choice for this pivot.  Defaults to the choice name (eg. "option2")
         // if this is not provided.
@@ -186,7 +215,7 @@ configurations {
 
         // This will prevent Visual Studio from allowing this choice if "Win32" is not
         // selected in another pivot.
-		option3.restricted-to = "Win32"; 
+		option3.restricted-to = "Win32";
     };
 }
 ```
@@ -196,13 +225,13 @@ configurations {
 There are a number of pivots that are pre-defined and will be automatically included in every `.autopkg` file:
 
 ``` c#
-    Toolset { 
-        key : "PlatformToolset"; 
-        choices: { v110, v100, v90, v80, v71, v70, v60, gcc };  
+    Toolset {
+        key : "PlatformToolset";
+        choices: { v110, v100, v90, v80, v71, v70, v60, gcc };
     };
-    
+
     Platform {
-        key : "Platform"; 
+        key : "Platform";
         choices: { Win32, x64, ARM, AnyCPU };
         Win32.aliases : { x86, win32, ia32, 386 };
         x64.aliases : { x64, amd64, em64t, intel64, x86-64, x86_64 };
@@ -211,11 +240,11 @@ There are a number of pivots that are pre-defined and will be automatically incl
     };
 
     Configuration {
-        key : "Configuration"; 
+        key : "Configuration";
         choices: { Release, Debug };
     };
 
-    Linkage { 
+    Linkage {
         choices : { dynamic, static, ltcg, sxs };
         description = "Which version of the .lib file to link to this library";
 
@@ -262,51 +291,51 @@ This metadata node defines the `.nupkg` files which will be generated.  These ma
 File collections in the `files` node may be defined or re-defined by the following syntax.  All fields are optional for new collections.  Re-defining a collection requires explicitly changing its existing properties.
 
 ``` c#
-    Collection_Name += {  
+    Collection_Name += {
         #output { // Assigns the output package file this collection is insterted into.
                   // Defaults to 'default' if not specified.
             package = «<Output_File>«#OutputFiles»;  // Must be named in #output-packages
                                                      // eg. default, redist, ...
         };
-        
+
         // This will add each file in this collection to another collection in this script.
         #add-each-file : <collection_to_also_add_to>;
-        
+
         // This will add the destination folder to another collection in this script.
         #add-folder : <collection_to_also_add_to>;
-        
+
         // If true, this will flatten all files in this collection to be located in the
         // root of #destination.  Default is false, which will preserve minimum relative
         // paths when wildcards are used to select files.
         #flatten = true;
-        
+
         // Assigns the folder within the package's directory tree where these files
         // should be placed.
-        #destination = ${d_lib}; 
+        #destination = ${d_lib};
     };
 ```
 
 Below is a sample of file collections as defined in the **[Implicit PackageScript](/reference/implicit-packagescript.html)**.
 
 ``` c#
-    bin += {  
+    bin += {
         #output {
             package = redist;
         };
         #add-each-file : ::nuget.[redist]targets.[${condition}].CopyToOutput;
-        #destination : ${d_bin};  
+        #destination : ${d_bin};
     };
 
-    lib += { 
+    lib += {
         // add each file as a link rule
         #add-each-file : ::nuget.targets.[${condition}].Libraries;
         #flatten = true;
-        #destination = ${d_lib}; 
+        #destination = ${d_lib};
     };
 
-    include += { 
+    include += {
         #add-folder : ::nuget.targets.[${condition}].Includes;
-        #destination : ${d_include}; 
+        #destination : ${d_include};
     };
 ```
 
