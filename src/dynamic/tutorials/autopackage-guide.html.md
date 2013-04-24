@@ -29,7 +29,7 @@ For more detailed information about the implicit script, **[read here](/referenc
 
 ##### Configuration Options / Pivots
 
-A top-level node which is common to all output formats is the `configurations` node, which contains descriptors for file and package variants that may affect the package consumer or have an impact on where files are placed.  There are some defaults defined by the **[implicit AutoPackage script](/reference/implicit-packagescript.html#Configurations)** which should cover a majority of the pivots most packages will need.  Additional pivots may be added as described in the **[AutoPackage Script Guide](/reference/aautopackage-ref.html#Pivots)** if needed.
+A top-level node which is common to all output formats is the `configurations` node, which contains descriptors for file and package variants that may affect the package consumer or have an impact on where files are placed.  There are some defaults defined by the **[implicit AutoPackage script](/reference/implicit-packagescript.html#Configurations)** which should cover a majority of the pivots most packages will need.  Additional pivots may be added as described in the **[AutoPackage Reference](/reference/autopackage-ref.html#Pivots)** if needed.
 
 ##### NuGet Packages
 
