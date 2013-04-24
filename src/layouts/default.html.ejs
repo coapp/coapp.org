@@ -92,7 +92,7 @@
 				<h3><a href="/index.html"><image style="margin:0; padding:0; position:absolute; top:2px; left:-2px;" src="/images/logo-small_32x32.png"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CoApp</a></h3>
 				<ul>
 					<% documents.enumerable().orderBy('order').where(function(each){ return each.url.indexOf('/pages') == 0;}).each(function(each) { %>  
-                        <% if (each.url == "/pages/_old_developers.html" ) { %>
+                        <% if (each.url.indexOf("_") == 0 ) { %>
                         <!--
                         <li class="dropdown" >
                             <a href="#" class="dropdown-toggle">Developers</a>
