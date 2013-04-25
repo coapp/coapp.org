@@ -41,6 +41,6 @@ Prints a lot of extra details about the process. May be useful for debugging.
 
 ## RELATED LINKS
 
-Online Help: [http://coapp.org/reference/update-coapptools.html](http://coapp.org/reference/update-coapptools.html)
+Online Help: [http://coapp.org/reference/set-codesignature.html](http://coapp.org/reference/set-codesignature.html)
 Report Bugs To: [https://github.com/coapp/coapp.powershell/issues](https://github.com/coapp/coapp.powershell/issues)
 

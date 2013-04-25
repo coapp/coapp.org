@@ -10,7 +10,7 @@ Downloads the most recent version of the CoApp PowerShell tools and installs it.
 
 ## SYNTAX
 
-``` text
+``` powershell
 	Update-CoAppTools [-Beta] [-KillPowershells]
 
 ```
