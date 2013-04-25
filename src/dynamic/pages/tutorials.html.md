@@ -16,7 +16,7 @@ This section contains tutorials about how you can help out with CoApp.
 ## Developer How-to tutorials
 
 ### Getting Started
-<span class="label warning">soon!</span> [Installing CoApp Developer Tools](/tutorials/installation.html) - Step-by-step instructions on installing and running the CoApp developer tools 
+<span class="label success">New!</span> [Installing CoApp Developer Tools](/tutorials/installation.html) - Step-by-step instructions on installing and running the CoApp developer tools 
 
 ### I want to build my own native packages for NuGet
 <span class="label success">New!</span> [Building a simple NuGet package](/tutorials/building-a-package.html) - Step-by-step instructions on creating a simple native package. **[Or, watch the Video](https://www.youtube.com/watch?v=l4MAkR13JPA)** <span class="label notice">Video</span> 
