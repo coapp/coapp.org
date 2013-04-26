@@ -14,7 +14,7 @@ Following is the set of tools you need to produce native Nuget packages using Co
 
 * Windows Vista, Windows 7, or Windows 8
 	- You need these or later versions of Windows because you need Visual Studio 2012 and Powershell 3.0
-* Visual Studio 2012
+* Visual Studio 2012 or 2010 
 * PowerShell 3.0 
 	- Windows 8 - Installed by default
 	- Windows 7 or Windows Vista - Install from http://www.microsoft.com/en-us/download/details.aspx?id=34595
@@ -36,14 +36,43 @@ AutoPackage is the CoApp tool you use to create native NuGet packages.  You get 
 	Write-NuGetPackage
 ```
 
-The Windows Installer does not currently set environment variables for the current user session, so after you install the "CoApp Powershell Tools" you need take one of the following four actions:
+### Installing the package
 
-* Re-boot
-* Logout then log back in
-* Kill your Solutions Explorer and restart it
-* Run your cmdlets as "Administrator"
+Installation is simple -- as long as you have PowerShell 3.0 installed, just download and run the [CoApp PowerShell tools MSI installer](http://downloads.coapp.org/files/CoApp.Tools.Powershell.msi).
 
-CoApp has a built-in update command so you can configure AutoPackage and the other CoApp Powershell modules to update themselves automatically.
+<div class="alert-message block-message success">
+    <p><b>First Time Installation Issue</b><br/>
+	One quick issue: When the installer runs the first time, Windows Installer doesn't always refresh the environment variables like it should.
+	
+	To make sure that the <code>PSMODULEPATH</code> environment variable is correctly set for new PowerShell console Windows, you either have to: reboot,<br><br>
+	
+	<b>Or,</b> force Explorer.EXE to reload the environment, (and thereby avoiding a reboot) by opening a PowerShell console and running the following:
+	
+	<div style="white-space: pre; line-height: 1; background: #FFFFFF; "><span style="font-family: Consolas;font-size: 10pt;color: #008000;"># Forces Explorer.exe to realize the environment has changed.</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">
+</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">[</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">System</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">.</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">Environment</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">]::</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">SetEnvironmentVariable</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">(</span><span style="font-family: Consolas;font-size: 10pt;color: #808080;">"PSMODULEPATH"</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">,</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;"> </span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">[</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">System</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">.</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">Environment</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">]::</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;">GetEnvironmentVariable</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">(</span><span style="font-family: Consolas;font-size: 10pt;color: #808080;">"PSMODULEPATH"</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">,</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;"> </span><span style="font-family: Consolas;font-size: 10pt;color: #808080;">"User"</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">)</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;"> </span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">,</span><span style="font-family: Consolas;font-size: 10pt;color: #000000;"> </span><span style="font-family: Consolas;font-size: 10pt;color: #808080;">"User"</span><span style="font-family: Consolas;font-size: 10pt;color: #000000; font-weight: bold;color: #000080;">)</span></div>
+	<br>Then, close that PowerShell Window, and open a new one. 
+	<br>This step is not needed on updates.
+	
+	<br><br>Once we switch to using the CoApp package manager to ship the tools, this issue will go away.
+	</p>
+</div>
+
+
+### Updating the tools to the latest version
+Once you have the CoApp PowerShell tools installed, you can update to the latest stable version:
+
+``` powershell
+Update-CoAppTools -KillPowershells
+
+```
+
+Or update to the latest beta version:
+
+``` powershell
+Update-CoAppTools -KillPowershells -Beta
+
+```
+
 
 ### AutoPackage Scripts (.autopkg)
 
@@ -153,6 +182,8 @@ Now that we've defined all of the basic metadata needed for the project, let's l
 Let's look at a few of these pivots more closely.  Linkage, for example: you can specify whether you want your output library to be a dynamic link type, which is a popular format, static, which is useful for some things, Link-Time Compiler Generated (LTCG), which is useful for improving performance using Profile-Guided Optimization, or Side-by-Side (SxS).  Calling conventions are used less commonly now, but sometimes libraries are packaged using cdecl, stdcall or both.  Application types include Windows 8 Server, Windows 8 Phone, and a variety of desktops.  The point is, you can define as many pivots as you need to provide the widest usefulness of your packages.
 	
 The list of pivots is not a finite set, so AutoPackage is designed to let you define however many nodes you need to cover all the pivots of your particular packages.  Just define all the nodes you need, specify the conditions for each build (i.e., what combiniation of pivot values to use), and AutoPackage handles everything else.
+
+You can see the commonly handled configurations [in the autopackage reference](http://coapp.org/reference/autopackage-ref.html#Pivots)
 
 #### Specifying Package Contents
 
