@@ -10,10 +10,10 @@ This tutorial tells you how to set up a CoApp build environment and how to creat
 
 <h3 id="Requirements">Requirements</h3>
 
-Following is the set of tools you need to produce native Nuget packages using CoApp.
+The requirements to produce native NuGet packages using CoApp are as follows:
 
 * Windows Vista, Windows 7, or Windows 8
-	- You need these or later versions of Windows because you need Visual Studio 2012 and Powershell 3.0
+	- You need these or later versions of Windows because you need Visual Studio 2012 and PowerShell 3.0
 * Visual Studio 2012 or 2010 
 * PowerShell 3.0 
 	- Windows 8 - Installed by default
@@ -30,7 +30,7 @@ Following is the set of tools you need to produce native Nuget packages using Co
 
 ### AutoPackage
 
-AutoPackage is the CoApp tool you use to create native NuGet packages.  You get AutoPackage when you install the "CoApp Powershell Tools" described above in <a href="#Requirements">Requirements</a>.  AutoPackage is a Powershell module.  It contains Powershell cmdlets that you can use from either the command line or batch files.  The primary cmdlet used in this tutorial is:
+AutoPackage is the CoApp tool you use to create native NuGet packages.  You get AutoPackage when you install the "CoApp PowerShell Tools" described above in <a href="#Requirements">Requirements</a>.  AutoPackage is a PowerShell module.  It contains Powershell cmdlets that you can use from either the command line or batch files.  The primary cmdlet used in this tutorial is:
 
 ``` powershell
 	Write-NuGetPackage
@@ -115,7 +115,7 @@ nuget{
 	
 #### Nuspec Metadata
 
-Now, let's begin filling in the metadata we need to define for the project. First we need to include basic informaiton including identification (name, version), links (project, license, etc), description, summary, icon, and so on.
+Now, let's begin filling in the metadata we need to define for the project. First we need to include basic information including identification (name, version), links (project, license, etc), description, summary, icon, and so on.
 
 ``` css
 	nuspec {
@@ -158,18 +158,18 @@ Now, let's begin filling in the metadata we need to define for the project. Firs
 ```
 
 
-A few things are worth noting in this early version of the AutoPackage script.  First, quotes around strings are not necessary unless the string contains a comma or a semicolon.   So, the following assignment is a valid alternative to the one in the example:
+A few things are worth noting in this early version of the AutoPackage script.  First, quotes around strings are not necessary unless the string contains a comma or a semicolon. So, the following assignment is a valid alternative to the one in the example:
 
 ``` css
 	licenseUrl: http_://www.apache.org/licenses/LICENSE-2.0;
 ```
 
 
-Second If you need to write a string the extends more than a single line, use the @" .... "; string literal.  And finally, make sure you identify your package as *native* code as opposed to *managed* code.  You do this by including "native" in the *tag* node definition as shown in the example.  Making this designation helps users find your libraries more easily.
+Second If you need to write a string the extends more than a single line, use the @" .... "; string literal.  And finally, make sure you identify your package as *native* code as opposed to *managed* code. You do this by including "native" in the *tag* node definition as shown in the example.  Making this designation helps users find your libraries more easily.
 
 #### Pivots - How to Handle Variations in Packages
 
-Now that we've defined all of the basic metadata needed for the project, let's look at the complexity that is inherent in creating native packages.  Almost all C/C++ libraries have many flavors depending on a large set of factors, such as the platforms you intend to target, whether your building a debug or production release, what toolset you're targeting and so on.  The following list shows some of the variables, that we refer to as *pivots*.
+Now that we've defined all of the basic metadata needed for the project, let's look at the complexity that is inherent in creating native packages.  Almost all C/C++ libraries have many flavors depending on a large set of factors, such as the platforms you intend to target, whether you're building a debug or production release, what toolset you're targeting and so on.  The following list shows some of the variables, that we refer to as *pivots*.
 
 	* Platform : x86, x64, Arm ...
 	* Configuration : Debug, Release
@@ -181,9 +181,9 @@ Now that we've defined all of the basic metadata needed for the project, let's l
 	
 Let's look at a few of these pivots more closely.  Linkage, for example: you can specify whether you want your output library to be a dynamic link type, which is a popular format, static, which is useful for some things, Link-Time Compiler Generated (LTCG), which is useful for improving performance using Profile-Guided Optimization, or Side-by-Side (SxS).  Calling conventions are used less commonly now, but sometimes libraries are packaged using cdecl, stdcall or both.  Application types include Windows 8 Server, Windows 8 Phone, and a variety of desktops.  The point is, you can define as many pivots as you need to provide the widest usefulness of your packages.
 	
-The list of pivots is not a finite set, so AutoPackage is designed to let you define however many nodes you need to cover all the pivots of your particular packages.  Just define all the nodes you need, specify the conditions for each build (i.e., what combiniation of pivot values to use), and AutoPackage handles everything else.
+The list of pivots is not a finite set, so AutoPackage is designed to let you define however many nodes you need to cover all the pivots of your particular packages.  Just define all the nodes you need, specify the conditions for each build (i.e., what combination of pivot values to use), and AutoPackage handles everything else.
 
-You can see the commonly handled configurations [in the autopackage reference](http://coapp.org/reference/autopackage-ref.html#Pivots)
+You can see the commonly handled configurations [in the AutoPackage reference](http://coapp.org/reference/autopackage-ref.html#Pivots)
 
 #### Specifying Package Contents
 
@@ -380,7 +380,7 @@ Now that we've covered all of the desktop builds we can do the same for Windows 
 	
 So now we've covered all of the variants we can handle for the set of pivot points: `platform`, `toolset`, `configuration` and `target application type`. 
 
-The final piece we want to add to the auto-script file is a *targets* node.  For now that only includes a definition that can be used later to help software pick up what it actually needs.  This will be covered in a later tutorial, so just include this node in the auto-script for now.
+The final piece we want to add to the file is a *targets* node.  For now that only includes a definition that can be used later to help software pick up what it actually needs.  This will be covered in a later tutorial, so just include this node for now.
 
 ``` css
 	nuget{
@@ -479,7 +479,7 @@ Include the package into your project.  You'll see that NuGet handles any depend
 	* ==--==
 	* =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 	*
-	* bingrequest.cpp - Simple cmd line application that makes an HTTP GET request to bing searching and outputting
+	* bingrequest.cpp - Simple cmd line application that makes an HTTP GET request to Bing and outputs
 	*       the resulting HTML response body into a file.
 	*
 	* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -1016,7 +1016,7 @@ This is a Visual Studio properties file and you can see that AutoPackage has tak
 
 ####What's Next?
 
-Look for additional tutorils soon covering:
+Look for additional tutorials soon covering:
 
 * Uploading packages 
 * Deep dive into how it works
