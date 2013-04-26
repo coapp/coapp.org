@@ -4,7 +4,7 @@ title: 'AutoPackage'
 version: '0.1'
 ---
 <div class="alert-message warning">
-    <p>This is a draft document -- send feedback to hanrahat@microsoft.com</p>
+    <p>This is a draft document -- send feedback to hanrahat@microsoft.com, or submit a [pull request](https://github.com/coapp/coapp.org)</p>
 </div>
 ## Automated Package Creation
 
@@ -59,7 +59,7 @@ First the NuGet metadata, which resides in the `nuspec` node:
 	};
 ```
 
-For information on appropriate values for these fields, please refer to the **[NuGet documentation](http://docs.nuget.org/docs/reference/nuspec-reference)** on the subject.  Of particular interest to us is the `id`, which determines the default output filenames.
+For information on appropriate values for these fields, please refer to the **[NuGet documentation](http://docs.nuget.org/docs/reference/nuspec-reference)** on the subject.  Of particular interest to us is the `id` field, which determines the default output filenames.
 
 ###### Files
 The `files` node defines the files to be included in this package.  There are multiple pre-defined collections which should cover the vast majority of needs for NuGet library packages.  These include:
@@ -71,7 +71,7 @@ The `files` node defines the files to be included in this package.  There are mu
 + lib  -  Link-time library files (typically ending in `.lib`).  These will automatically be added to the linker command line of consuming projects as additional libraries to link with.  These are added to `${id}.nupkg`.
 + bin  -  Binaries or run-time libraries (typically ending in `.dll`).  These will be copied to the output directory of the consuming project after a successful build.  These files are added to the `${id}.redist.nupkg` package.
 
-Additional file collections may be defined (and existing collections may be adjusted or re-defined) in the manner **[described here](/reference/autopackage-ref.html#Files)**.
+Additional file collections may be defined in the manner **[described here](/reference/autopackage-ref.html#Files)**. Existing collections may also be adjusted or re-defined in the same way.
 
 All of these pre-defined collections can accept both global and condition-specific file specifiers.  A file specifier is simply a string path to the file(s) to include in the collection which may contain wildcards.  File specifiers should relative paths from the location of the `.autopkg` file being processed.  
 The following are all perfectly acceptable file specifiers:
@@ -117,12 +117,17 @@ An example of condition-specific usage:
     };
 ```
 
-As evidenced by the example above, the order in which the conditions are specified does not matter and they will be normallized during processing.
+As evidenced by the example above, the order in which the conditions are specified does not matter and they will be normalized during processing.
 
 
 
 ###### Project Properties and Targets
-The `props` and `targets` nodes are identical in all ways except with regards to when they take effect.  Both of these nodes have a direct impact on projects which consume this package by way of prepending or appending various properties or values into the Visual Studio project file.  These are ideal places to insert any defines that are necessary to properly link with your libraries which have no relavence to other projects.  As a general rule, it is ok to add defines that are specific to this (and **ONLY** this) library, but not ok to include defines that have any purpose outside this library.
+The `props` and `targets` nodes are identical in all ways except with regards to when they take effect.  Both of these nodes have a direct impact on projects which consume this package by way of prepending or appending various properties or values into the Visual Studio project file.  These are ideal places to insert any defines that are necessary to properly link with your libraries which have no relevance to other projects.  As a general rule, it is 
+
+* OK to add defines that are specific to this (and **ONLY** this) library,
+
+* not OK to include defines that have any purpose outside this library.
+
 In a similar fashion to the `files` node, the `props` and `targets` nodes, the pre-defined collections for these nodes will function properly for both global and condition-specific scopes.
 
 An example from our `zlib.autopkg`:
