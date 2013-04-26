@@ -4,7 +4,7 @@ title: 'AutoPackage'
 version: '0.1'
 ---
 <div class="alert-message warning">
-    <p>This is a draft document -- send feedback to hanrahat@microsoft.com, or submit a [pull request](https://github.com/coapp/coapp.org)</p>
+    <p>This is a draft document -- send feedback to hanrahat@microsoft.com, or submit a pull request</p>
 </div>
 ## Automated Package Creation
 
