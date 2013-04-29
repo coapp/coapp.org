@@ -32,13 +32,7 @@ And if you're at you're wit's end you can:
 
 
 	
-#### And one or two more things...
-
-<p class="alert-message block-message info"><i><b>Today--<a style="color:blue; text-decoration:underline;" href="https://join.microsoft.com/meet/garretts/HZ96LF57">join us online</a>, we're making packages!</b></i><br><br>
-<b>The CoApp Project</b> regularly meets online every Friday, and this week we're going to stay online most of the day to help folks make packages<br/>
-<br/>To join, simply click <a style="color:blue; text-decoration:underline;" href="https://join.microsoft.com/meet/garretts/HZ96LF57">here</a> and use the Lync Web app to join the online discussion. 
-<br/><br/><B>EVERYONE IS WELCOME!</B>
-</p>
+#### And one more thing...
 
 <div class="alert-message block-message success">
     <p><b>Open Source Hackathon</b><br/>
