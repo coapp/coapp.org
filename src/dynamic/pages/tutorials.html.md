@@ -25,9 +25,10 @@ This section contains tutorials about how you can help out with CoApp.
 <span class="label success">New!</span> [AutoPackage Guide](/tutorials/autopackage-guide.html) - An introductory guide to `.autopkg` files.
 
 
+<!--
 ### Understanding the complexity of building Native Packages for NuGet
 <span class="label warning">soon</span> [Understanding the problem](/tutorials/understanding-the-problem.html) - What exactly makes this process complex
-
+-->
 
 
 <!--
