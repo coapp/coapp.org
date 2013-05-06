@@ -21,6 +21,11 @@ Prizes, drinks, food, and whole lot of code!
 Friday May 10th and Saturday May 11th  
 10am till we drop!
 
+<div class="alert-message block-message success"><H3>Coming Soon:</H3>
+   We're going to also try to broadcast it all live too, so that those who can't make it can pariticpate on line!
+</div>
+
+
 ### Where: 
 Microsoft Campus, building 99 -- Room 1919
 14820 Ne 36th St, Redmond, WA 
