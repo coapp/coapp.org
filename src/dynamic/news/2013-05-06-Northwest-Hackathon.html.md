@@ -22,7 +22,7 @@ Friday May 10th and Saturday May 11th
 10am till we drop!
 
 <div class="alert-message block-message success"><H3>Coming Soon:</H3>
-   We're going to also try to broadcast it all live too, so that those who can't make it can pariticpate on line!
+   We're going to also try to broadcast it all live too, so that those who can't make it can participate on line!
 </div>
 
 
