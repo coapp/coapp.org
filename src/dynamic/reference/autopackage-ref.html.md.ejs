@@ -347,4 +347,36 @@ Below is a sample of file collections as defined in the **[Implicit PackageScrip
 
 For a complete listing of the AutoPackage rules that are assigned automatically before the `autopkg` file is read, see the **[Implicit PackageScript](/reference/implicit-packagescript.html)**.
 
+### How to have Include files nested in a subfolder
+
+Sometimes the package creator wants to have files placed in a subdirectory so that consuming developers includes files like:
+
+``` c
+// sample include
+#include <mylib/mylib.h> 
+
+```
+
+Autopackage tries to un-nest as much as possible. To work around this you can add a different file section and tell it how to add the files to the package:
+
+``` css
+nuget {
+    files { 
+        // instead of using something like this:
+        include { 
+            "inc\*.h" 
+        };
+        
+        // use this:
+        nestedInclude {
+            #destination = ${d_include}\mylib;
+             "inc\*.h"
+        };
+    };
+};
+
+```
+
+This will copy the files into the subdirectory of the `include` folder.
+
 
