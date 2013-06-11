@@ -363,12 +363,12 @@ Autopackage tries to un-nest as much as possible. To work around this you can ad
 nuget {
     files { 
         // instead of using something like this:
-        include { 
+        include: { 
             "inc\*.h" 
         };
         
         // use this:
-        nestedInclude {
+        nestedInclude: {
             #destination = ${d_include}\mylib;
              "inc\*.h"
         };
