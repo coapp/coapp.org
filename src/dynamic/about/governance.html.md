@@ -1,4 +1,8 @@
-#CoApp Project Governance
+---
+layout: 'article'
+title: 'CoApp Project Governance' 
+docid: 'reference:governance'
+---
 
 ##Table of contents
 
