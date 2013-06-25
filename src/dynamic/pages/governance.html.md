@@ -20,7 +20,7 @@ All CoApp project members are Users. Users use the software produced by the comm
 
 Contributors are Users who contribute source code or documentation changes to resolve issues, make feature enhancements, or incorporate new functionality. Contributors do not necessarily have write access to the source tree - they may submit pull requests to any of the project's repositories on GitHub.
 
-A contributor must sign a Contributor License Agreement (CLA) before their first significant contribution is merged into a CoApp repository. New contributors must email contributions@outercurve.org with their name and the project they want to work on, in this case CoApp. An Outercurve staff member will reply to walk them through the CLA signing process.
+A contributor must sign a Contributor License Agreement (CLA) before their first significant, code contribution is merged into a CoApp repository. New contributors must email contributions@outercurve.org with their name and the project they want to work on, in this case CoApp. An Outercurve staff member will reply to walk them through the CLA signing process. A contributor does NOT need to sign a CLA for documentation contributions.
 
 ##Committer
 
