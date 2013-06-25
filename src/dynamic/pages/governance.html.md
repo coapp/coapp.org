@@ -2,11 +2,11 @@
 
 ##Table of contents
 
-1. User
-2. Contributor
-3. Committer
-4. Release Manager
-5. Project Owner
+1. [User](#user)
+2. [Contributor](#contributor)
+3. [Committer](#committer)
+4. [Release Manager](#release-manager)
+5. [Project Owner](#project-owner)
 
 The CoApp project follows a simple project governance structure. Decisions are handled by gathering consensus public discussion in the mailing lists, and the confirmation by the project leader. All decisions are made transparently and any member of the project may voice their concerns in the discussion.
 
