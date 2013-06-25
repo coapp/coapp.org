@@ -1,6 +1,7 @@
 ---
 layout: 'article'
-title: 'CoApp Project Governance' 
+title: 'CoApp Project Governance'
+version: '1.0' 
 docid: 'reference:governance'
 ---
 
