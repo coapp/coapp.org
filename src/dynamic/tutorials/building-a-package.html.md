@@ -421,7 +421,7 @@ where cpprestssdk.autopkg is the script you've just written.  The resulting outp
 
 ``` text
 >C:\project> Write-NuGetPackage .\cpprestsdk.autoconfig
-> Attempting to build package from 'cpprestsdk.autoconfig'
+> Attempting to build package from 'cpprestsdk.nuspec'
 > Successfully created package 'C:\project\cpprestsdk.0.6.0.7.nupkg
 > Attempting to build package from 'cpprestsdk.redist.nuspec\
 > Successfully created package 'C:\project\cpprestsdk.redist.0.6.0.7.nupkg
