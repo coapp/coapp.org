@@ -421,7 +421,7 @@ where cpprestssdk.autopkg is the script you've just written.  The resulting outp
 
 ``` text
 >C:\project> Write-NuGetPackage .\cpprestsdk.autoconfig
-> Attempting to build package from 'cpprestsdk.autoconfig'
+> Attempting to build package from 'cpprestsdk.nuspec'
 > Successfully created package 'C:\project\cpprestsdk.0.6.0.7.nupkg
 > Attempting to build package from 'cpprestsdk.redist.nuspec\
 > Successfully created package 'C:\project\cpprestsdk.redist.0.6.0.7.nupkg
@@ -585,7 +585,7 @@ This demonstrates that we were able to build, compile, link and run a program al
 
 ####Looking Under the Covers
 
-If you're curious you can see how the process works.  Go back to the TestApp direcotry and cd to the *packages* directory.  Show its contents, then drill down through the *build* directory to the *native* directory.
+If you're curious you can see how the process works.  Go back to the TestApp directory and cd to the *packages* directory.  Show its contents, then drill down through the *build* directory to the *native* directory.
 
 ``` text
 C:\project> dir
