@@ -144,5 +144,5 @@ An example from our `zlib.autopkg`:
 ```
 
 
-You can find examples of AutoPackage scripts for other software components built by the CoApp community in our **[GitHub repository](https://github.com/organizations/coapp-packages/)**.
+You can find examples of AutoPackage scripts for other software components built by the CoApp community in our **[GitHub repository](https://github.com/coapp-packages/)**.
 
