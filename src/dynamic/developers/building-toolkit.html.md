@@ -12,7 +12,7 @@ You need to make sure that you've [checked out the source code for the project][
 
 #### Building from the command line. (Or, if you only have Visual Studio Express)
 
-If you only have Visual Studio express, you can't build C++ and C# projects in the same solution, so if you want to be able to rebuild the entire project you can do that from the command line using the [ptk tool](reference:ptk) (which is included in the `ext\tools` submodule for you).
+If you only have Visual Studio express, you can't build C++ and C# projects in the same solution, so if you want to be able to rebuild the entire project you can do that from the command line using the [ptk tool][reference:ptk] (which is included in the `ext\tools` submodule for you).
 
 ``` bat
 cd coapp 
