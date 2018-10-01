@@ -119,6 +119,20 @@ An example of condition-specific usage:
 
 As evidenced by the example above, the order in which the conditions are specified does not matter and they will be normalized during processing.
 
+You may also use replacement variables to simplify the above structure:
+``` css
+    files {
+        ("Win32,x64", "Release,Debug") => {
+            [${0},${1}] {
+                bin: ..\output\${0}\${1}\${pkgname}.dll;
+                lib: ..\output\${0}\${1}\${pkgname}.lib;
+                symbols: ..\output\${0}\${1}\${pkgname}.pdb;
+            }
+        }
+    };
+```
+
+In this case, any files that are not found (such as the `.pdb` file in the `Release` configuration) will produce warnings but will otherwise be ignored, and the package will be produced as if the missing files were not specified.
 
 
 ###### Project Properties and Targets
@@ -144,5 +158,5 @@ An example from our `zlib.autopkg`:
 ```
 
 
-You can find examples of AutoPackage scripts for other software components built by the CoApp community in our **[GitHub repository](https://github.com/organizations/coapp-packages/)**.
+You can find examples of AutoPackage scripts for other software components built by the CoApp community in our **[GitHub repository](https://github.com/coapp-packages/)**.
 
